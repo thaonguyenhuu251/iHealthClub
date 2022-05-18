@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/cursor_mouse.xml" value="0.183" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic__home_selected.xml" value="0.1005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1665" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.189" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.141" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_baseline_keyboard_arrow_up_24.xml" value="0.189" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_facebook.xml" value="0.193" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_friend.xml" value="0.1005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_friend_selected.xml" value="0.1005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_home.xml" value="0.214" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.214" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_home_selected.xml" value="0.121" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_image.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_logo_profile.xml" value="0.2005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_next_right.xml" value="0.166" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_notify_selected.xml" value="0.1005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_options_group.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_options_live.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_personal.xml" value="0.1105" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_personal_selected.xml" value="0.1005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_post_private.xml" value="0.2095" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_search_black.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_video_selected.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_watch_selected.xml" value="0.1005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_button_blue.xml" value="0.1195" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_button_create.xml" value="0.1195" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_button_posts.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_home_post_file.xml" value="0.162" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_image_user.xml" value="0.2005" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_not_background.xml" value="0.189" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_options_home.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_search_home.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_square_image.xml" value="0.1655" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_status_home.xml" value="0.137" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/rounded_view_post.xml" value="0.2095" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/your_color_selector.xml" value="0.214" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_birthday.xml" value="0.8" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_choose_image.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_choose_password.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_contact_email.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_contact_number.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_create_new_password.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_create_post.xml" value="0.12" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_emoji_action.xml" value="0.1563517915309446" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_forgot_password_email.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_forgot_password_mobile.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_home_bottom_sheet.xml" value="0.15789473684210525" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_home_screen.xml" value="0.136" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_item_user.xml" value="1.1111111111111112" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_join_facebook.xml" value="0.136" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_login.xml" value="0.152" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_object_post_home.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_otp_verification.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_pick_image_post.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_posts_home.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_profile_login.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_register_birthday.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_register_birthday_activity.xml" value="0.8" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_terms_privacy.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_what_your_birthday.xml" value="1.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_what_your_gender.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/activity_what_your_name.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/bottom_sheet_home.xml" value="0.15789473684210525" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/datetimeoptionspicker_custom_time.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/dialog_loading.xml" value="0.152" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_dashboard.xml" value="0.1563517915309446" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_friend_request.xml" value="0.1563517915309446" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_menu.xml" value="1.1111111111111112" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_messenger.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_notifications.xml" value="1.1111111111111112" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_personal_profile.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/fragment_watch_video.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/item_gallery_image.xml" value="0.6168831168831169" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/item_options_home.xml" value="0.2" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/item_user.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/layout_bottom_create_post.xml" value="0.1563517915309446" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/layout_menu_bottom_create_post.xml" value="0.15789473684210525" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/multi_gallery_listitem.xml" value="0.1" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/layout/nav_tab.xml" value="0.15789473684210525" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.15789473684210525" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/menu_emoji_activity.xml" value="0.152" />
+        <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/toolbar_menu.xml" value="0.8527131782945736" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

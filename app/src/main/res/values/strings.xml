@@ -1,0 +1,52 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    //General
+    <string name="app_name">facebookclone</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="next">Next</string>
+    <string name="continues">Continue</string>
+    <string name="home">Home</string>
+    <string name="friend">Friend</string>
+    <string name="personal">Personal</string>
+    <string name="watch">Watch</string>
+    <string name="notify">Notify</string>
+    <string name="menu">Menu</string>
+    <string name="loading">Loading ...</string>
+
+    //Register
+    <string name="create_account">Create account</string>
+    <string name="finishing_singing_up">Finishing singing up</string>
+    <string name="terms_privacy"><![CDATA[Terms & privacy]]></string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="custom">Custom</string>
+    <string name="email">Email</string>
+    <string name="birthday">Birthday</string>
+    <string name="gender">Gender</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+
+    //Login
+    <string name="login">Login</string>
+    <string name="log_into_another_account">Log Into Another Account</string>
+    <string name="find_your_account">Find Your Account</string>
+    <string name="create_new_facebook_account">Create new Facebook account</string>
+    <string name="log_in">Log in</string>
+
+    //Forgot password
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_your_password">Reset your password</string>
+    <string name="otp_verification">OTP Verification</string>
+
+    //Post home
+    <string name="et_hint_thinking"><font size="24">What are you thinking?</font></string>
+    <string name="image_video">Image/video</string>
+    <string name="tag_someone_else">Tag someone else</string>
+
+
+</resources>

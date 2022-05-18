@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_post_emoji_avtivity"
+    app:startDestination="@id/emojiFragment">
+
+    <fragment
+        android:id="@+id/emojiFragment"
+        android:name="com.example.facebookclone.view.mainscreen.screenhome.EmojiFragment"
+        android:label="fragment_emoji"
+        tools:layout="@layout/fragment_emoji" >
+        <action
+            android:id="@+id/action_emojiFragment_to_activateFragment"
+            app:destination="@id/activateFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/activateFragment"
+        android:name="com.example.facebookclone.view.mainscreen.screenhome.ActivateFragment"
+        android:label="fragment_activate"
+        tools:layout="@layout/fragment_activate" />
+</navigation>

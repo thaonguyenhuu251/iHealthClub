@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.facebookclone.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/friendRequestFragment"
+        android:name="com.example.facebookclone.FriendRequestFragment"
+        android:label="fragment_friend_request"
+        tools:layout="@layout/fragment_friend_request" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/personalProfileFragment"
+        android:name="com.example.facebookclone.PersonalProfileFragment"
+        android:label="fragment_personal_profile"
+        tools:layout="@layout/fragment_personal_profile" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/watchVideoFragment"
+        android:name="com.example.facebookclone.WatchVideoFragment"
+        android:label="fragment_watch_video"
+        tools:layout="@layout/fragment_watch_video" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.facebookclone.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.facebookclone.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/messengerFragment"
+        android:name="com.example.facebookclone.MessengerFragment"
+        android:label="fragment_messenger"
+        tools:layout="@layout/fragment_messenger" >
+
+    </fragment>
+</navigation>
