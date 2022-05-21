@@ -1,16 +1,24 @@
 package com.example.facebookclone.view.mainscreen.screenhome
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.facebookclone.R
 import com.example.facebookclone.model.OptionsHome
+import com.example.facebookclone.utils.SHARED_PREFERENCES_KEY
+import com.example.facebookclone.utils.URL_PHOTO
 import com.example.facebookclone.view.adapter.OptionsHomeAdapter
+import kotlinx.android.synthetic.main.activity_create_post.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.img_avatar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,12 +33,10 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
 
     private var optionsAdapter: OptionsHomeAdapter? =null
-
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -43,12 +49,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         initView()
 
     }
 
     private fun initView(){
+        Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fb_avatar)).into(img_avatar)
         tv_thinking_home.setOnClickListener {
             val intent = Intent(this@HomeFragment.context, CreatePostsActivity::class.java)
             startActivity(intent)

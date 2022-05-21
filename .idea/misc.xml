@@ -89,6 +89,23 @@
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.15789473684210525" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/menu_emoji_activity.xml" value="0.152" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/toolbar_menu.xml" value="0.8527131782945736" />
+        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.228314208984375" />
+        <entry key="app/src/main/res/layout/activity_emoji_action.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_action.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_activate.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_emoji.xml" value="0.22578430175781253" />
+        <entry key="app/src/main/res/layout/fragment_friend_request.xml" value="0.18697916666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1947158813476562" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_personal_profile.xml" value="0.11510416666666666" />
+        <entry key="app/src/main/res/layout/fragment_watch_video.xml" value="0.11510416666666666" />
+        <entry key="app/src/main/res/layout/item_emoji_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_gallery_image.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_options_home.xml" value="0.15702479338842976" />
+        <entry key="app/src/main/res/layout/layout_bottom_create_post.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_menu_bottom_create_post.xml" value="0.1" />
       </map>
     </option>
   </component>

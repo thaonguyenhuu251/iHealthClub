@@ -61,13 +61,12 @@
             app:contentInsetStart="0dp"
             android:gravity="center_vertical">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:menu="@menu/menu_emoji_activity"
-                app:itemIconSize="@dimen/_20sdp">
+           <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_ea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="fixed"/>
 
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
         </androidx.appcompat.widget.Toolbar>
 
         <View
@@ -113,16 +112,15 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_emoji"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:defaultNavHost="true"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
-        app:navGraph="@navigation/nav_post_emoji_action" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
