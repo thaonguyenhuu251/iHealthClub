@@ -263,7 +263,6 @@
                     android:cursorVisible="false"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:focusable="false"
                     android:hint="@string/et_hint_thinking"
                     android:imeOptions="actionNone"
                     android:inputType="textMultiLine"

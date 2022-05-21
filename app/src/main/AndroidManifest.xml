@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Facebookclone"
+        android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
         <activity
             android:name=".view.mainscreen.screenhome.EmojiActionActivity"
@@ -43,11 +44,11 @@
         <activity
             android:name=".view.mainscreen.MainScreenActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".view.register.CreateNewPasswordActivity" />
         <activity android:name=".view.register.OtpVerificationActivity" />
@@ -73,6 +74,15 @@
             android:name=".view.register.ChoosePasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.register.TermAndPrivacyActivity" />
+
+        <activity android:name=".view.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

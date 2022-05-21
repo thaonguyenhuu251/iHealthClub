@@ -4,34 +4,42 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import com.bumptech.glide.Glide
 import com.example.facebookclone.R
+import com.example.facebookclone.model.Post
+import com.example.facebookclone.model.TypeFile
+import com.example.facebookclone.utils.SHARED_PREFERENCES_KEY
 import com.example.facebookclone.utils.URL_PHOTO
+import com.example.facebookclone.utils.USER_ID
 import com.example.facebookclone.utils.USER_NAME
 import com.example.facebookclone.view.dialog.LoadingDialog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_create_post.*
 import kotlinx.android.synthetic.main.activity_create_post.container
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.layout_bottom_create_post.*
 import kotlinx.android.synthetic.main.layout_menu_bottom_create_post.*
 import java.io.File
 import java.io.IOException
-import java.lang.Exception
+import kotlin.random.Random
 
 
 class CreatePostsActivity : AppCompatActivity() {
@@ -40,38 +48,49 @@ class CreatePostsActivity : AppCompatActivity() {
     private val storageRef = Firebase.storage.reference
     private val listDownloadUri = mutableListOf<String>()
     private var loadingDialog: LoadingDialog? = null
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var post: Post
+    private lateinit var database: DatabaseReference
 
-    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val intent = result.data
-            val data = intent?.getStringExtra("KEY_PATH_IMAGE")
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                val data = intent?.getStringExtra("KEY_PATH_IMAGE")
 
-            Glide.with(this).load(data).into(img_pick)
-            img_pick.visibility = View.VISIBLE
-            ln_add_images.visibility = View.VISIBLE
-            et_thinking_pos.isCursorVisible = true
-            card_menu.visibility = View.GONE
-            ln_options_post_home.visibility = View.VISIBLE
-            val filePath = getRealPathFromUri(this,Uri.parse(data))
-            uploadFile(filePath!!)
+                Glide.with(this).load(data).into(img_pick)
+                img_pick.visibility = View.VISIBLE
+                ln_add_images.visibility = View.VISIBLE
+                et_thinking_pos.isCursorVisible = true
+                card_menu.visibility = View.GONE
+                ln_options_post_home.visibility = View.VISIBLE
+                val filePath = getRealPathFromUri(this, Uri.parse(data))
+                uploadFile(filePath!!)
+            }
         }
-    }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+        database = Firebase.database.reference
+        post = Post()
         initView()
     }
 
 
     @SuppressLint("ResourceAsColor")
-    private fun initView(){
-        atv_post.text = USER_NAME
-        //img_avatar
+    private fun initView() {
+        atv_post.text = sharedPreferences.getString(USER_ID, "")
+
+        Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
+            .error(AppCompatResources.getDrawable(this, R.drawable.ic_fb_avatar)).into(img_avatar)
+
+
+
         ln_object_post.setOnClickListener {
-            val intent =Intent(this,ObjectPostHomeActivity::class.java)
+            val intent = Intent(this, ObjectPostHomeActivity::class.java)
             startActivity(intent)
         }
 
@@ -83,7 +102,7 @@ class CreatePostsActivity : AppCompatActivity() {
             card_menu.visibility = View.VISIBLE
             ln_options_post_home.visibility = View.GONE
             bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
-            hideSoftKeyboard(this,container)
+            hideSoftKeyboard(this, container)
         }
 
         iv_images.setOnClickListener {
@@ -95,7 +114,11 @@ class CreatePostsActivity : AppCompatActivity() {
         }
 
         iv_emoji.setOnClickListener {
-            val intent =Intent(this,EmojiActionActivity::class.java)
+            val intent = Intent(this, EmojiActionActivity::class.java)
+            startActivity(intent)
+        }
+        ln_emoji.setOnClickListener {
+            val intent = Intent(this, EmojiActionActivity::class.java)
             startActivity(intent)
         }
 
@@ -104,7 +127,7 @@ class CreatePostsActivity : AppCompatActivity() {
         }
 
         et_thinking_pos.setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus){
+            if (hasFocus) {
                 et_thinking_pos.isCursorVisible = true
                 card_menu.visibility = View.GONE
                 ln_options_post_home.visibility = View.VISIBLE
@@ -115,17 +138,18 @@ class CreatePostsActivity : AppCompatActivity() {
         et_thinking_pos.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
             }
+
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
             }
+
             override fun afterTextChanged(editable: Editable) {
-                if(et_thinking_pos.text.toString().trim().isNotEmpty()){
+                if (et_thinking_pos.text.toString().trim().isNotEmpty()) {
                     btn_post.isEnabled = true
                     btn_post.setBackgroundResource(R.drawable.rounded_button_posts)
                     btn_post.setTextColor(R.color.black_mode)
-                }
-                else{
-                    if(btn_post.isEnabled){
+                } else {
+                    if (btn_post.isEnabled) {
                         btn_post.isEnabled = false
                         btn_post.setBackgroundResource(R.drawable.rounded_home_post_file)
                         btn_post.setTextColor(R.color.general_grey)
@@ -136,6 +160,20 @@ class CreatePostsActivity : AppCompatActivity() {
         })
 
         btn_post.setOnClickListener {
+
+            post.idPost = Random.nextInt(0,1000000)
+            post.listFile = listDownloadUri
+            post.typeFile = TypeFile.IMAGE
+            post.likeTotal = 0
+            post.commentTotal = 0
+            post.shareTotal = 0
+            post.createAt = System.currentTimeMillis().toString()
+            post.createBy = sharedPreferences.getString(USER_NAME,"").toString()
+            database.child("posts").child(post.idPost.toString()).setValue(post).addOnSuccessListener {
+                Log.d("hunghkp", "initView: success")
+            }.addOnFailureListener { e ->
+                Log.d("hunghkp", "initView: ${e.message}")
+            }
         }
 
 
@@ -143,7 +181,7 @@ class CreatePostsActivity : AppCompatActivity() {
     }
 
 
-    private fun initBottomSheet(){
+    private fun initBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(card_menu)
 
         bottomSheetBehavior?.peekHeight = 200
@@ -151,7 +189,8 @@ class CreatePostsActivity : AppCompatActivity() {
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
 
-        bottomSheetBehavior?.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_DRAGGING, BottomSheetBehavior.STATE_EXPANDED -> {
@@ -171,9 +210,9 @@ class CreatePostsActivity : AppCompatActivity() {
         })
     }
 
-    private fun uploadFile(fileName : String){
+    private fun uploadFile(fileName: String) {
         //loading
-        pb_image.visibility =  View.VISIBLE
+        pb_image.visibility = View.VISIBLE
         val file = Uri.fromFile(File(fileName))
 
         val ref = storageRef.child("posts")
@@ -183,7 +222,7 @@ class CreatePostsActivity : AppCompatActivity() {
         uploadTask.continueWithTask { task ->
             if (!task.isSuccessful) {
                 task.exception?.let {
-                    pb_image.visibility =  View.GONE
+                    pb_image.visibility = View.GONE
                     showSnackBar(it.message!!)
 
                 }
@@ -193,7 +232,7 @@ class CreatePostsActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 val downloadUri = task.result
                 listDownloadUri.add(downloadUri.toString())
-                pb_image.visibility =  View.GONE
+                pb_image.visibility = View.GONE
             } else {
                 // Handle failures
                 // ...
@@ -201,16 +240,17 @@ class CreatePostsActivity : AppCompatActivity() {
             }
         }
 
-        try{
+        try {
             // function throw ra exception
-        }catch (e : IOException){
+        } catch (e: IOException) {
 
         }
     }
 
 
     private fun hideSoftKeyboard(activity: Activity, view: View?) {
-        val inputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
@@ -232,6 +272,7 @@ class CreatePostsActivity : AppCompatActivity() {
             cursor?.close()
         }
     }
+
 
     private fun showSnackBar(message: String) {
         Snackbar.make(container, message, Snackbar.LENGTH_LONG).show()

@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8f9423e15e3a2755f2c1470fd6326217/transformed/jetified-datetimeoptionspicker-1.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8f9423e15e3a2755f2c1470fd6326217/transformed/jetified-datetimeoptionspicker-1.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8f9423e15e3a2755f2c1470fd6326217/transformed/jetified-datetimeoptionspicker-1.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/924b99a833c902b6010a7299c2565a4d/transformed/jetified-datetimeoptionspicker-1.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/924b99a833c902b6010a7299c2565a4d/transformed/jetified-datetimeoptionspicker-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/924b99a833c902b6010a7299c2565a4d/transformed/jetified-datetimeoptionspicker-1.0.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.chivorns/datetimeoptionspicker/1.0.1/536604362b6622ab2e16e5510f8236c74659b18/datetimeoptionspicker-1.0.1-javadoc.jar!/" />

@@ -6,7 +6,7 @@ import com.example.facebookclone.R
 import com.example.facebookclone.view.adapter.HomePagerFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_main_screen.*
 
 
 class MainScreenActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_main_screen)
 
         initView()
 
