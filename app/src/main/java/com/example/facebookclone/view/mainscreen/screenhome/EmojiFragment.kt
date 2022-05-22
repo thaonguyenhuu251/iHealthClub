@@ -90,7 +90,7 @@ class EmojiFragment : Fragment() {
     }
 
     private fun listEmojis() :  MutableList<EmojiHome>{
-        list.add(EmojiHome(emojiName = "Anguished" , srcImage = R.drawable.emoji_1))
+        list.add(EmojiHome(emojiName = "Anguished" , srcImage = R.drawable.emoji_anguished))
         list.add(EmojiHome(emojiName = "Cold Sweat" , srcImage = R.drawable.emoji_2))
         list.add(EmojiHome(emojiName = "Confounded" , srcImage = R.drawable.emoji_3))
         list.add(EmojiHome(emojiName = "Crying" , srcImage = R.drawable.emoji_4))
@@ -99,7 +99,7 @@ class EmojiFragment : Fragment() {
         list.add(EmojiHome(emojiName = "Eye Roll" , srcImage = R.drawable.emoji_7))
         list.add(EmojiHome(emojiName = "Head Bandage" , srcImage = R.drawable.emoji_8))
         list.add(EmojiHome(emojiName = "Thermometer" , srcImage = R.drawable.emoji_9))
-        list.add(EmojiHome(emojiName = "Fearful" , srcImage = R.drawable.emoji_10))
+        list.add(EmojiHome(emojiName = "Fearful" , srcImage = R.drawable.emojifearful))
         list.add(EmojiHome(emojiName = "Grinmacing" , srcImage = R.drawable.emoji_11))
         list.add(EmojiHome(emojiName = "Heart Eyes" , srcImage = R.drawable.emoji_12))
         list.add(EmojiHome(emojiName = "hungry" , srcImage = R.drawable.emoji_13))
