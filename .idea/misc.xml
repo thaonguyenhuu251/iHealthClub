@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.10597826086956522" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/cursor_mouse.xml" value="0.183" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic__home_selected.xml" value="0.1005" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1665" />
@@ -89,9 +90,14 @@
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.15789473684210525" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/menu_emoji_activity.xml" value="0.152" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/toolbar_menu.xml" value="0.8527131782945736" />
+        <entry key="app/src/main/res/drawable/rounded_button_create.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/rounded_home_emoji.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_choose_password.xml" value="0.4367816091954023" />
+        <entry key="app/src/main/res/layout/activity_create_new_password.xml" value="0.23839670817057293" />
         <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.228314208984375" />
-        <entry key="app/src/main/res/layout/activity_emoji_action.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_emoji_action.xml" value="0.35517241379310344" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24583333333333332" />
         <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_activate.xml" value="0.1" />
@@ -101,9 +107,11 @@
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.10260416666666666" />
         <entry key="app/src/main/res/layout/fragment_personal_profile.xml" value="0.11510416666666666" />
         <entry key="app/src/main/res/layout/fragment_watch_video.xml" value="0.11510416666666666" />
-        <entry key="app/src/main/res/layout/item_emoji_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_action_home.xml" value="0.22552083333333334" />
+        <entry key="app/src/main/res/layout/item_emoji_home.xml" value="0.2782028198242188" />
         <entry key="app/src/main/res/layout/item_gallery_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_options_home.xml" value="0.15702479338842976" />
+        <entry key="app/src/main/res/layout/item_user.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/layout/layout_bottom_create_post.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_menu_bottom_create_post.xml" value="0.1" />
       </map>

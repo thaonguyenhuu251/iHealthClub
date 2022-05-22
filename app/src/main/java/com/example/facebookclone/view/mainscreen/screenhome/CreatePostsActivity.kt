@@ -82,7 +82,8 @@ class CreatePostsActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     private fun initView() {
-        atv_post.text = sharedPreferences.getString(USER_ID, "")
+
+        atv_post.text = sharedPreferences.getString(USER_NAME,"USER FACEBOOK")
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
             .error(AppCompatResources.getDrawable(this, R.drawable.ic_fb_avatar)).into(img_avatar)

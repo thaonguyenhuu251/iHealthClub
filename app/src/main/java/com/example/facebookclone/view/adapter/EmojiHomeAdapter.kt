@@ -10,15 +10,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.facebookclone.R
 import com.example.facebookclone.model.EmojiHome
+import com.example.facebookclone.model.onItemClickListener
 
 class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHome>, val callback : (EmojiHome) -> Unit):
     RecyclerView.Adapter<EmojiHomeAdapter.ItemViewHolder>() {
+    private lateinit var eListener: onItemClickListener
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        eListener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): EmojiHomeAdapter.ItemViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_emoji_home, parent, false)
-        return ItemViewHolder(view)
+        return ItemViewHolder(view, eListener)
     }
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bindItem(emoji = listEmojis!![position])
@@ -26,7 +33,7 @@ class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHo
 
     override fun getItemCount(): Int = listEmojis?.size!!
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         private val tv_emojis_home: TextView = itemView.findViewById(R.id.tv_emojis_home)
         private val iv_emojis_home: ImageView = itemView.findViewById(R.id.iv_emojis_home)
 
@@ -39,5 +46,13 @@ class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHo
                 callback.invoke(emoji)
             }
         }
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
+
+
 }

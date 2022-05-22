@@ -13,7 +13,15 @@
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetEnd="0dp"
+        android:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -50,21 +58,23 @@
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentInsetStart="0dp"
-            android:contentInsetLeft="0dp"
-            android:contentInsetEnd="0dp"
-            android:contentInsetRight="0dp"
+            android:layout_height="?attr/actionBarSize"
             app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp"
             app:contentInsetLeft="0dp"
             app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp"
-            android:gravity="center_vertical">
+            android:layout_marginBottom="0dp"
+            android:paddingBottom="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:contentInsetEndWithActions="0dp">
 
            <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_ea"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            app:tabTextColor="@color/general_blue"
+            app:tabIndicatorColor="@color/general_blue"
+            app:tabGravity="fill"
             app:tabMode="fixed"/>
 
         </androidx.appcompat.widget.Toolbar>
@@ -94,16 +104,19 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
-                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/iv_emoji_action"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:padding="@dimen/_8sdp"
                     android:src="@drawable/ic_search_black" />
 
                 <EditText
+                    android:id="@+id/et_emoji_action"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:hint="Search"
+                    android:visibility="visible"
                     android:textSize="@dimen/_12sdp"
                     android:background="@color/white"
                     />

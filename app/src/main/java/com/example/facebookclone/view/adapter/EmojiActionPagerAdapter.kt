@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.facebookclone.view.mainscreen.screenhome.ActionFragment
 import com.example.facebookclone.view.mainscreen.screenhome.EmojiFragment
+
 class EmojiActionPagerAdapter(val arrayTitle : Array<String>,val fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity){
     override fun getItemCount(): Int {
         return arrayTitle.size
