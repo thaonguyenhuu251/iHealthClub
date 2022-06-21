@@ -17,7 +17,7 @@ class HomePagerFragmentAdapter(val arrayTitle : Array<String>,val fragmentActivi
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return HomeFragment()
+            0 -> { return HomeFragment()}
             1 -> return FriendRequestFragment()
             2 -> return PersonalProfileFragment()
             3 -> return WatchVideoFragment()

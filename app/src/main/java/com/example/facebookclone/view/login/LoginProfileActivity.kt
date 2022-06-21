@@ -1,6 +1,8 @@
 package com.example.facebookclone.view.login
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,10 +11,11 @@ import com.example.facebookclone.database.UserRepository
 import com.example.facebookclone.database.UserRoomDatabase
 import com.example.facebookclone.model.User
 import com.example.facebookclone.model.UserSaved
-import com.example.facebookclone.utils.COLLECTION_PATH_USER
+import com.example.facebookclone.utils.*
 import com.example.facebookclone.view.adapter.ProfileUserAdapter
 import com.example.facebookclone.view.dialog.LoadingDialog
 import com.example.facebookclone.view.mainscreen.MainScreenActivity
+import com.example.facebookclone.view.register.JoinFacebookActivity
 import com.example.facebookclone.view.register.WhatYourNameActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,15 +31,17 @@ class LoginProfileActivity : AppCompatActivity() {
     private var userRepository: UserRepository? = null
     private var db: FirebaseFirestore? = null
     private var loadingDialog: LoadingDialog? = null
+    private lateinit var sharedPreferences : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_login)
         loadingDialog = LoadingDialog(this)
         db = Firebase.firestore
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
 
         btn_create_account.setOnClickListener {
-            val create = Intent(this, WhatYourNameActivity::class.java)
+            val create = Intent(this, JoinFacebookActivity::class.java)
             startActivity(create)
         }
 
@@ -58,6 +63,12 @@ class LoginProfileActivity : AppCompatActivity() {
                         val user = document.toObject<User>()
                         if (user?.password == userCast.password) {
                             //login
+                            val editor = sharedPreferences.edit()
+                            editor.putString(USER_ID, user?.phoneNumber)
+                            editor.putString(URL_PHOTO, user?.photoUrl)
+                            editor.putString(USER_NAME, user?.firstName +" " + user?.lastName)
+                            editor.apply()
+                            editor.commit()
                             val login = Intent(this, MainScreenActivity::class.java)
                             loadingDialog?.dismissDialog()
                             startActivity(login)
@@ -75,7 +86,7 @@ class LoginProfileActivity : AppCompatActivity() {
         }
 
 
-        rv_profile_login.layoutManager = LinearLayoutManager(this)
+        rv_profile_login.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         rv_profile_login.setHasFixedSize(true)
         rv_profile_login.adapter = profileAdapter
     }

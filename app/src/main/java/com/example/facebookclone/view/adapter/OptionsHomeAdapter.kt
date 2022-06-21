@@ -2,15 +2,18 @@ package com.example.facebookclone.view.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.facebookclone.R
 import com.example.facebookclone.model.OptionsHome
+import com.example.facebookclone.view.mainscreen.screenhome.PickImageReelActivity
 
 
 class OptionsHomeAdapter(val context: Context, var listOptions: MutableList<OptionsHome>, val callback : (OptionsHome) -> Unit):

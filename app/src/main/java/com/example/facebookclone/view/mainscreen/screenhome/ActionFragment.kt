@@ -59,18 +59,18 @@ class ActionFragment : Fragment() {
 
     private fun listActions() :  MutableList<ActionHome>{
         val list = mutableListOf<ActionHome>()
-        list.add(ActionHome(actionName = "Congratulating", srcImage = R.drawable.action_congratulating))
-        list.add(ActionHome(actionName = "Drinking", srcImage = R.drawable.action_drinking))
-        list.add(ActionHome(actionName = "Eating", srcImage = R.drawable.action_eating))
-        list.add(ActionHome(actionName = "Going to", srcImage = R.drawable.action_going_to))
-        list.add(ActionHome(actionName = "Listening", srcImage = R.drawable.action_listening))
-        list.add(ActionHome(actionName = "Participating", srcImage = R.drawable.action_participating))
-        list.add(ActionHome(actionName = "Playing", srcImage = R.drawable.action_playing))
-        list.add(ActionHome(actionName = "Reading", srcImage = R.drawable.action_reading))
-        list.add(ActionHome(actionName = "Searching", srcImage = R.drawable.action_searching))
-        list.add(ActionHome(actionName = "Supporting", srcImage = R.drawable.action_supporting))
-        list.add(ActionHome(actionName = "Thinking", srcImage = R.drawable.action_thinking))
-        list.add(ActionHome(actionName = "Watching", srcImage = R.drawable.action_watching))
+        list.add(ActionHome(actionName = "Congratulating..", srcImage = R.drawable.action_congratulating))
+        list.add(ActionHome(actionName = "Drinking...", srcImage = R.drawable.action_drinking))
+        list.add(ActionHome(actionName = "Eating...", srcImage = R.drawable.action_eating))
+        list.add(ActionHome(actionName = "Going to...", srcImage = R.drawable.action_going_to))
+        list.add(ActionHome(actionName = "Listening...", srcImage = R.drawable.action_listening))
+        list.add(ActionHome(actionName = "Participating...", srcImage = R.drawable.action_participating))
+        list.add(ActionHome(actionName = "Playing...", srcImage = R.drawable.action_playing))
+        list.add(ActionHome(actionName = "Reading...", srcImage = R.drawable.action_reading))
+        list.add(ActionHome(actionName = "Searching...", srcImage = R.drawable.action_searching))
+        list.add(ActionHome(actionName = "Supporting...", srcImage = R.drawable.action_supporting))
+        list.add(ActionHome(actionName = "Thinking...", srcImage = R.drawable.action_thinking))
+        list.add(ActionHome(actionName = "Watching...", srcImage = R.drawable.action_watching))
         return list
     }
 

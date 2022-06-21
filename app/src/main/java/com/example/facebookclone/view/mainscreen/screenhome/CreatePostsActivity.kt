@@ -5,10 +5,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -20,12 +18,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import com.bumptech.glide.Glide
 import com.example.facebookclone.R
-import com.example.facebookclone.model.Post
-import com.example.facebookclone.model.TypeFile
-import com.example.facebookclone.utils.SHARED_PREFERENCES_KEY
-import com.example.facebookclone.utils.URL_PHOTO
-import com.example.facebookclone.utils.USER_ID
-import com.example.facebookclone.utils.USER_NAME
+import com.example.facebookclone.model.*
+import com.example.facebookclone.utils.*
 import com.example.facebookclone.view.dialog.LoadingDialog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
@@ -47,16 +41,24 @@ class CreatePostsActivity : AppCompatActivity() {
     private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
     private val storageRef = Firebase.storage.reference
     private val listDownloadUri = mutableListOf<String>()
+    private val listLike = mutableListOf<ListLike>()
     private var loadingDialog: LoadingDialog? = null
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var post: Post
     private lateinit var database: DatabaseReference
+    private  var userName: String = ""
+    private  var status: String = ""
+    private var urlAvartar: String = ""
+    private  var thinking: String = ""
+    private lateinit var typeFile: TypeFile
+    private  var emojiHome: EmojiHome ?= null
 
+    @SuppressLint("ResourceAsColor")
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val intent = result.data
-                val data = intent?.getStringExtra("KEY_PATH_IMAGE")
+                val data = intent?.getStringExtra(KEY_PATH_IMAGE_POST)
 
                 Glide.with(this).load(data).into(img_pick)
                 img_pick.visibility = View.VISIBLE
@@ -64,8 +66,30 @@ class CreatePostsActivity : AppCompatActivity() {
                 et_thinking_pos.isCursorVisible = true
                 card_menu.visibility = View.GONE
                 ln_options_post_home.visibility = View.VISIBLE
+
+                btn_post.isEnabled = true
+                btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                btn_post.setTextColor(R.color.black_mode)
+
                 val filePath = getRealPathFromUri(this, Uri.parse(data))
                 uploadFile(filePath!!)
+            }
+        }
+
+    @SuppressLint("ResourceAsColor")
+    private val startActivityPickEmoji =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                val data = intent?.getSerializableExtra(KEY_EMOJI_PUT) as EmojiHome
+                emojiHome = data
+                Log.d("hunghkp", ": ${data.emojiName}")
+                status = " ${data.srcImage} felling ${data.emojiName}"
+//                val st =  data.srcImage + "felling ${data.emojiName}"
+                atv_post.text = userName + status
+                btn_post.isEnabled = true
+                btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                btn_post.setTextColor(R.color.black_mode)
             }
         }
 
@@ -75,6 +99,8 @@ class CreatePostsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_post)
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         database = Firebase.database.reference
+        urlAvartar = sharedPreferences.getString(URL_PHOTO,"").toString()
+        typeFile = TypeFile.OTHER
         post = Post()
         initView()
     }
@@ -82,8 +108,8 @@ class CreatePostsActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     private fun initView() {
-
-        atv_post.text = sharedPreferences.getString(USER_NAME,"USER FACEBOOK")
+        userName = sharedPreferences.getString(USER_NAME, "USER FACEBOOK").toString()
+        atv_post.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
             .error(AppCompatResources.getDrawable(this, R.drawable.ic_fb_avatar)).into(img_avatar)
@@ -115,12 +141,23 @@ class CreatePostsActivity : AppCompatActivity() {
         }
 
         iv_emoji.setOnClickListener {
+
             val intent = Intent(this, EmojiActionActivity::class.java)
-            startActivity(intent)
+            if(emojiHome != null){
+                intent.putExtra(KEY_EMOJI_PUT, emojiHome)
+            }
+
+            startActivityPickEmoji.launch(intent)
         }
         ln_emoji.setOnClickListener {
+//            val intent = Intent(this, EmojiActionActivity::class.java)
+//            startActivity(intent)
             val intent = Intent(this, EmojiActionActivity::class.java)
-            startActivity(intent)
+            if(emojiHome != null){
+                intent.putExtra(KEY_EMOJI_PUT, emojiHome)
+            }
+
+            startActivityPickEmoji.launch(intent)
         }
 
         et_thinking_pos.setOnClickListener {
@@ -147,8 +184,10 @@ class CreatePostsActivity : AppCompatActivity() {
             override fun afterTextChanged(editable: Editable) {
                 if (et_thinking_pos.text.toString().trim().isNotEmpty()) {
                     btn_post.isEnabled = true
-                    btn_post.setBackgroundResource(R.drawable.rounded_button_posts)
+                    btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
                     btn_post.setTextColor(R.color.black_mode)
+                    thinking = et_thinking_pos.text.toString().trim()
+
                 } else {
                     if (btn_post.isEnabled) {
                         btn_post.isEnabled = false
@@ -157,24 +196,34 @@ class CreatePostsActivity : AppCompatActivity() {
                     }
 
                 }
+
             }
         })
 
         btn_post.setOnClickListener {
-
-            post.idPost = Random.nextInt(0,1000000)
+            listLike.add(ListLike("",TypeLike.NO))
+            post.idPost = System.currentTimeMillis()
+            post.idUser = sharedPreferences.getString(USER_ID, "").toString()
+            post.urlAvatar = urlAvartar
+            post.status = thinking
+            post.emojiStatus = status
             post.listFile = listDownloadUri
-            post.typeFile = TypeFile.IMAGE
+            post.typeFile = typeFile
+            post.listLike = listLike
             post.likeTotal = 0
             post.commentTotal = 0
             post.shareTotal = 0
-            post.createAt = System.currentTimeMillis().toString()
-            post.createBy = sharedPreferences.getString(USER_NAME,"").toString()
-            database.child("posts").child(post.idPost.toString()).setValue(post).addOnSuccessListener {
-                Log.d("hunghkp", "initView: success")
-            }.addOnFailureListener { e ->
+            post.createAt = System.currentTimeMillis()
+            post.createBy = sharedPreferences.getString(USER_NAME, "").toString()
+            database.child("posts").child(post.idPost.toString()).setValue(post)
+                .addOnSuccessListener {
+                    finish()
+                    Log.d("hunghkp", "initView: success")
+                }.addOnFailureListener { e ->
                 Log.d("hunghkp", "initView: ${e.message}")
+                    finish()
             }
+
         }
 
 
@@ -216,7 +265,7 @@ class CreatePostsActivity : AppCompatActivity() {
         pb_image.visibility = View.VISIBLE
         val file = Uri.fromFile(File(fileName))
 
-        val ref = storageRef.child("posts")
+        val ref = storageRef.child("post/${System.currentTimeMillis()}")
 
         val uploadTask = ref.putFile(file)
 
@@ -225,7 +274,6 @@ class CreatePostsActivity : AppCompatActivity() {
                 task.exception?.let {
                     pb_image.visibility = View.GONE
                     showSnackBar(it.message!!)
-
                 }
             }
             ref.downloadUrl
@@ -234,6 +282,7 @@ class CreatePostsActivity : AppCompatActivity() {
                 val downloadUri = task.result
                 listDownloadUri.add(downloadUri.toString())
                 pb_image.visibility = View.GONE
+                typeFile = TypeFile.IMAGE
             } else {
                 // Handle failures
                 // ...
@@ -261,18 +310,7 @@ class CreatePostsActivity : AppCompatActivity() {
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     }
 
-    private fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
-        var cursor: Cursor? = null
-        return try {
-            val proj = arrayOf(MediaStore.Images.Media.DATA)
-            cursor = context.contentResolver.query(contentUri!!, proj, null, null, null)
-            val columnIndex: Int? = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            cursor?.moveToFirst()
-            cursor?.getString(columnIndex!!)
-        } finally {
-            cursor?.close()
-        }
-    }
+
 
 
     private fun showSnackBar(message: String) {

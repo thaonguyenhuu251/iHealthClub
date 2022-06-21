@@ -4,9 +4,9 @@ import androidx.room.Entity
 import java.io.Serializable
 
 @Entity(tableName = "emoji_table")
-data class EmojiHome (
+data class EmojiHome(
     var emojiName: String = "",
-    var srcImage: Int
+    var srcImage: String = ""
 ):Serializable{
 
 }

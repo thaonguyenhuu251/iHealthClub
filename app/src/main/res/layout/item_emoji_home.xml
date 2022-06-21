@@ -15,12 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_emojis_home"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="27dp"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/_5sdp" />
+        <com.example.facebookclone.view.customview.CustomTextView
+            android:id="@+id/emoji_custom_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="24sp"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_emojis_home"
@@ -32,6 +32,7 @@
             android:text="Sanjay Shendy"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />
+
 
     </LinearLayout>
 

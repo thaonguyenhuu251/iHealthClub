@@ -11,7 +11,10 @@ import com.example.facebookclone.utils.KEY_USER
 import com.example.facebookclone.utils.KEY_VERIFIED_ID
 import com.example.facebookclone.utils.OTP_TIME_OUT
 import com.example.facebookclone.view.dialog.LoadingDialog
+import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.safetynet.SafetyNetAppCheckProviderFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
@@ -71,7 +74,11 @@ class ContactNumberActivity : AppCompatActivity() {
 
     private fun initFirebase() {
         auth = Firebase.auth
-
+        FirebaseApp.initializeApp(/*context=*/this)
+        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+        firebaseAppCheck.installAppCheckProviderFactory(
+            SafetyNetAppCheckProviderFactory.getInstance()
+        )
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(p0: PhoneAuthCredential) {
                 Log.d("hunghkp", "onVerificationCompleted: ")

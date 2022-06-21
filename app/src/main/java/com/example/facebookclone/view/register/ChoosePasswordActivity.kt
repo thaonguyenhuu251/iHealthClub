@@ -1,6 +1,8 @@
 package com.example.facebookclone.view.register
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,7 +14,7 @@ import com.example.facebookclone.database.UserRepository
 import com.example.facebookclone.database.UserRoomDatabase
 import com.example.facebookclone.model.User
 import com.example.facebookclone.model.UserSaved
-import com.example.facebookclone.utils.KEY_USER
+import com.example.facebookclone.utils.*
 import com.example.facebookclone.view.dialog.LoadingDialog
 import com.example.facebookclone.view.mainscreen.MainScreenActivity
 import com.google.firebase.firestore.ktx.firestore
@@ -29,12 +31,12 @@ class ChoosePasswordActivity : AppCompatActivity() {
     val db = Firebase.firestore
     private var loadingDialog: LoadingDialog? = null
     private var userRepository: UserRepository? = null
-
+    private lateinit var sharedPreferences : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_password)
         userRepository = UserRepository(UserRoomDatabase.getDatabase(this).userDao())
-
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         loadingDialog = LoadingDialog(this)
         initview()
 
@@ -79,8 +81,12 @@ class ChoosePasswordActivity : AppCompatActivity() {
 
                 db.collection("users").document(user?.phoneNumber!!).set(user!!)
                     .addOnSuccessListener {
-                        val bundle = Bundle()
-                        bundle.putSerializable(KEY_USER, user)
+                        val editor = sharedPreferences.edit()
+                        editor.putString(USER_ID,user?.phoneNumber)
+                        editor.putString(URL_PHOTO,user?.photoUrl)
+                        editor.putString(USER_NAME, user?.firstName +" " + user?.lastName)
+                        editor.apply()
+                        editor.commit()
                         val userSaved = UserSaved(phoneNumber = user!!.phoneNumber,
                             firstName = user!!.firstName,
                             lastName = user!!.lastName,
@@ -92,7 +98,6 @@ class ChoosePasswordActivity : AppCompatActivity() {
                         val i =
                             Intent(this@ChoosePasswordActivity, MainScreenActivity::class.java)
                         i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                        i.putExtras(bundle)
                         loadingDialog?.dismissDialog()
                         startActivity(i)
                         finish()

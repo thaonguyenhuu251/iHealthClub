@@ -38,6 +38,23 @@ class GalleryViewModel : ViewModel() {
 
     }
 
+    fun getVideosFromGallery(
+        context: Context,
+        pageSize: Int,
+        list: (List<GalleryPicture>) -> Unit
+    ) {
+        viewModelScope.launch {
+            flow {
+                emit(fetchGalleryVideos(context, pageSize))
+            }.catch {
+                it.printStackTrace()
+            }.collect {
+                list(it)
+            }
+        }
+
+    }
+
     fun getGallerySize(context: Context): Int {
         val cursor = getGalleryCursor(context)
         val rows = cursor!!.count
@@ -108,6 +125,57 @@ class GalleryViewModel : ViewModel() {
                 null,
                 "$orderBy DESC"
             )//get all data in Cursor by sorting in DESC order
+    }
+
+    private fun fetchGalleryVideos(context: Context, pageSize: Int): List<GalleryPicture> {
+        val cursor = getGalleryCursor(context)
+
+        if (cursor != null && !allLoaded) {
+            val totalRows = cursor.count
+            val galleryVideoUrls = ArrayList<GalleryPicture>(totalRows)
+            allLoaded = rowsToLoad == totalRows
+            if (rowsToLoad < pageSize) {
+                rowsToLoad = pageSize
+            }
+
+            for (i in startingRow until rowsToLoad) {
+                cursor.moveToPosition(i)
+                val dataColumnIndex =
+                    cursor.getColumnIndex(MediaStore.Video.Media._ID) //get column index
+
+                val imageURI = ContentUris.withAppendedId(
+                    MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                    cursor.getLong(dataColumnIndex))
+
+                val path = imageURI.toString()
+
+                Log.i("ImagePath",path)
+
+                galleryVideoUrls.add(GalleryPicture(path)) //get Image path from column index
+
+            }
+            Log.i("TotalGallerySize", "$totalRows")
+            Log.i("GalleryStart", "$startingRow")
+            Log.i("GalleryEnd", "$rowsToLoad")
+
+            startingRow = rowsToLoad
+
+            if (pageSize > totalRows || rowsToLoad >= totalRows)
+                rowsToLoad = totalRows
+            else {
+                if (totalRows - rowsToLoad <= pageSize)
+                    rowsToLoad = totalRows
+                else
+                    rowsToLoad += pageSize
+            }
+
+            cursor.close()
+            Log.i("PartialGallerySize", " ${galleryVideoUrls.size}")
+
+            return galleryVideoUrls
+        }
+
+        return emptyList()
     }
 
 }

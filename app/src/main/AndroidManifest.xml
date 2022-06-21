@@ -4,10 +4,12 @@
     package="com.example.facebookclone">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".FacebookApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +18,21 @@
         android:theme="@style/Theme.Facebookclone"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
+        <activity
+            android:name=".view.mainscreen.photoeditor.EditImageActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".view.mainscreen.screenhome.PickImageStoryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".view.mainscreen.screenhome.EmojiActionActivity"
             android:exported="false" />
@@ -44,11 +61,13 @@
         <activity
             android:name=".view.mainscreen.MainScreenActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".view.register.CreateNewPasswordActivity" />
         <activity android:name=".view.register.OtpVerificationActivity" />
@@ -74,8 +93,8 @@
             android:name=".view.register.ChoosePasswordActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.register.TermAndPrivacyActivity" />
-
-        <activity android:name=".view.SplashScreenActivity"
+        <activity
+            android:name=".view.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

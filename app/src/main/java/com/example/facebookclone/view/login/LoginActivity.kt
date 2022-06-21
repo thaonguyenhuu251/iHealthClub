@@ -82,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
                                 val editor = sharedPreferences.edit()
                                 editor.putString(USER_ID,user.phoneNumber)
                                 editor.putString(URL_PHOTO,user.photoUrl)
-                                editor.putString(USER_NAME, user.firstName + user.lastName)
+                                editor.putString(USER_NAME, user.firstName +" " + user.lastName)
                                 editor.apply()
                                 editor.commit()
                                 val login = Intent(this, MainScreenActivity::class.java)

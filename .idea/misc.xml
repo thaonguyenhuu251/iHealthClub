@@ -90,30 +90,135 @@
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.15789473684210525" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/menu_emoji_activity.xml" value="0.152" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/toolbar_menu.xml" value="0.8527131782945736" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/ic_angry.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_baseline_draw.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/ic_brush.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_dot.xml" value="0.138" />
+        <entry key="app/src/main/res/drawable/ic_friend.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_friend_selected.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_gallery.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_happy.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_home_selected.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_insert_emoticon.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/ic_like.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_menu_selected.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_notify_selected.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_oval.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_personal_selected.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_photo_filter.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_redo.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_sad.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_save.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_search_black.xml" value="0.1035" />
+        <entry key="app/src/main/res/drawable/ic_share.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_sticker.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_surprise.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_text.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_undo.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_video_selected.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/item_story_watch.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/react_dialog_shape.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/rounded_add_story.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/rounded_avatar_menu.xml" value="0.142" />
+        <entry key="app/src/main/res/drawable/rounded_border_text_view.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/rounded_button_blue.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_button_circle_grey.xml" value="0.1035" />
         <entry key="app/src/main/res/drawable/rounded_button_create.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/rounded_button_general_blue.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/rounded_button_little.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_button_little_grey.xml" value="0.1035" />
+        <entry key="app/src/main/res/drawable/rounded_button_little_white.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_button_posts.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_comment_story.xml" value="0.144" />
+        <entry key="app/src/main/res/drawable/rounded_dialog_more.xml" value="0.143" />
         <entry key="app/src/main/res/drawable/rounded_home_emoji.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/rounded_home_post_file.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_image_personal.xml" value="0.138" />
+        <entry key="app/src/main/res/drawable/rounded_image_user.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_not_background.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_options_home.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_reel_pick_image.xml" value="0.138" />
+        <entry key="app/src/main/res/drawable/rounded_row_editting.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rounded_search_home.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_shortcut_friend.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/rounded_square_image.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_status_home.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_story.xml" value="0.12873535156250002" />
+        <entry key="app/src/main/res/drawable/rounded_story_watch.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/rounded_view_post.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/story_description_background.xml" value="0.1355" />
+        <entry key="app/src/main/res/font/roboto_medium.xml" value="0.1935185185185185" />
+        <entry key="app/src/main/res/layout/activity_action.xml" value="0.32595520019531254" />
         <entry key="app/src/main/res/layout/activity_choose_password.xml" value="0.4367816091954023" />
+        <entry key="app/src/main/res/layout/activity_contact_number.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_create_new_password.xml" value="0.23839670817057293" />
-        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.228314208984375" />
+        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.3729903536977492" />
+        <entry key="app/src/main/res/layout/activity_edit_image.xml" value="0.26943803030789054" />
+        <entry key="app/src/main/res/layout/activity_emoji.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/activity_emoji_action.xml" value="0.35517241379310344" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/activity_join_facebook.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24583333333333332" />
         <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_pick_image_post.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_pick_image_reel.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/activity_pick_image_story.xml" value="0.23802083333333332" />
+        <entry key="app/src/main/res/layout/activity_profile_login.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_story_view.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/activity_user_login_more_dialog.xml" value="0.562572224934896" />
+        <entry key="app/src/main/res/layout/add_text_dialog.xml" value="0.17777777777777778" />
+        <entry key="app/src/main/res/layout/bottom_sheet_home.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/layout/color_picker_item_list.xml" value="0.17083333333333334" />
+        <entry key="app/src/main/res/layout/datetimeoptionspicker_custom_time.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.12291666666666666" />
+        <entry key="app/src/main/res/layout/dialog_stories.xml" value="0.3600112915039063" />
+        <entry key="app/src/main/res/layout/dialog_user_login_more.xml" value="0.27343597412109377" />
         <entry key="app/src/main/res/layout/fragment_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_activate.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_bottom_properties_dialog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_bottom_shapes_dialog.xml" value="0.17083333333333334" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sticker_emoji_dialog.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/fragment_emoji.xml" value="0.22578430175781253" />
         <entry key="app/src/main/res/layout/fragment_friend_request.xml" value="0.18697916666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1947158813476562" />
-        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.10260416666666666" />
-        <entry key="app/src/main/res/layout/fragment_personal_profile.xml" value="0.11510416666666666" />
-        <entry key="app/src/main/res/layout/fragment_watch_video.xml" value="0.11510416666666666" />
-        <entry key="app/src/main/res/layout/item_action_home.xml" value="0.22552083333333334" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_messenger.xml" value="0.17604166666666668" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_personal_profile.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/fragment_watch_video.xml" value="0.12859903971354164" />
+        <entry key="app/src/main/res/layout/item_action_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_comment_story.xml" value="0.3815789473684211" />
+        <entry key="app/src/main/res/layout/item_edit_story.xml" value="0.5654052734375" />
+        <entry key="app/src/main/res/layout/item_emoji_general.xml" value="0.29375" />
         <entry key="app/src/main/res/layout/item_emoji_home.xml" value="0.2782028198242188" />
         <entry key="app/src/main/res/layout/item_gallery_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_options_home.xml" value="0.15702479338842976" />
+        <entry key="app/src/main/res/layout/item_post_home.xml" value="0.22865447998046878" />
+        <entry key="app/src/main/res/layout/item_post_image.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/item_post_text.xml" value="0.26564906670795224" />
+        <entry key="app/src/main/res/layout/item_post_video.xml" value="0.4038772583007812" />
+        <entry key="app/src/main/res/layout/item_shortcuts_all.xml" value="0.3041025641025641" />
+        <entry key="app/src/main/res/layout/item_shortcuts_friend.xml" value="0.758795166015625" />
+        <entry key="app/src/main/res/layout/item_shortcuts_group.xml" value="4.105181884765625" />
+        <entry key="app/src/main/res/layout/item_story_watch.xml" value="0.6236263736263736" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/layout/layout_bottom_create_post.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_menu_bottom_create_post.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_story_item.xml" value="0.11382113821138211" />
+        <entry key="app/src/main/res/layout/pausable_progress.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/rounded_reel_pick_image.xml" value="0.24479166666666666" />
+        <entry key="app/src/main/res/layout/row_editing_tools.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/row_emoji.xml" value="0.17083333333333334" />
+        <entry key="app/src/main/res/layout/row_filter_view.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/row_sticker.xml" value="0.17083333333333334" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1305" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1355" />
       </map>
     </option>
   </component>
@@ -122,5 +227,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.21044108072916667" />
+      </ProjectState>
+    </option>
   </component>
 </project>

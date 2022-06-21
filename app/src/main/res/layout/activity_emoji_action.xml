@@ -72,9 +72,10 @@
             android:id="@+id/tab_layout_ea"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:tabTextColor="@color/general_blue"
-            app:tabIndicatorColor="@color/general_blue"
             app:tabGravity="fill"
+            app:tabRippleColor="#0173FF"
+            app:tabSelectedTextColor="#0173FF"
+            app:tabIndicatorColor="#0173FF"
             app:tabMode="fixed"/>
 
         </androidx.appcompat.widget.Toolbar>
@@ -99,15 +100,18 @@
             app:contentInsetStart="0dp">
 
             <LinearLayout
+                android:id="@+id/ln_search_emoji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_emoji_action"
                     android:layout_width="@dimen/_28sdp"
                     android:layout_height="@dimen/_28sdp"
                     android:padding="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:src="@drawable/ic_search_black" />
 
                 <EditText
@@ -116,11 +120,44 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:hint="Search"
-                    android:visibility="visible"
                     android:textSize="@dimen/_12sdp"
                     android:background="@color/white"
                     />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_status_emoji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_icon_emoji"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_18sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textColor="@color/black_mode"/>
+                <TextView
+                    android:id="@+id/tv_status_emoji"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.4"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/black_mode"
+                    android:paddingLeft="@dimen/_15sdp"/>
+                <ImageView
+                    android:id="@+id/iv_status_emoji"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:padding="@dimen/_8sdp"
+                    android:src="@drawable/ic_baseline_close_24" />
+
+            </LinearLayout>
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

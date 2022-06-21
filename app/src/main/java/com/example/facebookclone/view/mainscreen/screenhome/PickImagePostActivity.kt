@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.facebookclone.R
 import com.example.facebookclone.model.GalleryPicture
+import com.example.facebookclone.utils.KEY_PATH_IMAGE_POST
 import com.example.facebookclone.view.adapter.GalleryPicturesAdapter
 import kotlinx.android.synthetic.main.activity_pick_image_post.*
 
@@ -62,7 +63,7 @@ class PickImagePostActivity : AppCompatActivity() {
 
             val resultIntent = Intent()
 
-            resultIntent.putExtra("KEY_PATH_IMAGE", galleryPicture.path)
+            resultIntent.putExtra(KEY_PATH_IMAGE_POST, galleryPicture.path)
             setResult(RESULT_OK, resultIntent)
             finish()
         }

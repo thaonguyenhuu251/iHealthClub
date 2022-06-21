@@ -21,4 +21,35 @@
     <color name="color_group">#FEEEE5</color>
     <color name="color_live">#EDF0FC</color>
     <color name="black_mode">#000000</color>
+    <color name="general_grey_little">#D9D9D9</color>
+    <color name="general_linear">#384CFF</color>
+    <color name="background_grey_little">#F0F1F1</color>
+    <color name="general_black_little">#69000000</color>
+    <color name="semi_black_transparent">#99000000</color>
+    <color name="tool_bg">#00151414</color>
+
+
+    <color name="progress_primary">@color/white</color>
+    <color name="progress_secondary">@color/gray_scale</color>
+    <color name="progress_max_active">@color/white</color>
+
+    <color name="gray_scale">#8affffff</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="blue_color_picker">#0066FF</color>
+    <color name="brown_color_picker">#AF593E</color>
+    <color name="green_color_picker">#01A368</color>
+    <color name="orange_color_picker">#FF861F</color>
+    <color name="red_color_picker">#ED0A3F</color>
+    <color name="red_orange_color_picker">#FF3F34</color>
+    <color name="sky_blue_color_picker">#76D7EA</color>
+    <color name="violet_color_picker">#8359A3</color>
+    <color name="yellow_color_picker">#FBE870</color>
+    <color name="yellow_green_color_picker">#C5E17A</color>
+    <color name="general_grey_blue">#D9FAFEFF</color>
+    <color name="general_black_white">#333C3939</color>
+    <color name="general_miro_white">#00000000</color>
 </resources>
