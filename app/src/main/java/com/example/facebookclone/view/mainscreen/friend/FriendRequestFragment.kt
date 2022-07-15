@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenfriend
+package com.example.facebookclone.view.mainscreen.friend
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

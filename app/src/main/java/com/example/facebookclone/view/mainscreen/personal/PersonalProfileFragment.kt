@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenpersonal
+package com.example.facebookclone.view.mainscreen.personal
 
 import android.content.Context
 import android.content.Intent
@@ -21,8 +21,8 @@ import com.example.facebookclone.utils.URL_PHOTO
 import com.example.facebookclone.utils.USER_ID
 import com.example.facebookclone.utils.USER_NAME
 import com.example.facebookclone.view.adapter.PostAdapter
-import com.example.facebookclone.view.mainscreen.screenhome.CreatePostsActivity
-import com.example.facebookclone.view.mainscreen.screenhome.PickImageStoryActivity
+import com.example.facebookclone.view.mainscreen.home.CreatePostsActivity
+import com.example.facebookclone.view.mainscreen.home.PickImageStoryActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -110,6 +110,8 @@ class PersonalProfileFragment : Fragment() {
 
         },{reaction, post ->
 
+        },{
+            linear, post ->
         })
         rv_post_person.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

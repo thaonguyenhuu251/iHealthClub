@@ -20,6 +20,8 @@ import com.example.facebookclone.utils.*
 import com.example.facebookclone.view.adapter.OptionsHomeAdapter
 import com.example.facebookclone.view.adapter.PostAdapter
 import com.example.facebookclone.view.adapter.StoryViewAdapter
+import com.example.facebookclone.view.mainscreen.home.BottomSheetCommentFragment
+import com.example.facebookclone.view.mainscreen.home.CreatePostsActivity
 import com.example.facebookclone.view.mainscreen.storyviewext.OnStoryChangedCallback
 import com.example.facebookclone.view.mainscreen.storyviewext.StoryClickListeners
 import com.example.facebookclone.view.mainscreen.storyviewext.StoryView
@@ -40,6 +42,8 @@ class HomeFragment : Fragment() {
     private var id: String = ""
     private var user: String = ""
     private var idpostget: Long = 0L
+
+    private lateinit var btsComment: BottomSheetCommentFragment
 
     //    private val storyAdapter by lazy {
 //        StoryViewAdapter(urlAvatar,requireContext(), list = listStory()) { story->
@@ -200,6 +204,11 @@ class HomeFragment : Fragment() {
                         databasepost.updateChildren(mutableMap)
                     }
                 })
+
+        },{
+            lineear,post ->
+            btsComment = BottomSheetCommentFragment.newInstance()
+            btsComment.show(childFragmentManager,"")
 
         })
         rv_post.layoutManager =

@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -33,7 +33,6 @@ import kotlinx.android.synthetic.main.layout_bottom_create_post.*
 import kotlinx.android.synthetic.main.layout_menu_bottom_create_post.*
 import java.io.File
 import java.io.IOException
-import kotlin.random.Random
 
 
 class CreatePostsActivity : AppCompatActivity() {

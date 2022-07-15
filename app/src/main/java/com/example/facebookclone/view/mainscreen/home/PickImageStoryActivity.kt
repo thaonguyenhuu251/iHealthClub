@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -19,8 +19,11 @@ import com.example.facebookclone.utils.KEY_PATH_IMAGE_STORY
 import com.example.facebookclone.view.adapter.GalleryPicturesAdapter
 import com.example.facebookclone.view.mainscreen.photoeditor.EditImageActivity
 import kotlinx.android.synthetic.main.activity_pick_image_story.*
+import kotlinx.android.synthetic.main.activity_pick_image_story.iv_back
 
-class PickImageReelActivity : AppCompatActivity() {
+
+
+class PickImageStoryActivity : AppCompatActivity() {
     private val adapter by lazy {
         GalleryPicturesAdapter(pictures, 10, this)
     }
@@ -30,12 +33,16 @@ class PickImageReelActivity : AppCompatActivity() {
     private val pictures by lazy {
         ArrayList<GalleryPicture>(galleryViewModel.getGallerySize(this))
     }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pick_image_reel)
+        setContentView(R.layout.activity_pick_image_story)
         requestReadStoragePermission()
 
     }
+
     private fun requestReadStoragePermission() {
         val readStorage = Manifest.permission.READ_EXTERNAL_STORAGE
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
@@ -56,7 +63,7 @@ class PickImageReelActivity : AppCompatActivity() {
         rv_images.adapter = adapter
 
         adapter.setOnClickListener {
-                galleryPicture ->
+            galleryPicture ->
             val resultIntent = Intent(this, EditImageActivity::class.java)
             resultIntent.putExtra(KEY_PATH_IMAGE_STORY, galleryPicture.path)
             startActivity(resultIntent)
@@ -100,6 +107,13 @@ class PickImageReelActivity : AppCompatActivity() {
             }
             Log.i("GalleryListSize", "${pictures.size}")
         }
+//        galleryViewModel.getVideosFromGallery(this, pageSize) {
+//            if (it.isNotEmpty()) {
+//                pictures.addAll(it)
+//                adapter.notifyItemRangeInserted(pictures.size, it.size)
+//            }
+//            Log.i("GalleryListSize", "${pictures.size}")
+//        }
     }
 
     override fun onRequestPermissionsResult(

@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.facebookclone.R
 import com.example.facebookclone.model.ObjectStory
 
-import com.example.facebookclone.view.mainscreen.screenhome.PickImageStoryActivity
+import com.example.facebookclone.view.mainscreen.home.PickImageStoryActivity
 
 class StoryViewAdapter(val url : String, val context: Context, var list: MutableList<Any>, val callback : (ObjectStory) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {

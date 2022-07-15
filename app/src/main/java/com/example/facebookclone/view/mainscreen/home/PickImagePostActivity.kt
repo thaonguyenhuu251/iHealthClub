@@ -1,29 +1,26 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.facebookclone.R
 import com.example.facebookclone.model.GalleryPicture
-import com.example.facebookclone.utils.KEY_PATH_IMAGE_STORY
+import com.example.facebookclone.utils.KEY_PATH_IMAGE_POST
 import com.example.facebookclone.view.adapter.GalleryPicturesAdapter
-import com.example.facebookclone.view.mainscreen.photoeditor.EditImageActivity
-import kotlinx.android.synthetic.main.activity_pick_image_story.*
-import kotlinx.android.synthetic.main.activity_pick_image_story.iv_back
+import kotlinx.android.synthetic.main.activity_pick_image_post.*
 
 
+class PickImagePostActivity : AppCompatActivity() {
 
-class PickImageStoryActivity : AppCompatActivity() {
     private val adapter by lazy {
         GalleryPicturesAdapter(pictures, 10, this)
     }
@@ -34,13 +31,11 @@ class PickImageStoryActivity : AppCompatActivity() {
         ArrayList<GalleryPicture>(galleryViewModel.getGallerySize(this))
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pick_image_story)
-        requestReadStoragePermission()
+        setContentView(R.layout.activity_pick_image_post)
 
+        requestReadStoragePermission()
     }
 
     private fun requestReadStoragePermission() {
@@ -51,10 +46,10 @@ class PickImageStoryActivity : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions(arrayOf(readStorage), 3)
-        } else initView()
+        } else init()
     }
-    @SuppressLint("ResourceAsColor")
-    private fun initView() {
+
+    private fun init() {
         val layoutManager = GridLayoutManager(this, 3)
         val pageSize = 20
         var onClick = 0
@@ -62,11 +57,14 @@ class PickImageStoryActivity : AppCompatActivity() {
         rv_images.addItemDecoration(SpaceItemDecoration(1))
         rv_images.adapter = adapter
 
-        adapter.setOnClickListener {
-            galleryPicture ->
-            val resultIntent = Intent(this, EditImageActivity::class.java)
-            resultIntent.putExtra(KEY_PATH_IMAGE_STORY, galleryPicture.path)
-            startActivity(resultIntent)
+        adapter.setOnClickListener { galleryPicture ->
+            // click image
+            Log.d("hunghkp", "init: " + galleryPicture.path)
+
+            val resultIntent = Intent()
+
+            resultIntent.putExtra(KEY_PATH_IMAGE_POST, galleryPicture.path)
+            setResult(RESULT_OK, resultIntent)
             finish()
         }
 
@@ -77,6 +75,10 @@ class PickImageStoryActivity : AppCompatActivity() {
                 }
             }
         })
+
+        iv_back.setOnClickListener {
+            onBackPressed()
+        }
 
         ln_photo_library.setOnClickListener {
             if(onClick == 0){
@@ -92,12 +94,9 @@ class PickImageStoryActivity : AppCompatActivity() {
 
         }
 
-        iv_back.setOnClickListener {
-            finish()
-        }
-
         loadPictures(pageSize)
     }
+
 
     private fun loadPictures(pageSize: Int) {
         galleryViewModel.getImagesFromGallery(this, pageSize) {
@@ -107,14 +106,11 @@ class PickImageStoryActivity : AppCompatActivity() {
             }
             Log.i("GalleryListSize", "${pictures.size}")
         }
-//        galleryViewModel.getVideosFromGallery(this, pageSize) {
-//            if (it.isNotEmpty()) {
-//                pictures.addAll(it)
-//                adapter.notifyItemRangeInserted(pictures.size, it.size)
-//            }
-//            Log.i("GalleryListSize", "${pictures.size}")
-//        }
     }
+
+
+
+    private fun showToast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -123,12 +119,12 @@ class PickImageStoryActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            initView()
+            init()
         else {
             showToast("Permission Required to Fetch Gallery.")
             super.onBackPressed()
         }
     }
 
-    private fun showToast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+
 }

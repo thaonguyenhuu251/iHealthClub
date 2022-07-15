@@ -1,26 +1,26 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.facebookclone.R
 import com.example.facebookclone.model.GalleryPicture
-import com.example.facebookclone.utils.KEY_PATH_IMAGE_POST
+import com.example.facebookclone.utils.KEY_PATH_IMAGE_STORY
 import com.example.facebookclone.view.adapter.GalleryPicturesAdapter
-import kotlinx.android.synthetic.main.activity_pick_image_post.*
+import com.example.facebookclone.view.mainscreen.photoeditor.EditImageActivity
+import kotlinx.android.synthetic.main.activity_pick_image_story.*
 
-
-class PickImagePostActivity : AppCompatActivity() {
-
+class PickImageReelActivity : AppCompatActivity() {
     private val adapter by lazy {
         GalleryPicturesAdapter(pictures, 10, this)
     }
@@ -30,14 +30,12 @@ class PickImagePostActivity : AppCompatActivity() {
     private val pictures by lazy {
         ArrayList<GalleryPicture>(galleryViewModel.getGallerySize(this))
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pick_image_post)
-
+        setContentView(R.layout.activity_pick_image_reel)
         requestReadStoragePermission()
-    }
 
+    }
     private fun requestReadStoragePermission() {
         val readStorage = Manifest.permission.READ_EXTERNAL_STORAGE
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
@@ -46,10 +44,10 @@ class PickImagePostActivity : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions(arrayOf(readStorage), 3)
-        } else init()
+        } else initView()
     }
-
-    private fun init() {
+    @SuppressLint("ResourceAsColor")
+    private fun initView() {
         val layoutManager = GridLayoutManager(this, 3)
         val pageSize = 20
         var onClick = 0
@@ -57,14 +55,11 @@ class PickImagePostActivity : AppCompatActivity() {
         rv_images.addItemDecoration(SpaceItemDecoration(1))
         rv_images.adapter = adapter
 
-        adapter.setOnClickListener { galleryPicture ->
-            // click image
-            Log.d("hunghkp", "init: " + galleryPicture.path)
-
-            val resultIntent = Intent()
-
-            resultIntent.putExtra(KEY_PATH_IMAGE_POST, galleryPicture.path)
-            setResult(RESULT_OK, resultIntent)
+        adapter.setOnClickListener {
+                galleryPicture ->
+            val resultIntent = Intent(this, EditImageActivity::class.java)
+            resultIntent.putExtra(KEY_PATH_IMAGE_STORY, galleryPicture.path)
+            startActivity(resultIntent)
             finish()
         }
 
@@ -75,10 +70,6 @@ class PickImagePostActivity : AppCompatActivity() {
                 }
             }
         })
-
-        iv_back.setOnClickListener {
-            onBackPressed()
-        }
 
         ln_photo_library.setOnClickListener {
             if(onClick == 0){
@@ -94,9 +85,12 @@ class PickImagePostActivity : AppCompatActivity() {
 
         }
 
+        iv_back.setOnClickListener {
+            finish()
+        }
+
         loadPictures(pageSize)
     }
-
 
     private fun loadPictures(pageSize: Int) {
         galleryViewModel.getImagesFromGallery(this, pageSize) {
@@ -108,10 +102,6 @@ class PickImagePostActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun showToast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -119,12 +109,12 @@ class PickImagePostActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            init()
+            initView()
         else {
             showToast("Permission Required to Fetch Gallery.")
             super.onBackPressed()
         }
     }
 
-
+    private fun showToast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 }

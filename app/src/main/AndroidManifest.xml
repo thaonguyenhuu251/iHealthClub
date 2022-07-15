@@ -30,14 +30,14 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".view.mainscreen.screenhome.PickImageStoryActivity"
+            android:name=".view.mainscreen.home.PickImageStoryActivity"
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".view.mainscreen.screenhome.EmojiActionActivity"
+            android:name=".view.mainscreen.home.EmojiActionActivity"
             android:exported="false" />
         <activity
-            android:name=".view.mainscreen.screenhome.PickImagePostActivity"
+            android:name=".view.mainscreen.home.PickImagePostActivity"
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden">
 
@@ -49,13 +49,13 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".view.mainscreen.screenhome.BottomSheetHomeActivity"
+            android:name=".view.mainscreen.home.BottomSheetHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".view.mainscreen.screenhome.ObjectPostHomeActivity"
+            android:name=".view.mainscreen.home.ObjectPostHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".view.mainscreen.screenhome.CreatePostsActivity"
+            android:name=".view.mainscreen.home.CreatePostsActivity"
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity

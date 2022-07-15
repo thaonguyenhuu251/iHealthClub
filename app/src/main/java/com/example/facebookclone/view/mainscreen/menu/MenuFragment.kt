@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenmenu
+package com.example.facebookclone.view.mainscreen.menu
 
 import android.content.Context
 import android.content.SharedPreferences

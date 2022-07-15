@@ -1,16 +1,14 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.emoji2.text.EmojiCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.facebookclone.R
 import com.example.facebookclone.model.EmojiHome

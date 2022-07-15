@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
@@ -27,9 +28,10 @@ class PostAdapter(
     val context: Context,
     var list: MutableList<Any>,
     val callback: (Post) -> Unit,
-    val callback2: (Reaction,Post) -> Unit,
+    val callback2: (Reaction, Post) -> Unit,
+    val callback3: (LinearLayout,Post)->Unit
 
-    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         const val VIEW_TYPE_ONE = 1
         const val VIEW_TYPE_TWO = 2
@@ -37,7 +39,7 @@ class PostAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        when(viewType){
+        when (viewType) {
             VIEW_TYPE_ONE -> return ItemViewHolderImage(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_post_image, parent, false)
             )
@@ -62,7 +64,6 @@ class PostAdapter(
             TypeFile.IMAGE -> (holder as PostAdapter.ItemViewHolderImage).bindItem(list[position] as Post)
             TypeFile.VIDEO -> (holder as PostAdapter.ItemViewHolderVideo).bindItem(list[position] as Post)
             TypeFile.OTHER -> (holder as PostAdapter.ItemViewHolderText).bindItem(list[position] as Post)
-
         }
     }
 
@@ -96,52 +97,32 @@ class PostAdapter(
 
 
             val reactButton: ReactButton = itemView.findViewById(R.id.reactButton)
-            val reaction : Reaction = Reaction("Like","Like","",0)
+            val reaction = Reaction("Like", "Like", "", 0)
             reactButton.setReactions(*FbReactions.reactions)
             reactButton.defaultReaction = FbReactions.defaultReact
             reactButton.setEnableReactionTooltip(true)
 
-
-            reactButton.setOnClickListener { callback2.invoke(reaction,post) }
-            reactButton.setOnReactionChangeListener{
+            reactButton.setOnClickListener {
                 Log.d("hunghkp123", "bindItem: ")
-
-                callback2.invoke(it,post)
+                callback2.invoke(reaction, post)
+            }
+            reactButton.setOnReactionChangeListener {
+                Log.d("hunghkp123", "bindItem: ")
+                callback2.invoke(it, post)
             }
 
-//            reactButton.setOnReactionChangeListener { reaction ->
-//                Log.d("nht", "onReactionChange: " + reaction.reactText)
-//                val listLike: MutableList<ListLike> = post.listLike
-//                if(reaction.reactText != null){
-//                    val checkUser: ListLike? = listLike.stream()
-//                        .filter { customer -> idUser == customer.idUser }
-//                        .findAny()
-//                        .orElse(null)
-//
-//                    if(checkUser == null){
-//                        val newUser = ListLike()
-//                        newUser.idUser = idUser
-//                        newUser.srcLike = typeReaction(reaction.reactText)
-//                        post.likeTotal +=1
-//                        listLike.add(newUser)
-//                    }
-//
-//                }
-//            }
+            val lnComment:LinearLayout = itemView.findViewById(R.id.lnComment)
+            lnComment.setOnClickListener {
+                callback3.invoke(lnComment,post)
+            }
 
-//            reactButton.setOnReactionDialogStateListener(object : OnReactionDialogStateListener {
-//                override fun onDialogOpened() {
-////                    Log.d(com.amrdeveloper.reactbuttonlibrary.MainActivity.TAG, "onDialogOpened")
-//
-//                }
-//
-//                override fun onDialogDismiss() {
-////                    Log.d(com.amrdeveloper.reactbuttonlibrary.MainActivity.TAG, "onDialogDismiss")
-//                }
-//            })
 
-            Glide.with(context).load(post.urlAvatar).error(AppCompatResources.getDrawable(context, R.drawable.img_profile)).into(img_avatar)
-            Glide.with(context).load(post.listFile.get(0)).error(AppCompatResources.getDrawable(context, R.drawable.img_profile)).into(img_pick)
+            Glide.with(context).load(post.urlAvatar)
+                .error(AppCompatResources.getDrawable(context, R.drawable.img_profile))
+                .into(img_avatar)
+            Glide.with(context).load(post.listFile.get(0))
+                .error(AppCompatResources.getDrawable(context, R.drawable.img_profile))
+                .into(img_pick)
             atv_post.text = post.createBy
             et_thinking_pos.text = post.status
             tv_emoji_status.text = post.emojiStatus
@@ -162,9 +143,9 @@ class PostAdapter(
             time = if (hour < 1) {
                 "$minutes minutes"
             } else {
-                if(hour <=24){
+                if (hour <= 24) {
                     "$hour hours"
-                }else{
+                } else {
                     "$day days"
                 }
 
@@ -196,6 +177,7 @@ class PostAdapter(
             itemView.setBackgroundResource(R.color.white)
         }
     }
+
     inner class ItemViewHolderText(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItem(post: Post) {
             val atv_post: TextView = itemView.findViewById(R.id.atv_post_text)
@@ -203,7 +185,9 @@ class PostAdapter(
             val tv_time_post: TextView = itemView.findViewById((R.id.tv_time_post_text))
             val tv_emoji_status: TextView = itemView.findViewById((R.id.tv_emoji_status_text))
             val img_avatar: ImageView = itemView.findViewById(R.id.img_avatar_text)
-            Glide.with(context).load(post.urlAvatar).error(AppCompatResources.getDrawable(context, R.drawable.img_profile)).into(img_avatar)
+            Glide.with(context).load(post.urlAvatar)
+                .error(AppCompatResources.getDrawable(context, R.drawable.img_profile))
+                .into(img_avatar)
             atv_post.text = post.createBy
             et_thinking_pos.text = post.status
             tv_emoji_status.text = post.emojiStatus

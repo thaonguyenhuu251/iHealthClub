@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
