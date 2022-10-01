@@ -21,13 +21,6 @@
         <activity
             android:name=".view.mainscreen.photoeditor.EditImageActivity"
             android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".view.mainscreen.home.PickImageStoryActivity"
@@ -60,7 +53,8 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".view.mainscreen.MainScreenActivity"
-            android:exported="true">
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

@@ -21,16 +21,17 @@ class MainScreenActivity : AppCompatActivity() {
         initView()
 
     }
-
-    private fun initView(){
-
+    private fun initView() {
         view_pager.adapter = HomePagerFragmentAdapter(titles,this)
         view_pager.isUserInputEnabled = false;
-
+        setTabLayout()
+    }
+    private fun setTabLayout(){
         TabLayoutMediator(tab_layout, view_pager) { tab, position ->
             when(position){
                 0 -> {
                     tab.setIcon(R.drawable.ic_home_selected)
+                    tab.icon?.setTint(getColor(R.color.general_blue_01))
                     toolbar_home.visibility = View.VISIBLE
                 }
                 1 -> {
@@ -58,26 +59,31 @@ class MainScreenActivity : AppCompatActivity() {
                     0 -> {
                         toolbar_home.visibility = View.VISIBLE
                         tab.setIcon(R.drawable.ic_home_selected)
-
+                        tab.icon?.setTint(getColor(R.color.general_blue_01))
                     }
                     1 -> {
                         tab.setIcon(R.drawable.ic_friend_selected)
+                        tab.icon?.setTint(getColor(R.color.general_blue_01))
                         toolbar_home.visibility = View.GONE
                     }
                     2 -> {
-                        tab.setIcon(R.drawable.ic_personal_selected)
+                        tab.icon = getDrawable(R.drawable.ic_personal_selected)
+                        tab.icon?.setTint(getColor(R.color.general_blue_01))
                         toolbar_home.visibility = View.GONE
                     }
                     3 -> {
-                        tab.setIcon(R.drawable.ic_video_selected)
+                        tab.icon = getDrawable(R.drawable.ic_video_selected)
+                        tab.icon?.setTint(getColor(R.color.general_blue_01))
                         toolbar_home.visibility = View.GONE
                     }
                     4 -> {
-                        tab.setIcon(R.drawable.ic_notify_selected)
+                        tab.icon = getDrawable(R.drawable.ic_notify_selected)
+                        tab.icon?.setTint(getColor(R.color.general_blue_01))
                         toolbar_home.visibility = View.GONE
                     }
                     5 -> {
-                        tab.setIcon(R.drawable.ic_menu_selected)
+                        tab.icon = getDrawable(R.drawable.ic_menu_selected)
+                        tab.icon?.setTint(getColor(R.color.general_blue_01))
                         toolbar_home.visibility = View.GONE
                     }
                 }
@@ -110,10 +116,11 @@ class MainScreenActivity : AppCompatActivity() {
 
             }
         })
-
-
     }
 
+    fun setCurrentFragment(position: Int) {
+        view_pager.currentItem = position
+    }
 }
 
 

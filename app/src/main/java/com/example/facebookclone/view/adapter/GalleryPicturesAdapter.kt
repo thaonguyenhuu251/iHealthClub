@@ -69,7 +69,5 @@ class GalleryPicturesAdapter (private val list: List<GalleryPicture>, private va
             }
 
         }
-
-
     }
 }

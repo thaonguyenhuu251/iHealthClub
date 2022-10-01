@@ -11,9 +11,6 @@ import com.example.facebookclone.model.EmojiHome
 
 class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHome>, val callback : (EmojiHome) -> Unit):
     RecyclerView.Adapter<EmojiHomeAdapter.ItemViewHolder>() {
-
-
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -42,5 +39,9 @@ class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHo
         }
     }
 
+    fun filterList(listEmoji: MutableList<EmojiHome>) {
+        listEmojis = listEmoji
+        notifyDataSetChanged()
+    }
 
 }

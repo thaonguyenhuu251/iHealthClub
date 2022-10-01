@@ -26,6 +26,7 @@ const val KEY_PATH_IMAGE_STORY="KEY_PATH_IMAGE_STORY"
 const val COLLECTION_PATH_STORY = "story"
 
 const val KEY_ID = "KEY_ID"
+const val KEY_SEARCH_EMOJI = "KEY_SEARCH_EMOJI"
 
  fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
     var cursor: Cursor? = null

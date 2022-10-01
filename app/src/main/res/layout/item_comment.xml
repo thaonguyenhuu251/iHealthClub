@@ -1,54 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imgAvatar"
-        android:layout_width="@dimen/_36sdp"
-        android:layout_height="@dimen/_36sdp"
-        android:scaleType="centerCrop"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="@dimen/_10sdp"
-        app:riv_corner_radius="@dimen/_32sdp"
-        android:src="@drawable/avatar"/>
-
-    <LinearLayout
+    android:layout_height="wrap_content">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:orientation="vertical"
-        android:layout_toEndOf="@+id/imgAvatar">
+        android:layout_height="match_parent">
 
-        <TextView
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/_3sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:riv_corner_radius="@dimen/_32sdp" />
+
+        <LinearLayout
+            android:id="@+id/lnComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_toEndOf="@+id/imgAvatar"
+            android:background="@drawable/rounded_comment"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:maxLines="1"
+                android:paddingStart="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="Fan cung"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12ssp"/>
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:maxLines="1"
+                android:paddingStart="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="HT Nguyen"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12ssp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="Sau khoảng 1 đến 2 giờ tới, vùng mây đối lưu này có khả năng gây mưa lớn tại các quận trung tâm. "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/lnStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:text="HT Nguyen"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:singleLine="true"
-            android:maxLines="1"/>
+            android:layout_below="@+id/lnComment"
+            android:layout_alignEnd="@+id/lnComment"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/imgAvatar"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:text="Sau khoảng 1 đến 2 giờ tới, vùng mây đối lưu này có khả năng gây mưa lớn tại các quận trung tâm. "
-            android:textColor="@color/black"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="10 minutes"
+                android:textSize="@dimen/_10ssp" />
 
+            <com.example.facebookclone.view.reacbutton.ReactButton
+                android:id="@+id/reactButton"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toEndOf="@id/txtTime"
+                android:background="@null"
+                android:textAllCaps="false" />
 
+            <TextView
+                android:id="@+id/txtFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@id/reactButton"
+                android:text="Feed back"
+                android:textSize="@dimen/_10ssp" />
 
+            <ImageView
+                android:id="@+id/imgThreeAction"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:src="@drawable/ic_happy" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline64"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
+            <ImageView
+                android:id="@+id/imgSecondAction"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_13sdp"
+                android:src="@drawable/ic_heart" />
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/imgFirstAction"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_23sdp"
+                android:src="@drawable/ic_like" />
+
+            <TextView
+                android:id="@+id/imgNumberAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_toStartOf="@id/imgFirstAction"
+                android:maxLines="1"
+                android:text="14"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+

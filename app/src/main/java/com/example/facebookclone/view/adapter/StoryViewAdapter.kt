@@ -20,9 +20,6 @@ class StoryViewAdapter(val url : String, val context: Context, var list: Mutable
         const val VIEW_TYPE_TWO = 2
     }
 
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == VIEW_TYPE_ONE) {
             return CreateNewViewHolder(
@@ -33,9 +30,6 @@ class StoryViewAdapter(val url : String, val context: Context, var list: Mutable
             LayoutInflater.from(parent.context).inflate(R.layout.item_story_watch, parent, false)
         )
     }
-
-
-
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 

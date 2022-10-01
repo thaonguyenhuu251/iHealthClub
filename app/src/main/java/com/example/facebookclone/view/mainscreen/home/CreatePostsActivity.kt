@@ -309,9 +309,6 @@ class CreatePostsActivity : AppCompatActivity() {
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     }
 
-
-
-
     private fun showSnackBar(message: String) {
         Snackbar.make(container, message, Snackbar.LENGTH_LONG).show()
     }

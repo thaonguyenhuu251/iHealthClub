@@ -104,7 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:visibility="visible">
+                android:visibility="visible"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/iv_emoji_action"
@@ -120,6 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:hint="Search"
+                    android:textCursorDrawable="@color/black"
+                    android:paddingVertical="@dimen/_10sdp"
                     android:textSize="@dimen/_12sdp"
                     android:background="@color/white"
                     />

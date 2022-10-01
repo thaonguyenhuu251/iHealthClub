@@ -1,4 +1,4 @@
-package com.example.facebookclone.view.mainscreen.screenhome
+package com.example.facebookclone.view.mainscreen.home
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import com.example.facebookclone.R
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
@@ -15,13 +14,13 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.facebookclone.R
 import com.example.facebookclone.model.*
 import com.example.facebookclone.utils.*
 import com.example.facebookclone.view.adapter.OptionsHomeAdapter
 import com.example.facebookclone.view.adapter.PostAdapter
 import com.example.facebookclone.view.adapter.StoryViewAdapter
-import com.example.facebookclone.view.mainscreen.home.BottomSheetCommentFragment
-import com.example.facebookclone.view.mainscreen.home.CreatePostsActivity
+import com.example.facebookclone.view.mainscreen.MainScreenActivity
 import com.example.facebookclone.view.mainscreen.storyviewext.OnStoryChangedCallback
 import com.example.facebookclone.view.mainscreen.storyviewext.StoryClickListeners
 import com.example.facebookclone.view.mainscreen.storyviewext.StoryView
@@ -30,8 +29,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.img_avatar
-
 
 class HomeFragment : Fragment() {
     private lateinit var databasestory: DatabaseReference
@@ -45,12 +42,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var btsComment: BottomSheetCommentFragment
 
-    //    private val storyAdapter by lazy {
-//        StoryViewAdapter(urlAvatar,requireContext(), list = listStory()) { story->
-//            val intent = Intent(this@HomeFragment.context,PickImageStoryActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
     private lateinit var sharedPreferences: SharedPreferences
     private var urlAvatar: String = ""
     private var userName: String = ""
@@ -73,7 +64,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -83,6 +73,7 @@ class HomeFragment : Fragment() {
         initView()
 
     }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun initView() {
@@ -99,10 +90,10 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        img_avatar.setOnClickListener {
+            (requireActivity() as MainScreenActivity).setCurrentFragment(2)
+        }
 
-//        img_avatar.setOnClickListener {
-//
-//        }
         initRecyclerView()
     }
 
@@ -134,7 +125,7 @@ class HomeFragment : Fragment() {
 
 
         postAdapter = PostAdapter(idUser, requireContext(), listPost, { post ->
-//            idpostget = post.idPost
+
         }, { reaction, postSelect ->
             Log.d("nht", "onReactionChange: " + reaction.reactText)
 //            databasepost.child("idPost").equalTo(postSelect.idPost.toString()).get().addOnSuccessListener {
@@ -206,8 +197,8 @@ class HomeFragment : Fragment() {
                 })
 
         },{
-            lineear,post ->
-            btsComment = BottomSheetCommentFragment.newInstance()
+            linear,post ->
+            btsComment = BottomSheetCommentFragment.newInstance(post.idPost)
             btsComment.show(childFragmentManager,"")
 
         })
@@ -227,28 +218,32 @@ class HomeFragment : Fragment() {
             OptionsHome(
                 optionName = "Reels",
                 srcImage = R.drawable.img_options_reel,
-                backgroundColor = R.color.color_reel
+                backgroundColor = R.color.color_reel,
+                textColor = R.color.color_reel_bold
             )
         )
         listOption.add(
             OptionsHome(
                 optionName = "Room",
                 srcImage = R.drawable.img_options_room,
-                backgroundColor = R.color.color_room
+                backgroundColor = R.color.color_room,
+                textColor = R.color.color_room_bold
             )
         )
         listOption.add(
             OptionsHome(
                 optionName = "Group",
                 srcImage = R.drawable.img_options_group,
-                backgroundColor = R.color.color_group
+                backgroundColor = R.color.color_group,
+                textColor = R.color.color_group_bold
             )
         )
         listOption.add(
             OptionsHome(
                 optionName = "Live",
                 srcImage = R.drawable.img_options_live,
-                backgroundColor = R.color.color_live
+                backgroundColor = R.color.color_live,
+                textColor = R.color.color_live_bold
             )
         )
         return listOption

@@ -41,6 +41,7 @@
             android:id="@+id/iv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
             app:srcCompat="@drawable/ic_baseline_more_vert"
             android:layout_gravity="center_vertical"/>
 

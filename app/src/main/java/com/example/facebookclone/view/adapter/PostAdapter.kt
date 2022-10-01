@@ -29,7 +29,7 @@ class PostAdapter(
     var list: MutableList<Any>,
     val callback: (Post) -> Unit,
     val callback2: (Reaction, Post) -> Unit,
-    val callback3: (LinearLayout,Post)->Unit
+    val callback3: (TextView, Post)->Unit
 
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
@@ -106,14 +106,14 @@ class PostAdapter(
                 Log.d("hunghkp123", "bindItem: ")
                 callback2.invoke(reaction, post)
             }
-            reactButton.setOnReactionChangeListener {
+            /*reactButton.setOnReactionChangeListener {
                 Log.d("hunghkp123", "bindItem: ")
                 callback2.invoke(it, post)
-            }
+            }*/
 
-            val lnComment:LinearLayout = itemView.findViewById(R.id.lnComment)
-            lnComment.setOnClickListener {
-                callback3.invoke(lnComment,post)
+            val txtComment: TextView = itemView.findViewById(R.id.txtComment)
+            txtComment.setOnClickListener {
+                callback3.invoke(txtComment, post)
             }
 
 
@@ -126,7 +126,7 @@ class PostAdapter(
             atv_post.text = post.createBy
             et_thinking_pos.text = post.status
             tv_emoji_status.text = post.emojiStatus
-            tv_total_like.text = "${post.likeTotal} Likes"
+            tv_total_like.text = "${post.listLike.size} Likes"
             tv_total_comment.text = "${post.likeTotal} Comments"
             tv_total_share.text = "${post.shareTotal} Shares"
             val date: Date = Date(post.createAt)

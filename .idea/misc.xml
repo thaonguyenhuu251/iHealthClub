@@ -91,6 +91,8 @@
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/menu_emoji_activity.xml" value="0.152" />
         <entry key="..\:/OneDrive/ITANDROID/facebook_clone/app/src/main/res/menu/toolbar_menu.xml" value="0.8527131782945736" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/bg_rounded_bottom_comment.xml" value="0.161" />
+        <entry key="app/src/main/res/drawable/corner_radius_white.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/ic_angry.xml" value="0.143" />
         <entry key="app/src/main/res/drawable/ic_arrow_down_black.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/ic_baseline_draw.xml" value="0.1045" />
@@ -100,11 +102,14 @@
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/ic_close.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/ic_dot.xml" value="0.138" />
+        <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.1495" />
         <entry key="app/src/main/res/drawable/ic_friend.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/ic_friend_selected.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/ic_gallery.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/ic_happy.xml" value="0.143" />
         <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/ic_home_bar.xml" value="0.145" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_home_selected.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/ic_insert_emoticon.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1305" />
@@ -127,6 +132,7 @@
         <entry key="app/src/main/res/drawable/ic_video_selected.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/item_story_watch.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/react_dialog_shape.xml" value="0.143" />
+        <entry key="app/src/main/res/drawable/react_tooltip_shape.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/rounded_add_story.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/rounded_avatar_menu.xml" value="0.142" />
         <entry key="app/src/main/res/drawable/rounded_border_text_view.xml" value="0.1045" />
@@ -147,6 +153,7 @@
         <entry key="app/src/main/res/drawable/rounded_image_user.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/rounded_not_background.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/rounded_options_home.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_reel.xml" value="0.145" />
         <entry key="app/src/main/res/drawable/rounded_reel_pick_image.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/rounded_row_editting.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_search_home.xml" value="0.117" />
@@ -159,66 +166,73 @@
         <entry key="app/src/main/res/drawable/story_description_background.xml" value="0.1355" />
         <entry key="app/src/main/res/font/roboto_medium.xml" value="0.1935185185185185" />
         <entry key="app/src/main/res/layout/activity_action.xml" value="0.32595520019531254" />
-        <entry key="app/src/main/res/layout/activity_choose_password.xml" value="0.4367816091954023" />
-        <entry key="app/src/main/res/layout/activity_contact_number.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/activity_choose_password.xml" value="0.93941527618759" />
+        <entry key="app/src/main/res/layout/activity_contact_email.xml" value="0.9477024516121286" />
+        <entry key="app/src/main/res/layout/activity_contact_number.xml" value="0.7224650065104167" />
         <entry key="app/src/main/res/layout/activity_create_new_password.xml" value="0.23839670817057293" />
-        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.3729903536977492" />
+        <entry key="app/src/main/res/layout/activity_create_post.xml" value="0.5367034912109376" />
         <entry key="app/src/main/res/layout/activity_edit_image.xml" value="0.26943803030789054" />
         <entry key="app/src/main/res/layout/activity_emoji.xml" value="0.30512820512820515" />
-        <entry key="app/src/main/res/layout/activity_emoji_action.xml" value="0.35517241379310344" />
+        <entry key="app/src/main/res/layout/activity_emoji_action.xml" value="0.70276008492569" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15572916666666667" />
         <entry key="app/src/main/res/layout/activity_join_facebook.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24583333333333332" />
-        <entry key="app/src/main/res/layout/activity_main_screen.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_pick_image_post.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/activity_pick_image_reel.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/activity_main_screen.xml" value="1.1132176717122397" />
+        <entry key="app/src/main/res/layout/activity_object_post_home.xml" value="0.5362997658079626" />
+        <entry key="app/src/main/res/layout/activity_otp_verification.xml" value="0.6967213114754098" />
+        <entry key="app/src/main/res/layout/activity_pick_image_post.xml" value="0.6258336385091146" />
+        <entry key="app/src/main/res/layout/activity_pick_image_reel.xml" value="0.8801595052083334" />
         <entry key="app/src/main/res/layout/activity_pick_image_story.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/activity_profile_login.xml" value="0.74146728515625" />
+        <entry key="app/src/main/res/layout/activity_register_birthday.xml" value="0.6967213114754098" />
         <entry key="app/src/main/res/layout/activity_story_view.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/activity_user_login_more_dialog.xml" value="0.562572224934896" />
         <entry key="app/src/main/res/layout/activity_what_your_gender.xml" value="0.35362997658079626" />
         <entry key="app/src/main/res/layout/add_text_dialog.xml" value="0.17777777777777778" />
         <entry key="app/src/main/res/layout/bottom_sheet_home.xml" value="0.574035370655549" />
         <entry key="app/src/main/res/layout/color_picker_item_list.xml" value="0.17083333333333334" />
-        <entry key="app/src/main/res/layout/datetimeoptionspicker_custom_time.xml" value="0.15729166666666666" />
-        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.12291666666666666" />
+        <entry key="app/src/main/res/layout/datetimeoptionspicker_custom_time.xml" value="1.1425181070963542" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.5310190836588542" />
         <entry key="app/src/main/res/layout/dialog_stories.xml" value="0.3600112915039063" />
-        <entry key="app/src/main/res/layout/dialog_user_login_more.xml" value="0.27343597412109377" />
+        <entry key="app/src/main/res/layout/dialog_user_login_more.xml" value="0.7634730538922155" />
         <entry key="app/src/main/res/layout/fragment_action.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_activate.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bottom_properties_dialog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bottom_shapes_dialog.xml" value="0.17083333333333334" />
-        <entry key="app/src/main/res/layout/fragment_bottom_sheet_comment.xml" value="0.48760330578512395" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sheet_comment.xml" value="0.3678571428571429" />
         <entry key="app/src/main/res/layout/fragment_bottom_sticker_emoji_dialog.xml" value="0.7095036824544272" />
         <entry key="app/src/main/res/layout/fragment_emoji.xml" value="0.8699798583984376" />
         <entry key="app/src/main/res/layout/fragment_friend_request.xml" value="0.18697916666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5183752417794971" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_messenger.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_personal_profile.xml" value="0.55" />
         <entry key="app/src/main/res/layout/fragment_watch_video.xml" value="0.12859903971354164" />
-        <entry key="app/src/main/res/layout/item_action_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_comment.xml" value="0.5719489981785064" />
+        <entry key="app/src/main/res/layout/item_action_home.xml" value="0.6124359130859377" />
+        <entry key="app/src/main/res/layout/item_comment.xml" value="0.5936883629191322" />
         <entry key="app/src/main/res/layout/item_comment_story.xml" value="0.3815789473684211" />
-        <entry key="app/src/main/res/layout/item_edit_story.xml" value="0.5654052734375" />
+        <entry key="app/src/main/res/layout/item_edit_story.xml" value="0.9527618408203126" />
         <entry key="app/src/main/res/layout/item_emoji_general.xml" value="0.29375" />
         <entry key="app/src/main/res/layout/item_emoji_home.xml" value="0.2782028198242188" />
         <entry key="app/src/main/res/layout/item_gallery_image.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_options_home.xml" value="0.15702479338842976" />
+        <entry key="app/src/main/res/layout/item_options_home.xml" value="0.7906963632126486" />
         <entry key="app/src/main/res/layout/item_post_home.xml" value="0.22865447998046878" />
-        <entry key="app/src/main/res/layout/item_post_image.xml" value="0.7328887939453126" />
+        <entry key="app/src/main/res/layout/item_post_image.xml" value="0.5894736842105263" />
         <entry key="app/src/main/res/layout/item_post_text.xml" value="0.26564906670795224" />
         <entry key="app/src/main/res/layout/item_post_video.xml" value="0.4038772583007812" />
         <entry key="app/src/main/res/layout/item_shortcuts_all.xml" value="0.3041025641025641" />
         <entry key="app/src/main/res/layout/item_shortcuts_friend.xml" value="0.758795166015625" />
         <entry key="app/src/main/res/layout/item_shortcuts_group.xml" value="4.105181884765625" />
         <entry key="app/src/main/res/layout/item_story_watch.xml" value="0.8366271486965351" />
-        <entry key="app/src/main/res/layout/item_user.xml" value="0.7672276814778647" />
+        <entry key="app/src/main/res/layout/item_user.xml" value="0.6929347826086957" />
         <entry key="app/src/main/res/layout/layout_bottom_create_post.xml" value="0.6185455322265625" />
+        <entry key="app/src/main/res/layout/layout_comment_input.xml" value="0.5754189944134078" />
+        <entry key="app/src/main/res/layout/layout_list_comment.xml" value="0.6186186186186187" />
         <entry key="app/src/main/res/layout/layout_menu_bottom_create_post.xml" value="0.6398452758789063" />
         <entry key="app/src/main/res/layout/layout_story_item.xml" value="0.11382113821138211" />
         <entry key="app/src/main/res/layout/pausable_progress.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/react_dialog_item.xml" value="0.3770491803278688" />
         <entry key="app/src/main/res/layout/rounded_reel_pick_image.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/layout/row_editing_tools.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/row_emoji.xml" value="0.17083333333333334" />

@@ -1,14 +1,17 @@
 package com.example.facebookclone.view.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.facebookclone.R
 import com.example.facebookclone.model.OptionsHome
 
@@ -35,10 +38,12 @@ class OptionsHomeAdapter(val context: Context, var listOptions: MutableList<Opti
         private val iv_options_home: ImageView = itemView.findViewById(R.id.iv_options_home)
         private val ln_background : LinearLayout = itemView.findViewById(R.id.ln_item_options)
 
-        @SuppressLint("SetTextI18n", "Range")
         fun bindItem(option: OptionsHome ) {
             tv_options_home.text = option.optionName
-            iv_options_home.setImageResource(option.srcImage)
+            tv_options_home.setTextColor(getColor(context, option.textColor))
+            Glide.with(context).load(option.srcImage)
+                .error(AppCompatResources.getDrawable(context, R.drawable.img_options_reel))
+                .into(iv_options_home)
             ln_background.setBackgroundResource(option.backgroundColor)
 
             itemView.setOnClickListener {

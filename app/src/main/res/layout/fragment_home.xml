@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_grey_little"
-    tools:context=".view.mainscreen.home.HomeFragment">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="view.mainscreen.home.HomeFragment">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -30,34 +30,21 @@
                 android:scaleType="centerCrop"
                 app:riv_corner_radius="8dp" />
 
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/tv_thinking_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:background="@drawable/rounded_status_home"
-                android:orientation="horizontal">
+                android:drawableEnd="@drawable/ic_image"
+                android:drawablePadding="@dimen/_5sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="What’s on your mind, Sanjay?"
+                android:textSize="@dimen/_12sdp" />
 
-
-                <TextView
-                    android:id="@+id/tv_thinking_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="@dimen/_5sdp"
-                    android:text="What’s on your mind, Sanjay?  "
-                    android:textSize="@dimen/_12sdp" />
-
-                <ImageView
-                    android:id="@+id/iv_posts_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_14sdp"
-                    android:paddingRight="@dimen/_10sdp"
-                    android:src="@drawable/ic_image" />
-
-            </LinearLayout>
 
             <ImageView
                 android:id="@+id/iv_search_home"
@@ -66,7 +53,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:background="@drawable/rounded_search_home"
-                android:padding="@dimen/_4sdp"
+                android:padding="@dimen/_5sdp"
                 android:src="@drawable/ic_search_black" />
         </LinearLayout>
 
@@ -75,27 +62,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_2sdp"
-            android:background="@color/general_grey_blue"
+            android:paddingStart="@dimen/_10sdp"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="@dimen/_10sdp" />
+            android:layout_gravity="center"
+            android:paddingVertical="@dimen/_5sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginRight="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_1sdp"
             android:background="@color/white"
-            android:padding="@dimen/_10sdp" />
+            android:layout_gravity="center"
+            android:paddingVertical="@dimen/_10sdp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
-            android:background="@color/background_grey_little"/>
+            android:background="@color/background_grey_little" />
 
     </LinearLayout>
-
 
 </androidx.core.widget.NestedScrollView>

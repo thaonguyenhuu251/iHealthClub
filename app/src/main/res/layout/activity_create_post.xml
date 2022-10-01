@@ -371,7 +371,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
         <include layout="@layout/layout_menu_bottom_create_post"/>
 
     </FrameLayout>

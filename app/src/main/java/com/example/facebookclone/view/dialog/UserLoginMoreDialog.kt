@@ -13,12 +13,11 @@ class UserLoginMoreDialog(activity: Activity) {
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_user_login_more, null)
 
-
         dialog = AlertDialog.Builder(activity,R.style.DialogWidth)
             .create().apply {
                 setView(view)
                 requestWindowFeature(Window.FEATURE_NO_TITLE)
-//                window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 setCanceledOnTouchOutside(false)
             }
     }

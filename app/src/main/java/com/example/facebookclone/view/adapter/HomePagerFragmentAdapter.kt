@@ -7,7 +7,7 @@ import com.example.facebookclone.view.mainscreen.friend.FriendRequestFragment
 import com.example.facebookclone.view.mainscreen.menu.MenuFragment
 import com.example.facebookclone.view.mainscreen.notification.NotificationsFragment
 import com.example.facebookclone.view.mainscreen.personal.PersonalProfileFragment
-import com.example.facebookclone.view.mainscreen.screenhome.HomeFragment
+import com.example.facebookclone.view.mainscreen.home.HomeFragment
 import com.example.facebookclone.view.mainscreen.watch.WatchVideoFragment
 
 class HomePagerFragmentAdapter(val arrayTitle : Array<String>,val fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity){
@@ -17,8 +17,7 @@ class HomePagerFragmentAdapter(val arrayTitle : Array<String>,val fragmentActivi
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> { return HomeFragment()
-            }
+            0 -> { return HomeFragment() }
             1 -> return FriendRequestFragment()
             2 -> return PersonalProfileFragment()
             3 -> return WatchVideoFragment()

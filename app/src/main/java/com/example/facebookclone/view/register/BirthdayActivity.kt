@@ -74,7 +74,7 @@ class BirthdayActivity : AppCompatActivity() {
     }
 
     private fun getTime(date: Date): String? { //可根据需要自行截取数据显示
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val format = SimpleDateFormat("dd/MM/yyyy")
         return format.format(date)
     }
 }

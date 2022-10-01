@@ -21,6 +21,7 @@ import com.example.facebookclone.utils.URL_PHOTO
 import com.example.facebookclone.utils.USER_ID
 import com.example.facebookclone.utils.USER_NAME
 import com.example.facebookclone.view.adapter.PostAdapter
+import com.example.facebookclone.view.mainscreen.home.BottomSheetCommentFragment
 import com.example.facebookclone.view.mainscreen.home.CreatePostsActivity
 import com.example.facebookclone.view.mainscreen.home.PickImageStoryActivity
 import com.google.firebase.database.DataSnapshot
@@ -33,16 +34,6 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_personal_profile.*
 import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PersonalProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PersonalProfileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -54,13 +45,10 @@ class PersonalProfileFragment : Fragment() {
     private var idUser: String = ""
     private var postAdapter: PostAdapter? = null
     private val listPost = mutableListOf<Any>()
+    private lateinit var btsComment: BottomSheetCommentFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
 
         databasepost = Firebase.database.reference.child("posts")
         sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
@@ -112,6 +100,8 @@ class PersonalProfileFragment : Fragment() {
 
         },{
             linear, post ->
+            btsComment = BottomSheetCommentFragment.newInstance(post.idPost)
+            btsComment.show(childFragmentManager,"")
         })
         rv_post_person.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -159,15 +149,6 @@ class PersonalProfileFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PersonalProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
             PersonalProfileFragment()

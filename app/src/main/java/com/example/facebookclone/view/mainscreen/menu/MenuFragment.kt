@@ -13,7 +13,10 @@ import com.example.facebookclone.R
 import com.example.facebookclone.utils.SHARED_PREFERENCES_KEY
 import com.example.facebookclone.utils.URL_PHOTO
 import com.example.facebookclone.utils.USER_NAME
+import com.example.facebookclone.view.mainscreen.MainScreenActivity
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_menu.*
+import kotlinx.android.synthetic.main.fragment_menu.img_avatar
 
 
 class MenuFragment : Fragment() {
@@ -53,11 +56,7 @@ class MenuFragment : Fragment() {
             .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fb_avatar)).into(img_avatar)
 
         ln_user.setOnClickListener {
-//            val fragment2 = PersonalProfileFragment()
-//            val fragmentManager = childFragmentManager
-//            val fragmentTransaction = fragmentManager.beginTransaction()
-//            fragmentTransaction.replace(R.id.container, fragment2)
-//            fragmentTransaction.commit()
+                (requireActivity() as MainScreenActivity).setCurrentFragment(2)
         }
     }
 

@@ -8,7 +8,8 @@ import java.io.Serializable
 data class OptionsHome(
     var optionName: String = "",
     var srcImage: Int,
-    var backgroundColor: Int
+    var backgroundColor: Int,
+    var textColor: Int
 ):Serializable{
 
 }

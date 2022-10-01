@@ -71,8 +71,4 @@ class EmojiGeneralAdapter(val context: Context, var list: ArrayList<EmojiHome>, 
             itemView.setBackgroundResource(R.color.general_miro_white)
         }
     }
-
-
-
-
 }
