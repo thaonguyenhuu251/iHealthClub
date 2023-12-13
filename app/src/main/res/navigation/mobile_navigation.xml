@@ -6,47 +6,47 @@
     app:startDestination="@+id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.facebookclone.HomeFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
 
     </fragment>
     <fragment
         android:id="@+id/friendRequestFragment"
-        android:name="com.example.facebookclone.FriendRequestFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.friend.FriendRequestFragment"
         android:label="fragment_friend_request"
         tools:layout="@layout/fragment_friend_request" >
 
     </fragment>
     <fragment
         android:id="@+id/personalProfileFragment"
-        android:name="com.example.facebookclone.PersonalProfileFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.PersonalProfileFragment"
         android:label="fragment_personal_profile"
         tools:layout="@layout/fragment_personal_profile" >
 
     </fragment>
     <fragment
         android:id="@+id/watchVideoFragment"
-        android:name="com.example.facebookclone.WatchVideoFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.watch.WatchVideoFragment"
         android:label="fragment_watch_video"
         tools:layout="@layout/fragment_watch_video" >
 
     </fragment>
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.facebookclone.NotificationsFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.notification.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" >
 
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.facebookclone.MenuFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" />
     <fragment
         android:id="@+id/messengerFragment"
-        android:name="com.example.facebookclone.MessengerFragment"
+        android:name="com.htnguyen.ihealthclub.view.MessengerFragment"
         android:label="fragment_messenger"
         tools:layout="@layout/fragment_messenger" >
 

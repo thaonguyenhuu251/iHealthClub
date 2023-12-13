@@ -99,7 +99,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
 
-    <com.example.facebookclone.utils.OtpEditText
+    <com.htnguyen.ihealthclub.utils.OtpEditText
         android:id="@+id/ed_otp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

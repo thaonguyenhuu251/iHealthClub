@@ -2,4 +2,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="top_tool_icon_width">50dp</dimen>
+    <dimen name="editor_size">32dp</dimen>
+
+    <dimen name="progress_bar_height">2dp</dimen>
 </resources>

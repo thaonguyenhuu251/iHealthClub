@@ -70,14 +70,14 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_post"
-                        android:layout_width="60dp"
-                        android:layout_height="28dp"
+                        android:layout_width="@dimen/_63sdp"
+                        android:layout_height="@dimen/_29sdp"
                         android:background="@drawable/rounded_home_post_file"
                         android:enabled="false"
                         android:text="Post"
                         android:textAllCaps="false"
                         android:textColor="@color/general_grey"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_12sdp" />
 
 
                 </LinearLayout>
@@ -118,6 +118,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center_vertical"
+                            android:scaleType ="centerCrop"
                             android:src="@drawable/img_profile"
                             app:riv_corner_radius="@dimen/_20sdp" />
                     </LinearLayout>
@@ -137,12 +138,16 @@
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/atv_post"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/_5sdp"
                                 android:layout_marginBottom="@dimen/_2sdp"
-                                android:text="Nguyễn HT"
+                                android:gravity="center_vertical"
+                                android:text="USER NAME"
+                                android:textColor="@color/black_mode"
+                                android:textSize="@dimen/_14sdp"
+                                android:maxLines="1"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -163,10 +168,11 @@
                                 android:orientation="horizontal">
 
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="@dimen/_14sdp"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:padding="@dimen/_1sdp"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_margin="@dimen/_3sdp"
                                     android:src="@drawable/ic_post_private" />
 
                                 <TextView
@@ -194,10 +200,11 @@
                                 android:orientation="horizontal">
 
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="@dimen/_14sdp"
+                                    android:layout_margin="@dimen/_2sdp"
+
                                     android:layout_gravity="center_vertical"
-                                    android:layout_margin="@dimen/_3sdp"
                                     android:src="@drawable/ic_post_add" />
 
                                 <TextView
@@ -225,10 +232,10 @@
                                 android:orientation="horizontal">
 
                                 <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="14dp"
+                                    android:layout_width="@dimen/_14sdp"
+                                    android:layout_height="@dimen/_14sdp"
+                                    android:layout_margin="@dimen/_2sdp"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_margin="@dimen/_3sdp"
                                     android:src="@drawable/ic_post_instagram" />
 
                                 <TextView
@@ -263,7 +270,6 @@
                     android:cursorVisible="false"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:focusable="false"
                     android:hint="@string/et_hint_thinking"
                     android:imeOptions="actionNone"
                     android:inputType="textMultiLine"
@@ -280,7 +286,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_400sdp"
                         android:layout_margin="@dimen/_10sdp"
-                        android:scaleType="fitXY"
+                        android:scaleType="center"
                         android:visibility="gone"
                         app:layout_anchorGravity="center"
                         tools:srcCompat="@tools:sample/avatars" />
@@ -365,7 +371,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
         <include layout="@layout/layout_menu_bottom_create_post"/>
 
     </FrameLayout>

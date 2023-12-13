@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
             android:layout_width="@dimen/_36sdp"
             android:layout_height="@dimen/_36sdp"
             android:src="@drawable/img_profile"
+            android:scaleType ="centerCrop"
             app:riv_corner_radius="8dp"
             />
 
@@ -36,9 +37,11 @@
             android:textColor="@color/black"
             android:layout_gravity="center_vertical"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
+            android:id="@+id/iv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
             app:srcCompat="@drawable/ic_baseline_more_vert"
             android:layout_gravity="center_vertical"/>
 

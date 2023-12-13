@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppBottomSheetDialogTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rounded_bottom_comment"
+    app:behavior_peekHeight="1000dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:id="@+id/lnTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp">
+
+            <ImageView
+                android:id="@+id/imgThreeAction"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:src="@drawable/ic_happy" />
+
+            <ImageView
+                android:id="@+id/imgSecondAction"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:src="@drawable/ic_heart" />
+
+            <ImageView
+                android:id="@+id/imgFirstAction"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_like" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lnPeopleComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:maxLines="1"
+                android:padding="@dimen/_3sdp"
+                android:singleLine="true"
+                android:text="Ht nguyen va nhung nguoi khac do ban biet la ai hihihih"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_weight="0.2"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/ic_next_right" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_2sdp"
+            android:padding="@dimen/_6sdp"
+            android:src="@drawable/icons8_facebook_like_64" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/lnBot"
+        android:layout_below="@+id/lnTop"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:fadeScrollbars="true"
+        android:scrollbarSize="@dimen/_5sdp"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/lnBot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lnTop">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:drawableRight="@drawable/ic_arrow_down_black"
+                android:text="Phu hop nhat"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <LinearLayout
+        android:id="@+id/lnBot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/general_grey"
+            app:layout_constraintBottom_toTopOf="@+id/lnBot" />
+        <include
+            android:id="@+id/lnTest"
+            layout="@layout/layout_comment_input" />
+    </LinearLayout>
+
+</RelativeLayout>
