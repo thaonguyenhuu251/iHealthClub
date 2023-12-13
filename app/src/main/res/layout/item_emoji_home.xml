@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.example.facebookclone.view.customview.CustomTextView
+        <com.htnguyen.ihealthclub.view.customview.CustomTextView
             android:id="@+id/emoji_custom_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.facebookclone.view.mainscreen.storyviewext.DynamicImageView
+    <com.htnguyen.ihealthclub.view.mainscreen.storyviewext.DynamicImageView
         android:id="@+id/mImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

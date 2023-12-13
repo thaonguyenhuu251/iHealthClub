@@ -85,7 +85,7 @@
                 android:text="10 minutes"
                 android:textSize="@dimen/_10ssp" />
 
-            <com.example.facebookclone.view.reacbutton.ReactButton
+            <com.htnguyen.ihealthclub.view.reacbutton.ReactButton
                 android:id="@+id/reactButton"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_16sdp"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.example.facebookclone.view.mainscreen.storyviewext.PullDismissLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.htnguyen.ihealthclub.view.mainscreen.storyviewext.PullDismissLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/pull_dismiss_layout"
@@ -24,7 +24,7 @@
 
         </androidx.viewpager.widget.ViewPager>
 
-        <com.example.facebookclone.view.mainscreen.storyviewext.StoriesProgressView
+        <com.htnguyen.ihealthclub.view.mainscreen.storyviewext.StoriesProgressView
             android:id="@+id/storiesProgressView"
             android:layout_width="0dp"
             android:layout_height="3dp"
@@ -101,4 +101,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.example.facebookclone.view.mainscreen.storyviewext.PullDismissLayout>
+</com.htnguyen.ihealthclub.view.mainscreen.storyviewext.PullDismissLayout>
