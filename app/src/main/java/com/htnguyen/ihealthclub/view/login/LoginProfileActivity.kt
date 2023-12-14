@@ -55,7 +55,7 @@ class LoginProfileActivity : AppCompatActivity() {
 
         profileAdapter = ProfileUserAdapter(this, listUser = listUser) { userCast ->
             loadingDialog?.showDialog()
-            db?.collection(COLLECTION_PATH_USER)!!.document(userCast.phoneNumber).get()
+            /*db?.collection(COLLECTION_PATH_USER)!!.document(userCast.account).get()
 
                 .addOnSuccessListener { document ->
                     if (document != null) {
@@ -81,7 +81,7 @@ class LoginProfileActivity : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     loadingDialog?.dismissDialog()
                     showSnackBar("Username and password don't match, please try again")
-                }
+                }*/
         }
 
 

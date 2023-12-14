@@ -6,9 +6,8 @@ import java.io.Serializable
 
 @Entity(tableName = "user_table")
 data class UserSaved(
-    @PrimaryKey var phoneNumber: String = "",
-    var firstName: String? = "",
-    var lastName: String? = "",
+    @PrimaryKey var account: String = "",
+    var userName: String? = "",
     var password: String? = "",
     var photoUrl: String? = "",
 ): Serializable {
