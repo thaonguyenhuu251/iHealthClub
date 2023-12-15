@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facebookclone.iml" filepath="$PROJECT_DIR$/.idea/modules/facebookclone.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/facebookclone.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/facebookclone.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/facebookclone.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/facebookclone.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/facebookclone.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/facebookclone.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/facebookclone.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/facebookclone.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/iHealth_Club.iml" filepath="$PROJECT_DIR$/.idea/modules/iHealth_Club.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/iHealth_Club.app.unitTest.iml" />
     </modules>
   </component>
 </project>
