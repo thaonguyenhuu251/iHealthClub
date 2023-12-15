@@ -10,35 +10,40 @@ import com.htnguyen.ihealthclub.utils.KEY_USER
 import kotlinx.android.synthetic.main.activity_what_your_name.*
 
 
-class WhatYourNameActivity:AppCompatActivity() {
+class WhatYourNameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_what_your_name)
 
-        btn_next.setOnClickListener{
+        btn_next.setOnClickListener {
             val firstName = ed_first_name.text.toString().trim()
             val lastName = ed_last_name.text.toString().trim()
 
-            if (firstName.isNotEmpty() && lastName.isNotEmpty()){
-                val user = User( firstName =  firstName,lastName = lastName,
-                    phoneNumber = "", gender = 0, birthday = "", email = "", password = "", photoUrl = ""
+            if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
+                val user = User(
+                    name = "$firstName $lastName",
+                    phoneNumber = "",
+                    gender = true,
+                    birthDay = 0,
+                    email = "",
+                    idUser = "",
+                    photoUrl = "",
+                    weight = 0F,
+                    height = 0F
                 )
 
                 val bundle = Bundle()
-                bundle.putSerializable(KEY_USER,user)
+                bundle.putSerializable(KEY_USER, user)
 
                 val i = Intent(this, BirthdayActivity::class.java)
                 i.putExtras(bundle)
                 startActivity(i)
-            }else{
-                Toast.makeText(this,"Please enter first name and last name",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Please enter first name and last name", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }
-
-//        til_first_name.setEndIconOnClickListener {
-//            ed_first_name.setText("")
-//        }
 
         im_back.setOnClickListener {
             finish()

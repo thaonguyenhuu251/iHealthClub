@@ -17,8 +17,10 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.model.UserLogin
 import kotlinx.android.synthetic.main.activity_otp_verification.*
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 class OtpVerificationActivity : AppCompatActivity() {
 
@@ -33,15 +35,10 @@ class OtpVerificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp_verification)
-
         verifiedID = intent.getStringExtra(KEY_VERIFIED_ID)
         user = intent.extras?.get(KEY_USER) as User
-
         initFirebase()
-
         initView()
-
-
     }
 
     private fun initView() {
@@ -76,6 +73,9 @@ class OtpVerificationActivity : AppCompatActivity() {
                         this
                     ) {
                         if (it.isSuccessful) {
+                            val idUser = it.result.user?.uid ?: ("user" + System.currentTimeMillis()
+                                .toString() + Random.nextInt(0, 999).toString())
+                            user?.idUser = idUser
 
                             val bundle = Bundle()
                             bundle.putSerializable(KEY_USER, user)
@@ -84,10 +84,8 @@ class OtpVerificationActivity : AppCompatActivity() {
                             loadingDialog?.dismissDialog()
                             startActivity(i)
                         } else {
-                            // Show Error
                             loadingDialog?.dismissDialog()
                             if (it.exception is FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
                                 showSnackBar(it.exception?.message ?: "Verification Failed")
                             } else {
                                 showSnackBar("Verification Failed")
@@ -103,7 +101,6 @@ class OtpVerificationActivity : AppCompatActivity() {
             startPhoneNumberVerification(user?.phoneNumber!!)
         }
 
-
         im_back.setOnClickListener {
             finish()
         }
@@ -114,15 +111,10 @@ class OtpVerificationActivity : AppCompatActivity() {
         auth = Firebase.auth
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-                Log.d("hunghkp", "onVerificationCompleted: ")
-                val code = p0.smsCode
-                if (code != null) {
-                    Log.d("hunghkp", "onVerificationCompleted: $code")
-                }
+
             }
 
             override fun onVerificationFailed(p0: FirebaseException) {
-                Log.d("hunghkp", "onVerificationFailed: ")
                 loadingDialog?.dismissDialog()
                 Toast.makeText(this@OtpVerificationActivity, p0.message, Toast.LENGTH_SHORT).show()
             }
@@ -133,23 +125,10 @@ class OtpVerificationActivity : AppCompatActivity() {
                 timer?.start()
                 loadingDialog?.dismissDialog()
                 verifiedID = p0
-
-//                user?.phoneNumber = te_number.text.toString().trim()
-//                val bundle = Bundle()
-//                bundle.putSerializable(KEY_USER, user)
-//                bundle.putString(KEY_VERIFIED_ID, p0)
-//
-//                val i = Intent(this, OtpVerificationActivity::class.java)
-//                i.putExtras(bundle)
-
-//                startActivity(i)
-
             }
 
             override fun onCodeAutoRetrievalTimeOut(p0: String) {
                 super.onCodeAutoRetrievalTimeOut(p0)
-                Log.d("hunghkp", "onCodeAutoRetrievalTimeOut: ")
-
             }
 
         }

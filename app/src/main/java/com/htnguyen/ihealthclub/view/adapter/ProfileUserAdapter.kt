@@ -31,7 +31,7 @@ class ProfileUserAdapter(val context: Context, var listUser: List<UserSaved>?,va
 
         @SuppressLint("SetTextI18n")
         fun bindItem(user: UserSaved) {
-            tvName.text = user.firstName + " " + user.lastName
+            tvName.text = user.userName
 
             Glide
                 .with(context)

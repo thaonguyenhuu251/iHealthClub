@@ -9,10 +9,10 @@ import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.database.UserRepository
 import com.htnguyen.ihealthclub.database.UserRoomDatabase
 import com.htnguyen.ihealthclub.view.login.LoginActivity
-import com.htnguyen.ihealthclub.view.login.LoginProfileActivity
+import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
 
 class SplashScreenActivity : AppCompatActivity() {
-    private var userRepository : UserRepository ?= null
+    private var userRepository: UserRepository? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,26 +20,16 @@ class SplashScreenActivity : AppCompatActivity() {
 
         userRepository = UserRepository(UserRoomDatabase.getDatabase(this).userDao())
 
-        if (userRepository?.allUsers!!.isEmpty()){
+        if (userRepository?.allUsers!!.isEmpty()) {
             Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(SplashScreenActivity@this, LoginActivity::class.java))
+                startActivity(Intent(SplashScreenActivity@ this, LoginActivity::class.java))
                 finish()
             }, 2000)
-            // dieu huong login
-
-        }else{
+        } else {
             Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(SplashScreenActivity@this, LoginProfileActivity::class.java))
+                startActivity(Intent(SplashScreenActivity@ this, MainScreenActivity::class.java))
                 finish()
             }, 2000)
-            // dieu huong man chon user
         }
-
-
-        // logic cua phan authoritor
-
-
-
-
     }
 }

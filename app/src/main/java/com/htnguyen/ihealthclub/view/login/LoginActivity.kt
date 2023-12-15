@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.database.UserRepository
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.model.UserLogin
 import kotlinx.android.synthetic.main.activity_create_post.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.container
@@ -30,8 +32,8 @@ import kotlinx.coroutines.launch
 class LoginActivity : AppCompatActivity() {
     private var db: FirebaseFirestore? = null
     private var loadingDialog: LoadingDialog? = null
-    private lateinit var sharedPreferences : SharedPreferences
-    private var userRepository : UserRepository?= null
+    private lateinit var sharedPreferences: SharedPreferences
+    private var userRepository: UserRepository? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -67,28 +69,12 @@ class LoginActivity : AppCompatActivity() {
                         phoneNumber = phoneNumber.replaceRange(0, 1, "+84")
                     }
                 }
-                db!!.collection(COLLECTION_PATH_USER).document(phoneNumber).get()
-
+                db!!.collection("UserLogin").document(phoneNumber).get()
                     .addOnSuccessListener { document ->
                         if (document != null) {
-                            val user = document.toObject<User>()
-                            if (user?.password == password) {
-
-                                val userSaved = UserSaved(phoneNumber = user.phoneNumber, firstName = user.firstName, lastName = user.lastName, password = user.password, photoUrl = user.photoUrl)
-                                CoroutineScope(Dispatchers.IO).launch {
-                                    userRepository?.insert(userSaved)
-                                }
-                                //login
-                                val editor = sharedPreferences.edit()
-                                editor.putString(USER_ID,user.phoneNumber)
-                                editor.putString(URL_PHOTO,user.photoUrl)
-                                editor.putString(USER_NAME, user.firstName +" " + user.lastName)
-                                editor.apply()
-                                editor.commit()
-                                val login = Intent(this, MainScreenActivity::class.java)
-                                loadingDialog?.dismissDialog()
-                                startActivity(login)
-                                finish()
+                            val user = document.toObject<UserLogin>()
+                            if (user?.password == password ) {
+                                getProfileUser(user.idUser, user.account, user.password)
                             } else {
                                 loadingDialog?.dismissDialog()
                                 showSnackBar("Phone or Password wrong, please check again !")
@@ -103,11 +89,44 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-
     }
 
     private fun showSnackBar(message: String) {
         Snackbar.make(container, message, Snackbar.LENGTH_LONG).show()
     }
 
+    private fun getProfileUser(idUser: String?, account: String?, password: String?) {
+        if (idUser != null) {
+            db!!.collection("User").document(idUser).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val user = document.toObject(User::class.java)
+                        loadingDialog?.dismissDialog()
+                        val userSaved = UserSaved(
+                            account = account!!,
+                            userName = user?.name,
+                            password = password,
+                            photoUrl = user?.photoUrl
+                        )
+                        CoroutineScope(Dispatchers.IO).launch {
+                            userRepository?.insert(userSaved)
+                        }
+                        val editor = sharedPreferences.edit()
+                        editor.putString(USER_ID, idUser)
+                        editor.putString(URL_PHOTO, user?.photoUrl)
+                        editor.putString(USER_NAME, user?.name)
+                        editor.apply()
+                        editor.commit()
+                        val login = Intent(this@LoginActivity, MainScreenActivity::class.java)
+                        startActivity(login)
+                        finish()
+
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    loadingDialog?.dismissDialog()
+                    Toast.makeText(baseContext, exception.toString(), Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
 }

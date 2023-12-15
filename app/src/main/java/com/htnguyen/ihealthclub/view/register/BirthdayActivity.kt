@@ -17,7 +17,7 @@ import java.util.*
 class BirthdayActivity : AppCompatActivity() {
 
     private var pvTime: DateTimePickerView? = null
-    private var user : User? = null
+    private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +27,11 @@ class BirthdayActivity : AppCompatActivity() {
 
         user = intent.extras?.get(KEY_USER) as User
 
-
         initTimePicker()
 
         btn_next.setOnClickListener {
-            user?.birthday = "14/12/1997"
             val bundle = Bundle()
-            bundle.putSerializable(KEY_USER,user)
+            bundle.putSerializable(KEY_USER, user)
             val i = Intent(this@BirthdayActivity, WhatYourGenderActivity::class.java)
             i.putExtras(bundle)
             startActivity(i)
@@ -52,7 +50,8 @@ class BirthdayActivity : AppCompatActivity() {
         endDate[2022, 12] = 31
         pvTime = DateTimePickerView.Builder(
             this
-        ) { date, v ->Toast.makeText(this,getTime(date),Toast.LENGTH_SHORT).show()
+        ) { date, v ->
+            user?.birthDay = date.time
         }
             .setLayoutRes(
                 R.layout.datetimeoptionspicker_custom_time
@@ -71,10 +70,5 @@ class BirthdayActivity : AppCompatActivity() {
             .build()
         pvTime?.setKeyBackCancelable(false) //系统返回键监听屏蔽掉
         pvTime?.show()
-    }
-
-    private fun getTime(date: Date): String? { //可根据需要自行截取数据显示
-        val format = SimpleDateFormat("dd/MM/yyyy")
-        return format.format(date)
     }
 }
