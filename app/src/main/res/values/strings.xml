@@ -66,6 +66,30 @@
     <string name="app_intent_name">PhotoEditor</string>
     <string name="msg_save_image_to_share">Please save image to share</string>
     <string name="msg_share_image">Share Image</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
+    <string name="the_mobile_number">Enter the mobile number where you can be reached\n No one else will see this on profile</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="the_email">Enter the email where you can be reached\n No one else will see this on profile</string>
+    <string name="create_account_with_number_phone">Create account with Number phone</string>
+    <string name="create_account_with_number_email">Create account with Email</string>
+    <string name="join_ihealth_club">Join iHealth Club</string>
+    <string name="create_a_new_account">We\'ll help you\ncreate a new account in a few easy step</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="what_your_name">What\'s your name?</string>
+    <string name="enter_the_name_you">Enter the name you use in real life</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="what_your_birthday">What\'s your birthday?</string>
+    <string name="choose_your_date">Choose your date of birth \nYou can always make this private later</string>
+    <string name="what_your_gender">What\'s your gender?</string>
+    <string name="you_can_change_gender">You can change who sees your gender on your profile later</string>
+    <string name="select_custom">Select custom to choose another gender, or if you’d rather not say</string>
+    <string name="send_email_again">Send email again</string>
+    <string name="we_sent">We sent 6 digit code to your phone number</string>
+    <string name="enter_the_code_we_sent_to">Enter the code we sent to</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="choose_a_password">Choose a password</string>
+    <string name="create_a_password">Create a password at least with 6 characters. \nIt should be something other couldn\'t guess</string>
 
     <string-array name="photo_editor_emoji">
 

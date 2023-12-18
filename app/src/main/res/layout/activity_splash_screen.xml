@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/general_background"
     tools:context=".view.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/_140sdp"
-        android:layout_height="@dimen/_110sdp"
-        android:src="@drawable/img_logo_facebook"
+        android:layout_width="@dimen/_164sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:src="@drawable/splash_logo"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_188sdp"
+        android:layout_height="@dimen/_109sdp"
         android:layout_marginBottom="@dimen/_12sdp"
-        android:src="@drawable/ic_logo_meta"
+        android:src="@drawable/splash_from"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,5 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.55" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

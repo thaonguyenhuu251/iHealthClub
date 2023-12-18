@@ -9,17 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.database.UserRepository
 import com.htnguyen.ihealthclub.database.UserRoomDatabase
-import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.model.UserSaved
 import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.adapter.ProfileUserAdapter
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
-import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
-import com.htnguyen.ihealthclub.view.register.JoinFacebookActivity
+import com.htnguyen.ihealthclub.view.register.JoinClubActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_profile_login.*
 
@@ -40,7 +37,7 @@ class LoginProfileActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
 
         btn_create_account.setOnClickListener {
-            val create = Intent(this, JoinFacebookActivity::class.java)
+            val create = Intent(this, JoinClubActivity::class.java)
             startActivity(create)
         }
 
