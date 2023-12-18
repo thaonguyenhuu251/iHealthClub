@@ -15,4 +15,9 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun insert(user: UserSaved) {
         userDao.insert(user)
     }
+    @WorkerThread
+    suspend fun deleteAll() {
+        userDao.deleteAll()
+    }
+
 }

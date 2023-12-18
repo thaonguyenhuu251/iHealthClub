@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/general_background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/im_back"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"
                 app:tint="@color/black" />
@@ -30,106 +30,93 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:text="@string/create_account"
-                android:textColor="#000000" />
+                android:textColor="@color/black_mode"
+                android:textSize="@dimen/_14ssp" />
 
         </LinearLayout>
-
 
     </androidx.appcompat.widget.Toolbar>
 
     <View
+        android:id="@+id/view6"
         android:layout_width="match_parent"
-        android:layout_height="0.001dp"
-        android:background="#AAAAAA"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/view_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:text="What's your name?"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="@dimen/_24sdp"
+        android:gravity="center"
+        android:text="@string/what_your_name"
+        android:textColor="@color/black_mode"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:text="Enter the name you use in real life"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="@string/enter_the_name_you"
         android:textAlignment="center"
-        android:textColor="#999999"
+        android:textColor="@color/general_bull"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/rounded_button_blue"
         android:text="@string/next"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1875" />
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline9">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_first_name"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_4sdp"
             android:layout_weight="1"
             app:endIconDrawable="@drawable/ic_baseline_close_24"
             app:endIconMode="clear_text">
@@ -137,23 +124,20 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_first_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:hint="First name"
+                android:layout_height="match_parent"
+                android:hint="@string/first_name"
                 android:imeOptions="actionNext"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text=""
                 android:textSize="@dimen/_12ssp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_4sdp"
             android:layout_weight="1"
             app:endIconDrawable="@drawable/ic_baseline_close_24"
             app:endIconMode="clear_text">
@@ -161,17 +145,16 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_last_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:hint="Last name"
+                android:layout_height="match_parent"
+                android:hint="@string/last_name"
                 android:imeOptions="actionDone"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text=""
                 android:textSize="@dimen/_12ssp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -179,7 +162,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
-
+        app:layout_constraintGuide_percent="0.6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

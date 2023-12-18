@@ -3,6 +3,7 @@ package com.htnguyen.ihealthclub.view.register
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.htnguyen.ihealthclub.R
@@ -60,9 +61,29 @@ class ContactNumberActivity : AppCompatActivity() {
             }
         }
 
-        iv_back.setOnClickListener {
+        im_back.setOnClickListener {
             finish()
         }
+
+        tv_create_email.setOnClickListener {
+            text_mobile_email.visibility = View.VISIBLE
+            text_mobile_number.visibility = View.GONE
+            tv_create_email.visibility = View.GONE
+            tv_create_number.visibility = View.VISIBLE
+            tv_back.text = getString(R.string.email)
+            tv_header_mobile.text = getString(R.string.enter_your_email)
+            tv_description_mobile.text = getString(R.string.the_email)
+        }
+        tv_create_number.setOnClickListener {
+            text_mobile_number.visibility = View.VISIBLE
+            text_mobile_email.visibility = View.GONE
+            tv_create_number.visibility = View.GONE
+            tv_create_email.visibility = View.VISIBLE
+            tv_back.text = getString(R.string.mobile_number)
+            tv_header_mobile.text = getString(R.string.enter_your_mobile_number)
+            tv_description_mobile.text = getString(R.string.the_mobile_number)
+        }
+
     }
 
     private fun initFirebase() {

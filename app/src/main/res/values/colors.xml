@@ -7,14 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="ViewLine">#AAAAAA</color>
+    <color name="view_line">#AAAAAA</color>
 
     //color general project
     <color name="general_blue">#384CFF</color>
     <color name="general_grey">#ECE4E4</color>
     <color name="general_bull">#999999</color>
     <color name="general_blue_01">#0D91FF</color>
-
+    <color name="general_background">#FFFFFF</color>
 
     //color option home
     <color name="color_reel">#FEF9E7</color>

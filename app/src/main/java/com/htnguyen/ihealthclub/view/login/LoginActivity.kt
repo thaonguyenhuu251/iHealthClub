@@ -15,14 +15,13 @@ import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import com.htnguyen.ihealthclub.view.forgotpassword.ForgotPasswordMobileActivity
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
-import com.htnguyen.ihealthclub.view.register.JoinFacebookActivity
+import com.htnguyen.ihealthclub.view.register.JoinClubActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.model.UserLogin
-import kotlinx.android.synthetic.main.activity_create_post.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.container
 import kotlinx.coroutines.CoroutineScope
@@ -47,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initview() {
         btn_create_account.setOnClickListener {
-            val i = Intent(this, JoinFacebookActivity::class.java)
+            val i = Intent(this, JoinClubActivity::class.java)
             startActivity(i)
         }
 
