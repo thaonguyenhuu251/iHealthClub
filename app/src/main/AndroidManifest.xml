@@ -50,8 +50,12 @@
             android:windowSoftInputMode="adjustResize">
 
         </activity>
-        <activity android:name="com.htnguyen.ihealthclub.view.register.CreateNewPasswordActivity" />
-        <activity android:name="com.htnguyen.ihealthclub.view.register.OtpVerificationActivity" />
+        <activity
+            android:name="com.htnguyen.ihealthclub.view.register.CreateNewPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.htnguyen.ihealthclub.view.register.OtpVerificationActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.htnguyen.ihealthclub.view.register.BirthdayActivity" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.WhatYourNameActivity"
@@ -72,7 +76,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.ChoosePasswordActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.htnguyen.ihealthclub.view.register.TermAndPrivacyActivity" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.SplashScreenActivity"

@@ -15,7 +15,7 @@ class LoadingDialog(activity: Activity) {
         val view = activity.layoutInflater.inflate(R.layout.dialog_loading, null)
 
 
-        dialog = AlertDialog.Builder(activity,R.style.DialogWidth)
+        dialog = AlertDialog.Builder(activity, R.style.DialogWidth)
             .create().apply {
                 setView(view)
                 requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -24,14 +24,14 @@ class LoadingDialog(activity: Activity) {
             }
     }
 
-    fun showDialog(){
-        if (!dialog.isShowing){
+    fun showDialog() {
+        if (!dialog.isShowing) {
             dialog.show()
         }
     }
 
-    fun dismissDialog(){
-        if (dialog.isShowing){
+    fun dismissDialog() {
+        if (dialog.isShowing) {
             dialog.dismiss()
         }
     }

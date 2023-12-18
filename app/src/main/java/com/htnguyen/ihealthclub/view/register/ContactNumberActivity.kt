@@ -8,9 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.User
-import com.htnguyen.ihealthclub.utils.KEY_USER
-import com.htnguyen.ihealthclub.utils.KEY_VERIFIED_ID
-import com.htnguyen.ihealthclub.utils.OTP_TIME_OUT
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
@@ -22,6 +19,7 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.utils.*
 import kotlinx.android.synthetic.main.activity_contact_number.*
 import java.util.concurrent.TimeUnit
 
@@ -48,17 +46,43 @@ class ContactNumberActivity : AppCompatActivity() {
             loadingDialog?.showDialog()
             user?.phoneNumber = te_number.text.toString().trim()
             val atPhoneNumber = te_number.text.toString().trim()
-            if (atPhoneNumber.isNotEmpty()) {
-                if (atPhoneNumber.length > 10) {
-                    startPhoneNumberVerification(te_number.text.toString().trim())
+            val atEmail = te_email.text.toString().trim()
+            if (tv_back.text == getString(R.string.email)) {
+                if (atEmail.isNotEmpty() && checkEmail(atEmail)) {
+                    user?.email = atEmail
+                    val bundle = Bundle()
+                    bundle.putSerializable(KEY_USER, user)
+                    bundle.putString(TYPE_REGISTER, USER_EMAIL)
+                    val i = Intent(this@ContactNumberActivity, ChoosePasswordActivity::class.java)
+                    i.putExtras(bundle)
+                    loadingDialog?.dismissDialog()
+                    startActivity(i)
+                } else if (atEmail.isEmpty()) {
+                    loadingDialog?.dismissDialog()
+                    Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT)
+                        .show()
                 } else {
-                    Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT)
+                    loadingDialog?.dismissDialog()
+                    Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT)
                         .show()
                 }
-
             } else {
-                Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_SHORT).show()
+                if (atPhoneNumber.isNotEmpty()) {
+                    if (atPhoneNumber.length > 10) {
+                        startPhoneNumberVerification(te_number.text.toString().trim())
+                    } else {
+                        loadingDialog?.dismissDialog()
+                        Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                } else {
+                    loadingDialog?.dismissDialog()
+                    Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
+
         }
 
         im_back.setOnClickListener {
@@ -110,6 +134,7 @@ class ContactNumberActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putSerializable(KEY_USER, user)
                 bundle.putString(KEY_VERIFIED_ID, p0)
+                bundle.putString(TYPE_REGISTER, USER_PHONE)
 
                 val i = Intent(this@ContactNumberActivity, OtpVerificationActivity::class.java)
                 i.putExtras(bundle)
