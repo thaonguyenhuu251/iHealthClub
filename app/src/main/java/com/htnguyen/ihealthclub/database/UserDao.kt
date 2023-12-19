@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.htnguyen.ihealthclub.model.UserSaved
+
 @Dao
 interface UserDao {
     // The flow always holds/caches latest version of data. Notifies its observers when the
