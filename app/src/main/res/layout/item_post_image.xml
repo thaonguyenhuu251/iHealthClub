@@ -22,14 +22,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_avatar"
             android:layout_width="@dimen/_32sdp"
             android:layout_height="@dimen/_32sdp"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_profile"
-            app:riv_corner_radius="@dimen/_32sdp" />
+            android:src="@drawable/img_profile"/>
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -242,7 +241,7 @@
             android:layout_marginVertical="@dimen/_5sdp"
             android:orientation="horizontal">
 
-            <com.amrdeveloper.reactbutton.ReactButton
+            <com.htnguyen.ihealthclub.view.reacbutton.ReactButton
                 android:id="@+id/reactButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

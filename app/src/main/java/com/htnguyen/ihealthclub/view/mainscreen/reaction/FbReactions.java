@@ -1,7 +1,7 @@
 package com.htnguyen.ihealthclub.view.mainscreen.reaction;
 
-import com.amrdeveloper.reactbutton.Reaction;
 import com.htnguyen.ihealthclub.R;
+import com.htnguyen.ihealthclub.view.reacbutton.Reaction;
 
 public final class FbReactions {
 
