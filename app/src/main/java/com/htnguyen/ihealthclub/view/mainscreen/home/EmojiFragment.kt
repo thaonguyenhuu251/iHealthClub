@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.htnguyen.ihealthclub.FacebookApp
+import com.htnguyen.ihealthclub.ClubApp
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.EmojiHome
 import com.htnguyen.ihealthclub.utils.*
@@ -19,7 +19,6 @@ import com.google.android.material.snackbar.Snackbar
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_emoji.*
-import java.util.*
 
 
 const val KEY_EMOJI_PUT = "KEY_EMOJI_PUT"
@@ -39,7 +38,7 @@ class EmojiFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        disposable = FacebookApp.eventBus.subscribe{
+        disposable = ClubApp.eventBus.subscribe{
             it[Event.EVENT_SEARCH_EMOJI]?.let { data ->
                 (data as String?)?.let { search ->
                     emojisAdapter.filterList(listEmojis().filter { it.emojiName.contains(search) } as MutableList<EmojiHome>)

@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="loading_facebook.json"
+        app:lottie_fileName="loading_club.json"
         app:lottie_loop="true" />
 
     <TextView

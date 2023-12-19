@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.UserSaved
 
-class ProfileUserAdapter(val context: Context, var listUser: List<UserSaved>?,val callback : (UserSaved) -> Unit) :
+class ProfileUserAdapter(val context: Context, var listUser: List<UserSaved>?, val callback : (UserSaved) -> Unit) :
     RecyclerView.Adapter<ProfileUserAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {

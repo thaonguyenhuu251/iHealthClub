@@ -16,7 +16,7 @@ class ForgotPasswordMobileActivity : AppCompatActivity() {
     }
 
     private fun initView(){
-        btn_find_account.setOnClickListener {
+        btn_next.setOnClickListener {
 
         }
 

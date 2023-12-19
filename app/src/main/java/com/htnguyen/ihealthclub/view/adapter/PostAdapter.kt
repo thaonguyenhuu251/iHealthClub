@@ -63,6 +63,7 @@ class PostAdapter(
             TypeFile.IMAGE -> (holder as PostAdapter.ItemViewHolderImage).bindItem(list[position] as Post)
             TypeFile.VIDEO -> (holder as PostAdapter.ItemViewHolderVideo).bindItem(list[position] as Post)
             TypeFile.OTHER -> (holder as PostAdapter.ItemViewHolderText).bindItem(list[position] as Post)
+            else -> {}
         }
     }
 
@@ -75,6 +76,7 @@ class PostAdapter(
             TypeFile.VIDEO -> return VIEW_TYPE_TWO
             TypeFile.OTHER -> return VIEW_TYPE_THREE
 
+            else -> {}
         }
         return VIEW_TYPE_ONE
     }
