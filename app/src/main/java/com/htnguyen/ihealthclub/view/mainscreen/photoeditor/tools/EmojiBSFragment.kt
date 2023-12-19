@@ -14,7 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.htnguyen.ihealthclub.R
-import com.htnguyen.ihealthclub.FacebookApp.Companion.photoApp
+import com.htnguyen.ihealthclub.ClubApp.Companion.photoApp
 import java.lang.NumberFormatException
 import java.util.ArrayList
 

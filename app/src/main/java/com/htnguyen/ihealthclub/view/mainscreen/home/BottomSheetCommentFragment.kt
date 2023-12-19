@@ -34,7 +34,7 @@ import kotlinx.android.synthetic.main.layout_comment_input.view.*
 class BottomSheetCommentFragment : BottomSheetDialogFragment{
     // TODO: Rename and change types of parameters
     private var commentAdapter: CommentAdapter? = null
-    private val listLike = mutableListOf<ListLike>(ListLike("name",TypeLike.LIKE))
+    private val listLike = mutableListOf<ListLike>(ListLike("name", TypeLike.LIKE))
     private lateinit var commentModel: CommentModel
     private lateinit var sharedPreferences: SharedPreferences
     private var urlAvartar: String = ""

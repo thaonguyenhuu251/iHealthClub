@@ -3,9 +3,14 @@ package com.htnguyen.ihealthclub.view.register
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ListView
+import android.widget.PopupWindow
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.ListAdapter
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
@@ -19,35 +24,47 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.BR
+import com.htnguyen.ihealthclub.base.BaseActivity
+import com.htnguyen.ihealthclub.databinding.ActivityContactNumberBinding
+import com.htnguyen.ihealthclub.model.AreaCode
 import com.htnguyen.ihealthclub.utils.*
-import kotlinx.android.synthetic.main.activity_contact_number.*
+import com.htnguyen.ihealthclub.view.adapter.CountryAdapter
 import java.util.concurrent.TimeUnit
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-class ContactNumberActivity : AppCompatActivity() {
+class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, RegisterViewModel>() {
 
     private var user: User? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private var loadingDialog: LoadingDialog? = null
+    var popupWindow: PopupWindow? = null
+    override val layout: Int
+        get() = R.layout.activity_contact_number
+    override val viewModel: RegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contact_number)
         user = intent.extras?.get(KEY_USER) as User
+
         initFirebase()
         initView()
+    }
+
+    override fun getBindingVariable(): Int {
+        return BR.viewModel
     }
 
     private fun initView() {
         loadingDialog = LoadingDialog(this)
 
-        btn_next.setOnClickListener {
+        binding.btnNext.setOnClickListener {
             loadingDialog?.showDialog()
-            user?.phoneNumber = te_number.text.toString().trim()
-            val atPhoneNumber = te_number.text.toString().trim()
-            val atEmail = te_email.text.toString().trim()
-            if (tv_back.text == getString(R.string.email)) {
+            user?.phoneNumber = binding.teNumber.text.toString().trim()
+            val atPhoneNumber = binding.teNumber.text.toString().trim()
+            val atEmail = binding.teEmail.text.toString().trim()
+            if (binding.tvBack.text == getString(R.string.email)) {
                 if (atEmail.isNotEmpty() && checkEmail(atEmail)) {
                     user?.email = atEmail
                     val bundle = Bundle()
@@ -69,7 +86,7 @@ class ContactNumberActivity : AppCompatActivity() {
             } else {
                 if (atPhoneNumber.isNotEmpty()) {
                     if (atPhoneNumber.length > 10) {
-                        startPhoneNumberVerification(te_number.text.toString().trim())
+                        startPhoneNumberVerification(binding.teNumber.text.toString().trim())
                     } else {
                         loadingDialog?.dismissDialog()
                         Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT)
@@ -85,28 +102,30 @@ class ContactNumberActivity : AppCompatActivity() {
 
         }
 
-        im_back.setOnClickListener {
+        binding.imBack.setOnClickListener {
             finish()
         }
 
-        tv_create_email.setOnClickListener {
-            text_mobile_email.visibility = View.VISIBLE
-            text_mobile_number.visibility = View.GONE
-            tv_create_email.visibility = View.GONE
-            tv_create_number.visibility = View.VISIBLE
-            tv_back.text = getString(R.string.email)
-            tv_header_mobile.text = getString(R.string.enter_your_email)
-            tv_description_mobile.text = getString(R.string.the_email)
+        binding.tvCreateEmail.setOnClickListener {
+            binding.textMobileEmail.visibility = View.VISIBLE
+            binding.textMobileNumber.visibility = View.GONE
+            binding.tvCreateEmail.visibility = View.GONE
+            binding.tvCreateNumber.visibility = View.VISIBLE
+            binding.tvBack.text = getString(R.string.email)
+            binding.tvHeaderMobile.text = getString(R.string.enter_your_email)
+            binding.tvDescriptionMobile.text = getString(R.string.the_email)
         }
-        tv_create_number.setOnClickListener {
-            text_mobile_number.visibility = View.VISIBLE
-            text_mobile_email.visibility = View.GONE
-            tv_create_number.visibility = View.GONE
-            tv_create_email.visibility = View.VISIBLE
-            tv_back.text = getString(R.string.mobile_number)
-            tv_header_mobile.text = getString(R.string.enter_your_mobile_number)
-            tv_description_mobile.text = getString(R.string.the_mobile_number)
+        binding.tvCreateNumber.setOnClickListener {
+            binding.textMobileNumber.visibility = View.VISIBLE
+            binding.textMobileEmail.visibility = View.GONE
+            binding.tvCreateNumber.visibility = View.GONE
+            binding.tvCreateEmail.visibility = View.VISIBLE
+            binding.tvBack.text = getString(R.string.mobile_number)
+            binding.tvHeaderMobile.text = getString(R.string.enter_your_mobile_number)
+            binding.tvDescriptionMobile.text = getString(R.string.the_mobile_number)
         }
+
+        provideCountryPopupWindow(binding.sCountry)
 
     }
 
@@ -130,7 +149,7 @@ class ContactNumberActivity : AppCompatActivity() {
             override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
                 super.onCodeSent(p0, p1)
 
-                user?.phoneNumber = te_number.text.toString().trim()
+                user?.phoneNumber = binding.teNumber.text.toString().trim()
                 val bundle = Bundle()
                 bundle.putSerializable(KEY_USER, user)
                 bundle.putString(KEY_VERIFIED_ID, p0)
@@ -157,5 +176,64 @@ class ContactNumberActivity : AppCompatActivity() {
             .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    private fun provideCountryPopupWindow(it: View) {
+        val json = readJSONFromAsset(this@ContactNumberActivity, "area_code.json")
+        val list = parseJsonToListAreaCode(json)
+        val listAreaCode = ArrayList<AreaCode>()
+        for (areaCode in list) {
+            Log.d("ThaoNH", areaCode.toString())
+            if (!areaCode.phone.isNullOrEmpty()) {
+                for (phone in areaCode.phone) {
+                    val listPhone = arrayListOf<String>(phone)
+                    listAreaCode.add(
+                        AreaCode(
+                            areaCode.name,
+                            areaCode.region,
+                            listPhone.toList(),
+                            areaCode.image,
+                            areaCode.emoji
+                        )
+                    )
+                }
+            } else {
+                listAreaCode.add(
+                    AreaCode(
+                        areaCode.name,
+                        areaCode.region,
+                        arrayListOf("0").toList(),
+                        areaCode.image,
+                        areaCode.emoji
+                    )
+                )
+            }
+
+        }
+        val countryAdapter = CountryAdapter(this@ContactNumberActivity, list.toList())
+        popupWindow = PopupWindow()
+            .apply {
+                val backgroundDrawable = ContextCompat.getDrawable(
+                    this@ContactNumberActivity,
+                    R.drawable.blue_outline_background_white
+                )
+                setBackgroundDrawable(backgroundDrawable)
+                isOutsideTouchable = true
+                val listView = layoutInflater.inflate(
+                    R.layout.layout_area_code_dropdown,
+                    null,
+                    false
+                ) as ListView
+                binding.sCountry.adapter = countryAdapter
+                listView.setOnItemClickListener { _, _, position, _ ->
+                    val selectedCountry = countryAdapter.getItem(position)!!
+                    popupWindow?.dismiss()
+                }
+                contentView = listView
+
+                animationStyle = 0
+                width = it.width
+                height = 100
+            }
     }
 }

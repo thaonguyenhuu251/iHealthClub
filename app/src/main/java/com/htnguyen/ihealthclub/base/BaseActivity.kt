@@ -78,9 +78,4 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
 
     }
 
-
-    override fun attachBaseContext(newBase: Context) {
-
-    }
-
 }

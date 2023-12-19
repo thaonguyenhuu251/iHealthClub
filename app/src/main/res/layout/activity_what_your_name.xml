@@ -9,6 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/general_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -105,7 +106,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -114,6 +115,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_first_name"
+            style="@style/TextInputLayoutStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/_4sdp"
@@ -130,13 +132,14 @@
                 android:maxLength="20"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_14ssp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            style="@style/TextInputLayoutStyle"
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_weight="1"
             app:endIconDrawable="@drawable/ic_baseline_close_24"
@@ -151,7 +154,7 @@
                 android:maxLength="20"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_14ssp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -55,7 +55,7 @@ val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
     }
 }
 
-fun typeReaction(reaction: String) :TypeLike{
+fun typeReaction(reaction: String) : TypeLike {
     when(reaction){
         "Like" -> return TypeLike.LIKE
         "Love" -> return TypeLike.LOVE

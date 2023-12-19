@@ -37,7 +37,7 @@ class OptionsHomeAdapter(val context: Context, var listOptions: MutableList<Opti
         private val iv_options_home: ImageView = itemView.findViewById(R.id.iv_options_home)
         private val ln_background : LinearLayout = itemView.findViewById(R.id.ln_item_options)
 
-        fun bindItem(option: OptionsHome ) {
+        fun bindItem(option: OptionsHome) {
             tv_options_home.text = option.optionName
             tv_options_home.setTextColor(getColor(context, option.textColor))
             Glide.with(context).load(option.srcImage)

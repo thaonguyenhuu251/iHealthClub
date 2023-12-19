@@ -50,7 +50,7 @@ class CreatePostsActivity : AppCompatActivity() {
     private var urlAvartar: String = ""
     private  var thinking: String = ""
     private lateinit var typeFile: TypeFile
-    private  var emojiHome: EmojiHome ?= null
+    private  var emojiHome: EmojiHome?= null
 
     @SuppressLint("ResourceAsColor")
     private val startForResult =
@@ -200,7 +200,7 @@ class CreatePostsActivity : AppCompatActivity() {
         })
 
         btn_post.setOnClickListener {
-            listLike.add(ListLike("",TypeLike.NO))
+            listLike.add(ListLike("", TypeLike.NO))
             post.idPost = System.currentTimeMillis()
             post.idUser = sharedPreferences.getString(USER_ID, "").toString()
             post.urlAvatar = urlAvartar
