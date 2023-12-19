@@ -114,6 +114,7 @@ class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, Registe
             binding.tvBack.text = getString(R.string.email)
             binding.tvHeaderMobile.text = getString(R.string.enter_your_email)
             binding.tvDescriptionMobile.text = getString(R.string.the_email)
+            binding.sCountry.visibility = View.GONE
         }
         binding.tvCreateNumber.setOnClickListener {
             binding.textMobileNumber.visibility = View.VISIBLE
@@ -123,6 +124,7 @@ class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, Registe
             binding.tvBack.text = getString(R.string.mobile_number)
             binding.tvHeaderMobile.text = getString(R.string.enter_your_mobile_number)
             binding.tvDescriptionMobile.text = getString(R.string.the_mobile_number)
+            binding.sCountry.visibility = View.VISIBLE
         }
 
         provideCountryPopupWindow(binding.sCountry)

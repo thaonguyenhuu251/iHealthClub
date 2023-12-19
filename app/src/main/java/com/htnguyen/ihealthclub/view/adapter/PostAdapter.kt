@@ -107,10 +107,6 @@ class PostAdapter(
                 Log.d("hunghkp123", "bindItem: ")
                 callback2.invoke(reaction, post)
             }
-            /*reactButton.setOnReactionChangeListener {
-                Log.d("hunghkp123", "bindItem: ")
-                callback2.invoke(it, post)
-            }*/
 
             val txtComment: TextView = itemView.findViewById(R.id.txtComment)
             txtComment.setOnClickListener {
