@@ -11,13 +11,13 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.amrdeveloper.reactbutton.ReactButton
-import com.amrdeveloper.reactbutton.Reaction
 import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.Post
 import com.htnguyen.ihealthclub.model.TypeFile
 import com.htnguyen.ihealthclub.view.mainscreen.reaction.FbReactions
+import com.htnguyen.ihealthclub.view.reacbutton.ReactButton
+import com.htnguyen.ihealthclub.view.reacbutton.Reaction
 import java.util.*
 import java.util.concurrent.TimeUnit
 

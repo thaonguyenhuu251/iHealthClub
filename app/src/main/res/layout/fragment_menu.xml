@@ -8,8 +8,6 @@
     android:background="@color/background_grey_little"
     tools:context=".view.mainscreen.menu.MenuFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
@@ -95,12 +93,11 @@
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:orientation="horizontal">
 
-                <com.makeramen.roundedimageview.RoundedImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/img_avatar"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
-                    android:scaleType ="centerCrop"
-                    app:riv_corner_radius="@dimen/_40sdp" />
+                    android:scaleType="centerCrop"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,23 +131,25 @@
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#CDC7C7"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:layout_marginLeft="@dimen/_15sdp"/>
+                android:background="#CDC7C7" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Your shortcut"
-                android:textColor="@color/black_mode"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/_15sdp"    />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:gravity="center_vertical"
+                    android:text="Your shortcut"
+                    android:textColor="@color/black_mode"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_shortcuts"
                     android:layout_width="match_parent"
@@ -164,15 +163,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
                     android:gravity="center_vertical"
                     android:text="All shortcuts"
                     android:textColor="@color/black_mode"
                     android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/_15sdp"    />
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_shortcut"
@@ -186,152 +186,161 @@
                     android:id="@+id/btn_see_more"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:text="See more"
-                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/rounded_button_little_grey"
-                    android:textAllCaps="false"
                     android:paddingLeft="@dimen/_25sdp"
                     android:paddingRight="@dimen/_25sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_15sdp"/>
+                    android:text="See more"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_12sdp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#CDC7C7"/>
+                    android:background="#CDC7C7" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_15sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
                     <ImageView
                         android:layout_width="@dimen/_24sdp"
                         android:layout_height="@dimen/_24sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/icons8_natural_resources_64"/>
+                        android:src="@drawable/icons8_natural_resources_64" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_weight="0.5"
                         android:gravity="center_vertical"
                         android:text="Community resources"
                         android:textColor="@color/black_mode"
                         android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="@dimen/_5sdp"/>
+                        android:textStyle="bold" />
+
                     <ImageView
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
                 </LinearLayout>
-
 
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#CDC7C7"/>
+                    android:background="#CDC7C7" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_15sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
                     <ImageView
                         android:layout_width="@dimen/_24sdp"
                         android:layout_height="@dimen/_24sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/icons8_support_64"/>
+                        android:src="@drawable/icons8_support_64" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_weight="0.5"
                         android:gravity="center_vertical"
                         android:text="Help and Support"
                         android:textColor="@color/black_mode"
                         android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="@dimen/_5sdp"/>
+                        android:textStyle="bold" />
+
                     <ImageView
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#CDC7C7"/>
+                    android:background="#CDC7C7" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_marginRight="@dimen/_15sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
                     <ImageView
                         android:layout_width="@dimen/_24sdp"
                         android:layout_height="@dimen/_24sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/icons8_human_resources_64"/>
+                        android:src="@drawable/icons8_human_resources_64" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_weight="0.5"
                         android:gravity="center_vertical"
                         android:text="Settings and privacy"
                         android:textColor="@color/black_mode"
                         android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="@dimen/_5sdp"/>
+                        android:textStyle="bold" />
+
                     <ImageView
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_log_out"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_25sdp"
-                    android:text="Log out"
-                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/rounded_button_little_grey"
-                    android:textAllCaps="false"
                     android:paddingLeft="@dimen/_25sdp"
                     android:paddingRight="@dimen/_25sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_15sdp"/>
+                    android:text="Log out"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_12sdp" />
 
             </LinearLayout>
         </LinearLayout>

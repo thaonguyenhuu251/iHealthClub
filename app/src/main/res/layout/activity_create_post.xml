@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -113,14 +112,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
 
-                        <com.makeramen.roundedimageview.RoundedImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/img_avatar"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center_vertical"
-                            android:scaleType ="centerCrop"
-                            android:src="@drawable/img_profile"
-                            app:riv_corner_radius="@dimen/_20sdp" />
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_profile" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -144,10 +142,10 @@
                                 android:layout_marginLeft="@dimen/_5sdp"
                                 android:layout_marginBottom="@dimen/_2sdp"
                                 android:gravity="center_vertical"
+                                android:maxLines="1"
                                 android:text="USER NAME"
                                 android:textColor="@color/black_mode"
                                 android:textSize="@dimen/_14sdp"
-                                android:maxLines="1"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -170,9 +168,9 @@
                                 <ImageView
                                     android:layout_width="@dimen/_14sdp"
                                     android:layout_height="@dimen/_14sdp"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_margin="@dimen/_2sdp"
                                     android:padding="@dimen/_1sdp"
-                                    android:layout_gravity="center_vertical"
                                     android:src="@drawable/ic_post_private" />
 
                                 <TextView
@@ -202,9 +200,9 @@
                                 <ImageView
                                     android:layout_width="@dimen/_14sdp"
                                     android:layout_height="@dimen/_14sdp"
-                                    android:layout_margin="@dimen/_2sdp"
-
                                     android:layout_gravity="center_vertical"
+
+                                    android:layout_margin="@dimen/_2sdp"
                                     android:src="@drawable/ic_post_add" />
 
                                 <TextView
@@ -234,8 +232,8 @@
                                 <ImageView
                                     android:layout_width="@dimen/_14sdp"
                                     android:layout_height="@dimen/_14sdp"
-                                    android:layout_margin="@dimen/_2sdp"
                                     android:layout_gravity="center_vertical"
+                                    android:layout_margin="@dimen/_2sdp"
                                     android:src="@drawable/ic_post_instagram" />
 
                                 <TextView
@@ -281,6 +279,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_400sdp">
+
                     <ImageView
                         android:id="@+id/img_pick"
                         android:layout_width="match_parent"
@@ -295,11 +294,9 @@
                         android:id="@+id/pb_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_centerInParent="true"/>
+                        android:layout_centerInParent="true"
+                        android:visibility="gone" />
                 </RelativeLayout>
-
-
 
 
                 <LinearLayout
@@ -371,11 +368,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-        <include layout="@layout/layout_menu_bottom_create_post"/>
+
+        <include layout="@layout/layout_menu_bottom_create_post" />
 
     </FrameLayout>
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

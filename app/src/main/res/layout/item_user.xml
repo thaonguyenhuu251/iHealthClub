@@ -15,15 +15,12 @@
         android:layout_marginTop="@dimen/_10sdp">
 
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/img_avatar"
             android:layout_width="@dimen/_36sdp"
             android:layout_height="@dimen/_36sdp"
             android:src="@drawable/img_profile"
-            android:scaleType ="centerCrop"
-            app:riv_corner_radius="8dp"
-            />
-
+            android:scaleType ="centerCrop"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_name"
@@ -45,8 +42,6 @@
             app:srcCompat="@drawable/ic_baseline_more_vert"
             android:layout_gravity="center_vertical"/>
 
-
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
