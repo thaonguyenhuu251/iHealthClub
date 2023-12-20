@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
     private fun initView() {
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fb_avatar))
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
             .into(img_avatar)
         tv_thinking_home.setOnClickListener {
             val bundle = Bundle()

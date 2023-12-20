@@ -118,7 +118,8 @@
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center_vertical"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/img_profile" />
+                            app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
+                            android:src="@drawable/ic_user_thumbnail" />
                     </LinearLayout>
 
                     <LinearLayout

@@ -220,7 +220,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:padding="@dimen/_3sdp"
-                    android:src="@drawable/icons8_home_48" />
+                    android:src="@drawable/ic_home" />
 
                 <TextView
                     android:layout_width="match_parent"

@@ -56,7 +56,7 @@ class StoryViewAdapter(val url : String, val context: Context, var list: Mutable
         private val iv_story_add: ImageView = itemView.findViewById(R.id.iv_add_story)
 
         fun bindItem() {
-            Glide.with(context).load(url).error(AppCompatResources.getDrawable(context, R.drawable.img_profile)).into(iv_story_add)
+            Glide.with(context).load(url).error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail)).into(iv_story_add)
             itemView.setOnClickListener {
                 val intent = Intent(context,PickImageStoryActivity::class.java)
                 context.startActivity(intent)
@@ -69,9 +69,9 @@ class StoryViewAdapter(val url : String, val context: Context, var list: Mutable
         private val tv_name_story: TextView = itemView.findViewById((R.id.tv_name_story))
         private val iv_content_story: ImageView = itemView.findViewById(R.id.iv_content_story)
         fun bindItem(story: ObjectStory) {
-            Glide.with(context).load(story.urlAvatar).error(AppCompatResources.getDrawable(context, R.drawable.img_profile)).into(iv_avartar_story)
+            Glide.with(context).load(story.urlAvatar).error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail)).into(iv_avartar_story)
             tv_name_story.text = story.createBy
-            Glide.with(context).load(story.listFile.get(0).url).error(AppCompatResources.getDrawable(context, R.drawable.avatar)).into(iv_content_story)
+            Glide.with(context).load(story.listFile.get(0).url).error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail)).into(iv_content_story)
             itemView.setOnClickListener {
                 callback.invoke(story)
 

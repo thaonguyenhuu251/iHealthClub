@@ -118,7 +118,7 @@
         android:id="@+id/btn_next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button_blue"
+        android:background="@drawable/rounded_background_blue_linear"
         android:layout_marginTop="@dimen/_16sdp"
         android:text="@string/continues"
         android:textAllCaps="false"

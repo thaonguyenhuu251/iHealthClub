@@ -10,19 +10,23 @@ import com.htnguyen.ihealthclub.view.mainscreen.personal.PersonalProfileFragment
 import com.htnguyen.ihealthclub.view.mainscreen.home.HomeFragment
 import com.htnguyen.ihealthclub.view.mainscreen.watch.WatchVideoFragment
 
-class HomePagerFragmentAdapter(val arrayTitle : Array<String>,val fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity){
+class HomePagerFragmentAdapter(
+    val arrayTitle: Array<String>,
+    val fragmentActivity: FragmentActivity
+) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
         return arrayTitle.size
     }
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> { return HomeFragment() }
+            0 -> {
+                return HomeFragment()
+            }
             1 -> return FriendRequestFragment()
-            2 -> return PersonalProfileFragment()
-            3 -> return WatchVideoFragment()
-            4 -> return NotificationsFragment()
-            5 -> return MenuFragment()
+            2 -> return WatchVideoFragment()
+            3 -> return NotificationsFragment()
+            4 -> return MenuFragment()
         }
         return HomeFragment()
     }

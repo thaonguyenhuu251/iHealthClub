@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/darker_gray"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -19,8 +19,8 @@
             android:id="@+id/toolbar_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            android:elevation="0dp">
+            android:elevation="0dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_alignTop="@id/imgMessenger"
                     android:layout_alignBottom="@id/imgMessenger"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_facebook" />
+                    android:src="@drawable/ihealth_club_logo" />
 
                 <ImageView
                     android:id="@+id/imgMessenger"
@@ -51,18 +51,26 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
+        style="@style/MyTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
         android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
-        app:tabTextColor="@color/general_blue_01"
+        app:tabGravity="start"
+        app:tabIndicatorColor="@null"
+        app:tabMode="fixed"
+        app:tabPaddingBottom="@dimen/_5sdp"
+        app:tabPaddingEnd="0dp"
+        app:tabPaddingStart="0dp"
+        app:tabPaddingTop="@dimen/_5sdp"
+        app:tabRippleColor="@null"
         app:tabSelectedTextColor="@color/general_blue_01"
-        app:tabIndicatorColor="@color/general_blue_01"/>
+        app:tabTextColor="@color/general_bull" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/_1sdp"
         android:background="@color/general_grey_little"
         app:layout_constraintBottom_toBottomOf="@+id/tab_layout"
         app:layout_constraintStart_toStartOf="parent" />
@@ -72,7 +80,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 

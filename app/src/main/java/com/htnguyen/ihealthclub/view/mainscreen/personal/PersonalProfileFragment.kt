@@ -76,9 +76,9 @@ class PersonalProfileFragment : Fragment() {
         tv_user_name.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fb_avatar)).into(img_avatar)
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar)
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fb_avatar)).into(img_avatar_little)
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar_little)
 
         btn_add_story.setOnClickListener{
             val intent = Intent(this@PersonalProfileFragment.context,PickImageStoryActivity::class.java)
