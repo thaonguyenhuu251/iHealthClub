@@ -23,12 +23,13 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
+            app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
             android:id="@+id/img_avatar"
             android:layout_width="@dimen/_32sdp"
             android:layout_height="@dimen/_32sdp"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_profile"/>
+            app:srcCompat="@drawable/ic_user_thumbnail"/>
 
 
         <androidx.appcompat.widget.AppCompatTextView

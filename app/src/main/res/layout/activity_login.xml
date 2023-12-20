@@ -5,20 +5,19 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/general_background"
     tools:context=".view.login.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/_164sdp"
+        android:layout_height="@dimen/_200sdp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/img_background_login" />
+        app:srcCompat="@drawable/splash_logo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -86,7 +85,7 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button_blue"
+        android:background="@drawable/rounded_background_blue_linear"
         android:text="@string/log_in"
         android:textAllCaps="false"
         android:textColor="@color/white"

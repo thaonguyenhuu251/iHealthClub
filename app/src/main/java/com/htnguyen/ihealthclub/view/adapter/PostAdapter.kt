@@ -115,10 +115,10 @@ class PostAdapter(
 
 
             Glide.with(context).load(post.urlAvatar)
-                .error(AppCompatResources.getDrawable(context, R.drawable.img_profile))
+                .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
                 .into(img_avatar)
             Glide.with(context).load(post.listFile.get(0))
-                .error(AppCompatResources.getDrawable(context, R.drawable.img_profile))
+                .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
                 .into(img_pick)
             atv_post.text = post.createBy
             et_thinking_pos.text = post.status
@@ -183,7 +183,7 @@ class PostAdapter(
             val tv_emoji_status: TextView = itemView.findViewById((R.id.tv_emoji_status_text))
             val img_avatar: ImageView = itemView.findViewById(R.id.img_avatar_text)
             Glide.with(context).load(post.urlAvatar)
-                .error(AppCompatResources.getDrawable(context, R.drawable.img_profile))
+                .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
                 .into(img_avatar)
             atv_post.text = post.createBy
             et_thinking_pos.text = post.status

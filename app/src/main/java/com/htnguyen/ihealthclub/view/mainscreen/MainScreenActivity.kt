@@ -1,18 +1,28 @@
 package com.htnguyen.ihealthclub.view.mainscreen
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.view.adapter.HomePagerFragmentAdapter
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main_screen.*
 
 
 class MainScreenActivity : AppCompatActivity() {
 
-    private val titles = arrayOf("Movies", "Events", "Tickets", "Tickets", "Tickets", "Tickets")
+    private val titles = arrayOf("Home", "Friend", "Watch", "Notification", "Menu")
+    private val listIcon = arrayOf(
+        R.drawable.ic_home,
+        R.drawable.ic_friend,
+        R.drawable.ic_watch,
+        R.drawable.ic_notify,
+        R.drawable.ic_menu
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,95 +31,35 @@ class MainScreenActivity : AppCompatActivity() {
         initView()
 
     }
+
     private fun initView() {
-        view_pager.adapter = HomePagerFragmentAdapter(titles,this)
-        view_pager.isUserInputEnabled = false;
+        view_pager.adapter = HomePagerFragmentAdapter(titles, this@MainScreenActivity)
+        view_pager.isUserInputEnabled = false
         setTabLayout()
     }
-    private fun setTabLayout(){
-        TabLayoutMediator(tab_layout, view_pager) { tab, position ->
-            when(position){
-                0 -> {
-                    tab.setIcon(R.drawable.ic_home_selected)
-                    tab.icon?.setTint(getColor(R.color.general_blue_01))
-                    toolbar_home.visibility = View.VISIBLE
-                }
-                1 -> {
-                    tab.setIcon(R.drawable.ic_friend)
-                }
-                2 -> {
-                    tab.setIcon(R.drawable.ic_personal)
-                }
-                3 -> {
-                    tab.setIcon(R.drawable.ic_watch)
-                }
-                4 -> {
-                    tab.setIcon(R.drawable.ic_notify)
-                }
-                5 -> {
-                    tab.setIcon(R.drawable.ic_menu)
-                }
+
+    private fun setTabLayout() {
+        for (index in listIcon.indices) {
+            val tabView = LayoutInflater.from(this@MainScreenActivity).inflate(R.layout.item_tablayout, tab_layout, false)
+            tabView.findViewById<TextView>(R.id.name).text = titles[index]
+            tabView.findViewById<ImageView>(R.id.icon).setImageDrawable(resources.getDrawable(listIcon[index], null))
+            if (index == 0) {
+                tabView.findViewById<TextView>(R.id.name).visibility = View.VISIBLE
+                tabView.findViewById<ImageView>(R.id.icon)?.setColorFilter(ContextCompat.getColor(this@MainScreenActivity, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
             }
-        }.attach()
+            tab_layout.addTab(tab_layout.newTab().setCustomView(tabView))
+        }
 
-        tab_layout.addOnTabSelectedListener(object  : TabLayout.OnTabSelectedListener{
+        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-
-                when(tab?.position){
-                    0 -> {
-                        toolbar_home.visibility = View.VISIBLE
-                        tab.setIcon(R.drawable.ic_home_selected)
-                        tab.icon?.setTint(getColor(R.color.general_blue_01))
-                    }
-                    1 -> {
-                        tab.setIcon(R.drawable.ic_friend_selected)
-                        tab.icon?.setTint(getColor(R.color.general_blue_01))
-                        //toolbar_home.visibility = View.GONE
-                    }
-                    2 -> {
-                        tab.icon = getDrawable(R.drawable.ic_personal_selected)
-                        tab.icon?.setTint(getColor(R.color.general_blue_01))
-                        //toolbar_home.visibility = View.GONE
-                    }
-                    3 -> {
-                        tab.icon = getDrawable(R.drawable.ic_video_selected)
-                        tab.icon?.setTint(getColor(R.color.general_blue_01))
-                        //toolbar_home.visibility = View.GONE
-                    }
-                    4 -> {
-                        tab.icon = getDrawable(R.drawable.ic_notify_selected)
-                        tab.icon?.setTint(getColor(R.color.general_blue_01))
-                        //toolbar_home.visibility = View.GONE
-                    }
-                    5 -> {
-                        tab.icon = getDrawable(R.drawable.ic_menu_selected)
-                        tab.icon?.setTint(getColor(R.color.general_blue_01))
-                        //toolbar_home.visibility = View.GONE
-                    }
-                }
+                tab?.customView?.findViewById<TextView>(R.id.name)?.visibility = View.VISIBLE
+                tab?.customView?.findViewById<ImageView>(R.id.icon)?.setColorFilter(ContextCompat.getColor(this@MainScreenActivity, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+                tab?.position.let { it?.let { it1 -> view_pager.setCurrentItem(it1, false) } }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                when(tab?.position){
-                    0 -> {
-                        tab.setIcon(R.drawable.ic_home)
-                    }
-                    1 -> {
-                        tab.setIcon(R.drawable.ic_friend)
-                    }
-                    2 -> {
-                        tab.setIcon(R.drawable.ic_personal)
-                    }
-                    3 -> {
-                        tab.setIcon(R.drawable.ic_watch)
-                    }
-                    4 -> {
-                        tab.setIcon(R.drawable.ic_notify)
-                    }
-                    5 -> {
-                        tab.setIcon(R.drawable.ic_menu)
-                    }
-                }
+                tab?.customView?.findViewById<TextView>(R.id.name)?.visibility = View.GONE
+                tab?.customView?.findViewById<ImageView>(R.id.icon)?.setColorFilter(ContextCompat.getColor(this@MainScreenActivity, R.color.general_bull), android.graphics.PorterDuff.Mode.SRC_IN);
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -119,7 +69,7 @@ class MainScreenActivity : AppCompatActivity() {
     }
 
     fun setCurrentFragment(position: Int) {
-        view_pager.currentItem = position
+        view_pager.setCurrentItem(position, false)
     }
 }
 

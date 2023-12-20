@@ -3,14 +3,11 @@ package com.htnguyen.ihealthclub.view.register
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.ListAdapter
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
@@ -217,7 +214,7 @@ class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, Registe
             .apply {
                 val backgroundDrawable = ContextCompat.getDrawable(
                     this@ContactNumberActivity,
-                    R.drawable.blue_outline_background_white
+                    R.drawable.rounded_blue_outline_background_white
                 )
                 setBackgroundDrawable(backgroundDrawable)
                 isOutsideTouchable = true

@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:background="@drawable/general_background">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -105,8 +105,8 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_38sdp"
             android:layout_marginTop="@dimen/_16sdp"
-            android:background="@drawable/blue_outline"
-            android:popupBackground="@drawable/blue_outline_background_white"
+            android:background="@drawable/rounded_blue_outline"
+            android:popupBackground="@drawable/rounded_blue_outline_background_white"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
             app:layout_constraintStart_toStartOf="@+id/guideline11"
@@ -205,7 +205,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16sdp"
-            android:background="@drawable/rounded_button_blue"
+            android:background="@drawable/rounded_background_blue_linear"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"

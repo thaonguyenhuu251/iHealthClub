@@ -11,14 +11,18 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
+import com.htnguyen.ihealthclub.base.BaseFragment
 import com.htnguyen.ihealthclub.database.UserRepository
 import com.htnguyen.ihealthclub.database.UserRoomDatabase
+import com.htnguyen.ihealthclub.databinding.FragmentMenuBinding
 import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
 import com.htnguyen.ihealthclub.utils.URL_PHOTO
 import com.htnguyen.ihealthclub.utils.USER_ID
 import com.htnguyen.ihealthclub.utils.USER_NAME
 import com.htnguyen.ihealthclub.view.login.LoginActivity
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
+import com.htnguyen.ihealthclub.view.mainscreen.personal.PersonalProfileFragment
+import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_menu.img_avatar
 import kotlinx.coroutines.CoroutineScope
@@ -26,7 +30,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class MenuFragment : Fragment() {
+class MenuFragment : BaseFragment<FragmentMenuBinding, RegisterViewModel>() {
     private lateinit var sharedPreferences: SharedPreferences
     private var urlAvatar: String = ""
     private var userName: String = ""
@@ -40,13 +44,8 @@ class MenuFragment : Fragment() {
         userRepository = UserRepository(UserRoomDatabase.getDatabase(requireContext()).userDao())
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false)
-    }
+    override val layout: Int
+        get() = R.layout.fragment_menu
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,14 +54,13 @@ class MenuFragment : Fragment() {
     }
 
     private fun initView(){
-
         tv_user_name.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fb_avatar)).into(img_avatar)
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar)
 
         ln_user.setOnClickListener {
-            (requireActivity() as MainScreenActivity).setCurrentFragment(2)
+            transitFragment(PersonalProfileFragment(), R.id.container)
         }
 
         btn_log_out.setOnClickListener {

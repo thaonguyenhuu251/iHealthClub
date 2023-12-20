@@ -19,7 +19,7 @@
             android:id="@+id/img_avatar"
             android:layout_width="@dimen/_36sdp"
             android:layout_height="@dimen/_36sdp"
-            android:src="@drawable/img_profile"
+            android:src="@drawable/ic_user_thumbnail"
             android:scaleType ="centerCrop"/>
 
         <androidx.appcompat.widget.AppCompatTextView

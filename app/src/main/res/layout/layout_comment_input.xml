@@ -43,7 +43,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:src="@drawable/emoji_happy" />
+            android:src="@drawable/img_post_home_emoji" />
 
         <ImageView
             android:id="@+id/imgSticker"

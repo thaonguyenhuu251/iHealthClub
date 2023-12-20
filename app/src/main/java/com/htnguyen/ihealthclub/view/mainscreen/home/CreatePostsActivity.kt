@@ -111,7 +111,7 @@ class CreatePostsActivity : AppCompatActivity() {
         atv_post.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(this, R.drawable.ic_fb_avatar)).into(img_avatar)
+            .error(AppCompatResources.getDrawable(this, R.drawable.ic_user_thumbnail)).into(img_avatar)
 
 
 

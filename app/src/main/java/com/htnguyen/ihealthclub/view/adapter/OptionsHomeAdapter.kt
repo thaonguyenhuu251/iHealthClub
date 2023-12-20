@@ -40,9 +40,6 @@ class OptionsHomeAdapter(val context: Context, var listOptions: MutableList<Opti
         fun bindItem(option: OptionsHome) {
             tv_options_home.text = option.optionName
             tv_options_home.setTextColor(getColor(context, option.textColor))
-            Glide.with(context).load(option.srcImage)
-                .error(AppCompatResources.getDrawable(context, R.drawable.img_options_reel))
-                .into(iv_options_home)
             ln_background.setBackgroundResource(option.backgroundColor)
 
             itemView.setOnClickListener {

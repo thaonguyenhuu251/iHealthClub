@@ -10,10 +10,10 @@
     <color name="view_line">#AAAAAA</color>
 
     //color general project
-    <color name="general_blue">#384CFF</color>
+    <color name="general_blue">#0D6EFD</color>
     <color name="general_grey">#ECE4E4</color>
     <color name="general_bull">#999999</color>
-    <color name="general_blue_01">#0D91FF</color>
+    <color name="general_blue_01">#384CFF</color>
     <color name="general_background">#FFFFFF</color>
 
     //color option home
@@ -29,8 +29,8 @@
 
     <color name="black_mode">#000000</color>
     <color name="general_grey_little">#D9D9D9</color>
-    <color name="general_linear">#384CFF</color>
-    <color name="general_linear_blue">#00A3FF</color>
+    <color name="general_linear">#0D6EFD</color>
+    <color name="general_linear_blue">#384CFF</color>
     <color name="background_grey_little">#F0F1F1</color>
     <color name="general_black_little">#69000000</color>
     <color name="semi_black_transparent">#99000000</color>
