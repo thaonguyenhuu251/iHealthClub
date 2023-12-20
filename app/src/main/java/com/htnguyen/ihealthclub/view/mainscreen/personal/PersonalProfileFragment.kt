@@ -31,11 +31,13 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.base.BaseFragment
+import com.htnguyen.ihealthclub.databinding.FragmentPersonalProfileBinding
+import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_personal_profile.*
 import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
 
-class PersonalProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, RegisterViewModel>() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var databasepost: DatabaseReference
@@ -57,13 +59,8 @@ class PersonalProfileFragment : Fragment() {
         idUser = sharedPreferences.getString(USER_ID,"USER ID").toString()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_profile, container, false)
-    }
+    override val layout: Int
+        get() = R.layout.fragment_personal_profile
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,7 +69,6 @@ class PersonalProfileFragment : Fragment() {
     }
 
     private fun initView(){
-
         tv_user_name.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))

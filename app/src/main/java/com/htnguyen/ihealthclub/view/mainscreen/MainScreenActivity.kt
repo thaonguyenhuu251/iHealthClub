@@ -1,6 +1,5 @@
 package com.htnguyen.ihealthclub.view.mainscreen
 
-import android.content.res.Resources.Theme
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import androidx.core.content.ContextCompat
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.view.adapter.HomePagerFragmentAdapter
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main_screen.*
 
 
@@ -61,7 +59,7 @@ class MainScreenActivity : AppCompatActivity() {
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 tab?.customView?.findViewById<TextView>(R.id.name)?.visibility = View.GONE
-                tab?.customView?.findViewById<ImageView>(R.id.icon)?.setColorFilter(ContextCompat.getColor(this@MainScreenActivity, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
+                tab?.customView?.findViewById<ImageView>(R.id.icon)?.setColorFilter(ContextCompat.getColor(this@MainScreenActivity, R.color.general_bull), android.graphics.PorterDuff.Mode.SRC_IN);
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {

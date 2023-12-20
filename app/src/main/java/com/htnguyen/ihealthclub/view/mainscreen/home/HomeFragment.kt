@@ -28,17 +28,19 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.base.BaseFragment
+import com.htnguyen.ihealthclub.databinding.FragmentHomeBinding
+import com.htnguyen.ihealthclub.view.mainscreen.personal.PersonalProfileFragment
+import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
     private lateinit var databasestory: DatabaseReference
     private lateinit var databasepost: DatabaseReference
-    private var optionsAdapter: OptionsHomeAdapter? = null
     private var storyAdapter: StoryViewAdapter? = null
     private var postAdapter: PostAdapter? = null
     private var id: String = ""
     private var user: String = ""
-    private var idpostget: Long = 0L
 
     private lateinit var btsComment: BottomSheetCommentFragment
 
@@ -60,24 +62,17 @@ class HomeFragment : Fragment() {
         idUser = sharedPreferences.getString(USER_ID, "USER_ID").toString()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    override val layout: Int
+        get() = R.layout.fragment_home
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
     }
-
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun initView() {
-
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
             .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
             .into(img_avatar)
@@ -91,7 +86,7 @@ class HomeFragment : Fragment() {
         }
 
         img_avatar.setOnClickListener {
-            (requireActivity() as MainScreenActivity).setCurrentFragment(2)
+            transitFragment(PersonalProfileFragment(), R.id.frameContainer)
         }
 
         initRecyclerView()
@@ -100,16 +95,6 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun initRecyclerView() {
-        optionsAdapter =
-            OptionsHomeAdapter(requireContext(), listOptions = listOption()) { optionsHome ->
-
-            }
-
-        rv_home.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        rv_home.setHasFixedSize(true)
-        rv_home.adapter = optionsAdapter
-
         storyAdapter = StoryViewAdapter(urlAvatar, requireContext(), listStory) { objectStory ->
             id = objectStory.idUser
             showStories(id)
@@ -211,55 +196,6 @@ class HomeFragment : Fragment() {
         getAllPosts()
 
     }
-
-    private fun listOption(): MutableList<OptionsHome> {
-        val listOption = mutableListOf<OptionsHome>()
-        listOption.add(
-            OptionsHome(
-                optionName = "Reels",
-                srcImage = R.drawable.img_options_reel,
-                backgroundColor = R.color.color_reel,
-                textColor = R.color.color_reel_bold
-            )
-        )
-        listOption.add(
-            OptionsHome(
-                optionName = "Room",
-                srcImage = R.drawable.img_options_room,
-                backgroundColor = R.color.color_room,
-                textColor = R.color.color_room_bold
-            )
-        )
-        listOption.add(
-            OptionsHome(
-                optionName = "Group",
-                srcImage = R.drawable.img_options_group,
-                backgroundColor = R.color.color_group,
-                textColor = R.color.color_group_bold
-            )
-        )
-        listOption.add(
-            OptionsHome(
-                optionName = "Live",
-                srcImage = R.drawable.img_options_live,
-                backgroundColor = R.color.color_live,
-                textColor = R.color.color_live_bold
-            )
-        )
-        return listOption
-    }
-
-//    private fun listPost(): MutableList<Post> {
-//        val listPost = mutableListOf<Post>()
-//        listPost.add(Post(1,"Hoang Anh",mutableListOf<String>(),TypeFile.IMAGE,0,0,0,"0","0"));
-//        listPost.add(Post(1,"Hoang Anh",mutableListOf<String>(),TypeFile.IMAGE,0,0,0,"0","0"));
-//        listPost.add(Post(1,"Hoang Anh",mutableListOf<String>(),TypeFile.IMAGE,0,0,0,"0","0"));
-//        listPost.add(Post(1,"Hoang Anh",mutableListOf<String>(),TypeFile.IMAGE,0,0,0,"0","0"));
-//        listPost.add(Post(1,"Hoang Anh",mutableListOf<String>(),TypeFile.IMAGE,0,0,0,"0","0"));
-//        listPost.add(Post(1,"Hoang Anh",mutableListOf<String>(),TypeFile.IMAGE,0,0,0,"0","0"));
-//
-//        return listPost
-//    }
 
     fun checkStory(a: String, b: MutableList<Any>): Int {
         val k = b as MutableList<ObjectStory>

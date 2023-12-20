@@ -21,6 +21,7 @@ import com.htnguyen.ihealthclub.utils.USER_ID
 import com.htnguyen.ihealthclub.utils.USER_NAME
 import com.htnguyen.ihealthclub.view.login.LoginActivity
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
+import com.htnguyen.ihealthclub.view.mainscreen.personal.PersonalProfileFragment
 import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_menu.img_avatar
@@ -59,7 +60,7 @@ class MenuFragment : BaseFragment<FragmentMenuBinding, RegisterViewModel>() {
             .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar)
 
         ln_user.setOnClickListener {
-            transitFragment(this, R.layout.)
+            transitFragment(PersonalProfileFragment(), R.id.container)
         }
 
         btn_log_out.setOnClickListener {
