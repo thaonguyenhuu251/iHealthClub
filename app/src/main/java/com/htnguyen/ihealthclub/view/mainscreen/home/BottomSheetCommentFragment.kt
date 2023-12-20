@@ -74,7 +74,7 @@ class BottomSheetCommentFragment : BottomSheetDialogFragment{
         }
 
         val view = inflater.inflate(R.layout.fragment_bottom_sheet_comment, container, false)
-        view.setBackgroundResource(R.drawable.bg_rounded_bottom_comment)
+        view.setBackgroundResource(R.drawable.rounded_bottom_comment)
         //view.findViewById<ConstraintLayout> (R.id.cstBottomComment).maxHeight = (resources.displayMetrics.heightPixels * 0.55).toInt()
         return view
     }
