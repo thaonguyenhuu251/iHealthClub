@@ -31,6 +31,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -49,6 +50,7 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
 
 import com.htnguyen.ihealthclub.R;
 
@@ -64,7 +66,7 @@ import java.util.List;
  */
 @SuppressLint("AppCompatCustomView")
 public class ReactButton
-        extends Button
+        extends TextView
         implements View.OnClickListener, View.OnLongClickListener {
 
     /**
@@ -346,9 +348,7 @@ public class ReactButton
     private void updateReactButtonByReaction(Reaction react) {
         mCurrentReaction = react;
         mReactButton.setText(react.getReactText());
-        mReactButton.setTextSize(13);
-        mReactButton.setTextColor(Color.parseColor(react.getReactTextColor()));
-        //mReactButton.setCompoundDrawablesWithIntrinsicBounds(react.getReactIconId(), 0, 0, 0);
+        mReactButton.setCompoundDrawablesWithIntrinsicBounds(react.getReactIconId(), 0, 0, 0);
         isReactButtonUpdated = !react.equals(mDefaultReaction);
         if (mOnReactionChangeListener != null) mOnReactionChangeListener.onReactionChange(react);
     }

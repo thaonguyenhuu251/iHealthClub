@@ -238,50 +238,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
             android:orientation="horizontal">
 
             <com.htnguyen.ihealthclub.view.reacbutton.ReactButton
-                android:id="@+id/reactButton"
+                android:id="@+id/reactLike"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_marginStart="24dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@null"
+                android:layout_gravity="center"
                 android:paddingHorizontal="@dimen/_25sdp"
-                android:textAllCaps="false" />
+                android:padding="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_12sdp"/>
 
             <TextView
-                android:id="@+id/txtComment"
+                android:id="@+id/reactComment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_comment"
-                android:drawablePadding="@dimen/_2sdp"
-                android:drawableTint="@color/general_grey_black"
-                android:padding="@dimen/_2sdp"
-                android:text="Comment"
-                android:textColor="@color/general_grey_black"
-                android:textSize="@dimen/_14sdp"
-                tools:ignore="UseCompatTextViewDrawableXml" />
+                android:layout_gravity="center"
+                android:padding="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:text="@string/post_comment"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_12sdp"
+                app:drawableStartCompat="@drawable/ic_comment" />
 
             <TextView
-                android:id="@+id/txtShare"
+                android:id="@+id/reactShare"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_share"
-                android:drawableTint="@color/general_grey_black"
-                android:padding="@dimen/_2sdp"
-                android:text="Share"
-                android:textColor="@color/general_grey_black"
-                android:textSize="@dimen/_14sdp" />
+                android:layout_gravity="center"
+                android:padding="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:text="@string/post_share"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_12sdp"
+                app:drawableStartCompat="@drawable/ic_share" />
+
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

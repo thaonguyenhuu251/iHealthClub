@@ -84,7 +84,6 @@ class PostAdapter(
     inner class ItemViewHolderImage(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @RequiresApi(Build.VERSION_CODES.N)
         fun bindItem(post: Post) {
-            Log.d("hunghkp1234", "bindItem: ")
             val atv_post: TextView = itemView.findViewById(R.id.atv_post)
             val et_thinking_pos: TextView = itemView.findViewById((R.id.et_thinking_pos))
             val tv_time_post: TextView = itemView.findViewById((R.id.tv_time_post))
@@ -97,18 +96,17 @@ class PostAdapter(
             val tv_total_share: TextView = itemView.findViewById((R.id.tv_total_share))
 
 
-            val reactButton: ReactButton = itemView.findViewById(R.id.reactButton)
+            val reactButton: ReactButton = itemView.findViewById(R.id.reactLike)
             val reaction = Reaction("Like", "Like", "", 0)
             reactButton.setReactions(*FbReactions.reactions)
             reactButton.defaultReaction = FbReactions.defaultReact
             reactButton.setEnableReactionTooltip(true)
 
             reactButton.setOnClickListener {
-                Log.d("hunghkp123", "bindItem: ")
                 callback2.invoke(reaction, post)
             }
 
-            val txtComment: TextView = itemView.findViewById(R.id.txtComment)
+            val txtComment: TextView = itemView.findViewById(R.id.reactComment)
             txtComment.setOnClickListener {
                 callback3.invoke(txtComment, post)
             }
@@ -155,7 +153,6 @@ class PostAdapter(
             }
             itemView.setBackgroundResource(R.color.white)
 
-
         }
     }
 
@@ -177,14 +174,32 @@ class PostAdapter(
 
     inner class ItemViewHolderText(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItem(post: Post) {
-            val atv_post: TextView = itemView.findViewById(R.id.atv_post_text)
-            val et_thinking_pos: TextView = itemView.findViewById((R.id.et_thinking_pos_text))
-            val tv_time_post: TextView = itemView.findViewById((R.id.tv_time_post_text))
-            val tv_emoji_status: TextView = itemView.findViewById((R.id.tv_emoji_status_text))
-            val img_avatar: ImageView = itemView.findViewById(R.id.img_avatar_text)
+            val atv_post: TextView = itemView.findViewById(R.id.atv_post)
+            val et_thinking_pos: TextView = itemView.findViewById((R.id.et_thinking_pos))
+            val tv_time_post: TextView = itemView.findViewById((R.id.tv_time_post))
+            val tv_emoji_status: TextView = itemView.findViewById((R.id.tv_emoji_status))
+            val img_avatar: ImageView = itemView.findViewById(R.id.img_avatar)
+
+            val reactButton: ReactButton = itemView.findViewById(R.id.reactLike)
+            val reaction = Reaction("Like", "Like", "", 0)
+            reactButton.setReactions(*FbReactions.reactions)
+            reactButton.defaultReaction = FbReactions.defaultReact
+            reactButton.setEnableReactionTooltip(true)
+
+            reactButton.setOnClickListener {
+                callback2.invoke(reaction, post)
+            }
+
+            val txtComment: TextView = itemView.findViewById(R.id.reactComment)
+            txtComment.setOnClickListener {
+                callback3.invoke(txtComment, post)
+            }
+
+
             Glide.with(context).load(post.urlAvatar)
                 .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
                 .into(img_avatar)
+
             atv_post.text = post.createBy
             et_thinking_pos.text = post.status
             tv_emoji_status.text = post.emojiStatus
@@ -197,12 +212,19 @@ class PostAdapter(
 
             val minutes = TimeUnit.MILLISECONDS.toMinutes(diff)
             val hour = TimeUnit.MILLISECONDS.toHours(diff)
+            val day = TimeUnit.MILLISECONDS.toDays(diff)
             var time = ""
             time = if (hour < 1) {
-                "$minutes phut"
+                "$minutes minutes"
             } else {
-                "$hour gio"
+                if (hour <= 24) {
+                    "$hour hours"
+                } else {
+                    "$day days"
+                }
+
             }
+
             tv_time_post.text = time
             itemView.setOnClickListener {
                 callback.invoke(post)

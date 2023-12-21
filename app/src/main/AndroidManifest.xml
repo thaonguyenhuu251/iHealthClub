@@ -19,7 +19,7 @@
         tools:ignore="ExtraText">
         <activity
             android:name="com.htnguyen.ihealthclub.view.mainscreen.photoeditor.EditImageActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.mainscreen.home.PickImageStoryActivity"
             android:exported="false"
@@ -34,9 +34,6 @@
 
         </activity>
         <activity
-            android:name="com.htnguyen.ihealthclub.view.mainscreen.home.BottomSheetHomeActivity"
-            android:exported="false" />
-        <activity
             android:name="com.htnguyen.ihealthclub.view.mainscreen.home.ObjectPostHomeActivity"
             android:exported="false" />
         <activity
@@ -45,10 +42,11 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>y>
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.CreateNewPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -59,7 +57,8 @@
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.WhatYourNameActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.htnguyen.ihealthclub.view.register.JoinClubActivity"
+        <activity
+            android:name="com.htnguyen.ihealthclub.view.register.JoinClubActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -74,8 +73,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.ContactNumberActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

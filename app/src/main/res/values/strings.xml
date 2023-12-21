@@ -98,7 +98,6 @@
     <string name="all_your_friends">All your friends</string>
 
     <string-array name="photo_editor_emoji">
-
         <!-- Smiles -->
         <item>u+1f604</item>
         <item>u+1f603</item>
@@ -503,4 +502,14 @@
         <item>u+1f4cd</item>
         <item>u+1f6a9</item>
     </string-array>
+
+    <string name="gender_other">Gender: Other</string>
+    <string name="gender_male">Gender: Male</string>
+    <string name="gender_female">Gender: Female</string>
+    <string name="birthday_profile">Birthday: %s</string>
+    <string name="height">Height: %.2f</string>
+    <string name="weight">Weight: %.2f</string>
+    <string name="post_like">Like</string>
+    <string name="post_comment">Comment</string>
+    <string name="post_share">Share</string>
 </resources>

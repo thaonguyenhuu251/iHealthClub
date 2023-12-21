@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
@@ -37,50 +38,53 @@ import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_personal_profile.*
 import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
 
-class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, RegisterViewModel>() {
+class PersonalProfileFragment :
+    BaseFragment<FragmentPersonalProfileBinding, PersonalProfileViewModel>() {
     private lateinit var databasepost: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
-    private var urlAvatar: String = ""
-    private var userName: String = ""
-    private var idUser: String = ""
     private var postAdapter: PostAdapter? = null
     private val listPost = mutableListOf<Any>()
     private lateinit var btsComment: BottomSheetCommentFragment
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        databasepost = Firebase.database.reference.child("posts")
-        sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-        urlAvatar = sharedPreferences.getString(URL_PHOTO,"").toString()
-        userName = sharedPreferences.getString(USER_NAME, "USER FACEBOOK").toString()
-        idUser = sharedPreferences.getString(USER_ID,"USER ID").toString()
-    }
+    private val viewModel by viewModels<PersonalProfileViewModel>()
 
     override val layout: Int
         get() = R.layout.fragment_personal_profile
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        databasepost = Firebase.database.reference.child("posts")
+        sharedPreferences =
+            requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+        initData()
         initView()
 
     }
 
-    private fun initView(){
-        tv_user_name.text = userName
+    private fun initData() {
+        binding.viewModel = viewModel
+        viewModel.idUser.value =
+            sharedPreferences.getString(USER_ID, "").toString()
 
-        Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar)
-        Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar_little)
+        viewModel.getDataProfileUser()
+    }
 
-        btn_add_story.setOnClickListener{
-            val intent = Intent(this@PersonalProfileFragment.context,PickImageStoryActivity::class.java)
+    private fun initView() {
+        Glide.with(this).load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
+            .into(img_avatar)
+        Glide.with(this).load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
+            .into(img_avatar_little)
+
+        btn_add_story.setOnClickListener {
+            val intent =
+                Intent(this@PersonalProfileFragment.context, PickImageStoryActivity::class.java)
             startActivity(intent)
         }
 
-        ln_thinking_post.setOnClickListener{
-            val intent = Intent(this@PersonalProfileFragment.context,CreatePostsActivity::class.java)
+        ln_thinking_post.setOnClickListener {
+            val intent =
+                Intent(this@PersonalProfileFragment.context, CreatePostsActivity::class.java)
             startActivity(intent)
         }
         initRecycleView()
@@ -91,16 +95,15 @@ class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, Reg
 
     }
 
-    private fun initRecycleView(){
-        postAdapter = PostAdapter(urlAvatar, requireContext(), listPost,{post->
+    private fun initRecycleView() {
+        postAdapter = PostAdapter(viewModel.idUser.value!!, requireContext(), listPost, { post ->
 
-        },{reaction, post ->
+            }, { reaction, post ->
 
-        },{
-            linear, post ->
-            btsComment = BottomSheetCommentFragment.newInstance(post.idPost)
-            btsComment.show(childFragmentManager,"")
-        })
+            }, { linear, post ->
+                btsComment = BottomSheetCommentFragment.newInstance(post.idPost)
+                btsComment.show(childFragmentManager, "")
+            })
         rv_post_person.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rv_post_person.setHasFixedSize(true)
@@ -114,23 +117,25 @@ class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, Reg
         val postListener = object : ValueEventListener {
             @RequiresApi(Build.VERSION_CODES.N)
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
                 for (postSnapshot in dataSnapshot.children) {
                     val post = postSnapshot.getValue<Post>()
                     if (post != null) {
-                        if (post.idUser == idUser && checkPost(post.idPost,listPost)==1){
+                        if (post.idUser == sharedPreferences.getString(USER_ID, "").toString()&& checkPost(
+                                post.idPost,
+                                listPost
+                            ) == 1
+                        ) {
                             listPost.add(post)
                         }
                     }
 
                 }
-                Log.d("hunghkp", "${listPost.size} ")
+                Log.d("ThaoNH", "${listPost.size} ")
                 postAdapter?.notifyDataSetChanged()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("nht", "loadPost:onCancelled", databaseError.toException())
+
             }
         }
         databasepost.addValueEventListener(postListener)
@@ -138,8 +143,8 @@ class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, Reg
     }
 
     fun checkPost(a: Long, b: MutableList<Any>): Int {
-        val  k = b as MutableList<Post>
-        for(i in k){
+        val k = b as MutableList<Post>
+        for (i in k) {
             if (a == i.idPost)
                 return 0
         }

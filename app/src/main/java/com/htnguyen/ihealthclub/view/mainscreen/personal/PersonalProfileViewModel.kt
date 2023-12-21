@@ -1,97 +1,45 @@
 package com.htnguyen.ihealthclub.view.mainscreen.personal
 
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.base.BaseViewModel
+import com.htnguyen.ihealthclub.model.User
+
 
 class PersonalProfileViewModel : BaseViewModel() {
     val email: MutableLiveData<String> = MutableLiveData(null)
     val phone: MutableLiveData<String> = MutableLiveData(null)
-    val password: MutableLiveData<String> = MutableLiveData(null)
-    val confirmPassword: MutableLiveData<String> = MutableLiveData(null)
-    val validationEmailMsg: MutableLiveData<String> = MutableLiveData(null)
-    val validationPhoneMsg: MutableLiveData<String> = MutableLiveData(null)
-    val validationPasswordMsg: MutableLiveData<String> = MutableLiveData(null)
-    val validationConfirmPasswordMsg: MutableLiveData<String> = MutableLiveData(null)
-    val validationMatchPasswordMsg: MutableLiveData<String> = MutableLiveData(null)
+    val idUser: MutableLiveData<String> = MutableLiveData(null)
+    val userName: MutableLiveData<String> = MutableLiveData(null)
+    val userPhotoUrl: MutableLiveData<String> = MutableLiveData(null)
+    val userBirthDay: MutableLiveData<Long> = MutableLiveData(0)
+    val userGender: MutableLiveData<Boolean> = MutableLiveData(null)
+    val userHeight: MutableLiveData<Float> = MutableLiveData(null)
+    val userWeight: MutableLiveData<Float> = MutableLiveData(null)
 
-    fun isEmailEmpty() : Boolean {
-        return if (email.value != null && email.value.toString().trim().isNotEmpty()) {
-            validationEmailMsg.value = null
-            true
-        } else {
-            validationEmailMsg.value = "cannot be left blank"
-            false
+    fun getDataProfileUser() {
+        val db = Firebase.firestore
+        idUser.value?.let {
+            db.collection("User").document(it).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val user = document.toObject(User::class.java)
+                        if (user != null) {
+                            userName.value = user.name.toString()
+                            userPhotoUrl.value = user.photoUrl.toString()
+                            userBirthDay.value = user.birthDay!!
+                            userGender.value = user.gender!!
+                            userHeight.value = user.height!!
+                            userWeight.value = user.weight!!
+                        }
+
+                    }
+                }
+                .addOnFailureListener { exception ->
+
+                }
         }
-    }
-
-    fun isPhoneEmpty() : Boolean {
-        return if (phone.value != null && phone.value.toString().trim().isNotEmpty()) {
-            validationPhoneMsg.value = null
-            true
-        } else {
-            validationPhoneMsg.value = "cannot be left blank"
-            false
-        }
-    }
-
-    fun isPasswordNotEmpty() : Boolean {
-        return password.value.toString().trim().isNotEmpty()
-                && confirmPassword.value.toString().trim().isNotEmpty()
-                && !password.value.isNullOrBlank()
-                && !confirmPassword.value.isNullOrBlank()
-    }
-
-    fun isValidatePassword() : Boolean {
-        return if (password.value != null && password.value.toString().trim().isNotEmpty()) {
-            if (isPasswordValid(password.value.toString())) {
-                validationPasswordMsg.value = null
-                true
-            } else {
-                validationPasswordMsg.value = "Password must contain at least 1 letter, 1 number, 1 uppercase character"
-                false
-            }
-        } else {
-            validationPasswordMsg.value = "cannot be left blank"
-            false
-        }
-    }
-
-    fun isValidateConfirmPassword() : Boolean {
-        return if (confirmPassword.value != null && confirmPassword.value.toString().trim().isNotEmpty()) {
-            if (isPasswordValid(confirmPassword.value.toString())) {
-                validationConfirmPasswordMsg.value = null
-                true
-            } else {
-                validationConfirmPasswordMsg.value = "Password must contain at least 1 letter, 1 number, 1 uppercase character"
-                false
-            }
-        } else {
-            validationConfirmPasswordMsg.value = "cannot be left blank"
-            false
-        }
-    }
-
-    fun isValidatePasswordMatch() : Boolean {
-        return if (isPasswordNotEmpty()) {
-            if (password.value.toString().trim() == confirmPassword.value.toString().trim()) {
-                validationMatchPasswordMsg.value = null
-                true
-            } else {
-                validationMatchPasswordMsg.value = "Password not match"
-                false
-            }
-        } else {
-            false
-        }
-    }
-
-    fun isValidatePasswordFinish() : Boolean {
-        return isValidatePasswordMatch()
-                && isValidatePassword() && isValidateConfirmPassword()
-    }
-
-    private fun isPasswordValid(password: String): Boolean {
-        return Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}\$").matches(password)
     }
 
 }
