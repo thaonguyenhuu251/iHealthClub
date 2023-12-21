@@ -55,7 +55,7 @@
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:background="@drawable/rounded_search_home"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_search_black" />
+                    android:src="@drawable/ic_search" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

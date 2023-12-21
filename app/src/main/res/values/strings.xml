@@ -92,6 +92,10 @@
     <string name="create_a_password">Create a password at least with 6 characters. \nIt should be something other couldn\'t guess</string>
     <string name="search_by_email_instead">Search by email instead</string>
     <string name="search_by_number_phone_instead">Search by number phone instead</string>
+    <string name="add_to_story">Add to story</string>
+    <string name="edit_public_detail">Edit public detail</string>
+    <string name="search_friend">Search friend</string>
+    <string name="all_your_friends">All your friends</string>
 
     <string-array name="photo_editor_emoji">
 

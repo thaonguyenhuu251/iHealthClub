@@ -76,7 +76,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/_5sdp"
-            android:src="@drawable/ic_baseline_send"
+            android:src="@drawable/ic_share"
             android:visibility="gone" />
 
     </RelativeLayout>

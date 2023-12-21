@@ -39,7 +39,7 @@
         android:layout_width="@dimen/_45sdp"
         android:layout_height="@dimen/_45sdp"
         android:padding="@dimen/_10sdp"
-        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="@+id/guideline61"
         app:layout_constraintTop_toTopOf="@+id/guideline60"
         tools:ignore="ContentDescription" />

@@ -33,13 +33,6 @@
         android:src="@drawable/img_post_home_emoji" />
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_24sdp"
-        android:layout_weight="1"
-        android:padding="@dimen/_2sdp"
-        android:src="@drawable/img_post_home_location" />
-
-    <ImageView
         android:id="@+id/im_post_more"
         android:layout_width="0dp"
         android:layout_height="@dimen/_24sdp"
