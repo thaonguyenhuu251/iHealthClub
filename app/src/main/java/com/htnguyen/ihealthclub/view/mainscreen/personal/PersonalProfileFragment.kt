@@ -38,8 +38,6 @@ import kotlinx.android.synthetic.main.fragment_personal_profile.*
 import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
 
 class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, RegisterViewModel>() {
-    private var param1: String? = null
-    private var param2: String? = null
     private lateinit var databasepost: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
     private var urlAvatar: String = ""

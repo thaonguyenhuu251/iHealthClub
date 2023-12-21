@@ -73,6 +73,13 @@ class LoginActivity : AppCompatActivity() {
                         if (document != null) {
                             val user = document.toObject<UserLogin>()
                             if (user?.password == password ) {
+                                if (!user.iHealthClub) {
+                                    db!!.collection("UserLogin").document(phoneNumber).update(
+                                        mapOf(
+                                            "iHealthClub" to true
+                                        )
+                                    )
+                                }
                                 getProfileUser(user.idUser, user.account, user.password)
                             } else {
                                 loadingDialog?.dismissDialog()
