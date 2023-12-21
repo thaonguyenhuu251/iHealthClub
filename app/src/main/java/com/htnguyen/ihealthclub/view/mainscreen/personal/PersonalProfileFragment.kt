@@ -87,6 +87,10 @@ class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, Reg
         }
         initRecycleView()
 
+        im_back.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
     }
 
     private fun initRecycleView(){

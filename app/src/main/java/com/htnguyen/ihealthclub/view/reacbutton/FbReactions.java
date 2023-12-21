@@ -8,7 +8,7 @@ public final class FbReactions {
             ReactConstants.LIKE,
             ReactConstants.DEFAULT,
             ReactConstants.GRAY,
-            R.drawable.icons8_facebook_like_18);
+            R.drawable.ic_like);
 
     public static Reaction[] reactions = {
             new Reaction(ReactConstants.LIKE, ReactConstants.BLUE, R.drawable.ic_like),

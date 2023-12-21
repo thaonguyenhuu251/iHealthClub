@@ -272,7 +272,6 @@
                     android:hint="@string/et_hint_thinking"
                     android:imeOptions="actionNone"
                     android:inputType="textMultiLine"
-                    android:textCursorDrawable="@drawable/cursor_mouse"
                     android:textSize="@dimen/_14sdp"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp" />

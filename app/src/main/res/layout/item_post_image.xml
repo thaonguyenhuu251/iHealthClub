@@ -133,7 +133,6 @@
         android:layout_height="@dimen/_250sdp"
         android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/_10sdp"
-        android:src="@drawable/original"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

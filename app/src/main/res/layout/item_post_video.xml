@@ -153,10 +153,8 @@
             android:id="@+id/img_pick"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/original" />
+            android:scaleType="centerCrop"/>
     </RelativeLayout>
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline71"
@@ -263,7 +261,7 @@
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:foregroundGravity="center"
                     android:padding="@dimen/_2sdp"
-                    android:src="@drawable/icons8_facebook_like_64" />
+                    android:src="@drawable/ic_like" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -292,7 +290,7 @@
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:foregroundGravity="center"
                     android:padding="@dimen/_2sdp"
-                    android:src="@drawable/icons8_comments_60" />
+                    android:src="@drawable/ic_comment" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -321,7 +319,7 @@
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:foregroundGravity="center"
                     android:padding="@dimen/_2sdp"
-                    android:src="@drawable/icons8_right_60" />
+                    android:src="@drawable/ic_share" />
 
                 <TextView
                     android:layout_width="wrap_content"

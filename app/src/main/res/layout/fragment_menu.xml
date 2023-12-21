@@ -220,7 +220,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/_5sdp"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/icons8_natural_resources_64" />
+                                android:src="@drawable/action_playing" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -264,7 +264,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/_5sdp"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/icons8_support_64" />
+                                android:src="@drawable/action_supporting" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -307,7 +307,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/_5sdp"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/icons8_human_resources_64" />
+                                android:src="@drawable/action_searching" />
 
                             <TextView
                                 android:layout_width="0dp"
