@@ -96,7 +96,7 @@ class PersonalProfileFragment :
     }
 
     private fun initRecycleView() {
-        postAdapter = PostAdapter(viewModel.idUser.value!!, requireContext(), listPost, { post ->
+        /*postAdapter = PostAdapter(viewModel.idUser.value!!, requireContext(), listPost, { post ->
 
             }, { reaction, post ->
 
@@ -109,11 +109,11 @@ class PersonalProfileFragment :
         rv_post_person.setHasFixedSize(true)
         rv_post_person.setBackgroundResource(R.color.background_grey_little)
         rv_post_person.isNestedScrollingEnabled = false
-        rv_post_person.adapter = postAdapter
-        getAllPosts()
+        rv_post_person.adapter = postAdapter*/
+        //getAllPosts()
     }
 
-    private fun getAllPosts() {
+    /*private fun getAllPosts() {
         val postListener = object : ValueEventListener {
             @RequiresApi(Build.VERSION_CODES.N)
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -140,16 +140,16 @@ class PersonalProfileFragment :
         }
         databasepost.addValueEventListener(postListener)
 
-    }
+    }*/
 
-    fun checkPost(a: Long, b: MutableList<Any>): Int {
+    /*fun checkPost(a: Long, b: MutableList<Any>): Int {
         val k = b as MutableList<Post>
         for (i in k) {
             if (a == i.idPost)
                 return 0
         }
         return 1
-    }
+    }*/
 
     companion object {
         @JvmStatic

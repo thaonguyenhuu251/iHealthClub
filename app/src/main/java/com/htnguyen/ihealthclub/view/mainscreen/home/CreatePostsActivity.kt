@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResult
@@ -40,17 +39,17 @@ class CreatePostsActivity : AppCompatActivity() {
     private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
     private val storageRef = Firebase.storage.reference
     private val listDownloadUri = mutableListOf<String>()
-    private val listLike = mutableListOf<ListLike>()
+    private val userAction = mutableListOf<UserAction>()
     private var loadingDialog: LoadingDialog? = null
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var post: Post
     private lateinit var database: DatabaseReference
-    private  var userName: String = ""
-    private  var status: String = ""
+    private var userName: String = ""
+    private var status: String = ""
     private var urlAvartar: String = ""
-    private  var thinking: String = ""
+    private var thinking: String = ""
     private lateinit var typeFile: TypeFile
-    private  var emojiHome: EmojiHome?= null
+    private var emojiHome: EmojiHome? = null
 
     @SuppressLint("ResourceAsColor")
     private val startForResult =
@@ -82,9 +81,7 @@ class CreatePostsActivity : AppCompatActivity() {
                 val intent = result.data
                 val data = intent?.getSerializableExtra(KEY_EMOJI_PUT) as EmojiHome
                 emojiHome = data
-                Log.d("hunghkp", ": ${data.emojiName}")
                 status = " ${data.srcImage} felling ${data.emojiName}"
-//                val st =  data.srcImage + "felling ${data.emojiName}"
                 atv_post.text = userName + status
                 btn_post.isEnabled = true
                 btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
@@ -98,7 +95,7 @@ class CreatePostsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_post)
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         database = Firebase.database.reference
-        urlAvartar = sharedPreferences.getString(URL_PHOTO,"").toString()
+        urlAvartar = sharedPreferences.getString(URL_PHOTO, "").toString()
         typeFile = TypeFile.OTHER
         post = Post()
         initView()
@@ -111,7 +108,8 @@ class CreatePostsActivity : AppCompatActivity() {
         atv_post.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(this, R.drawable.ic_user_thumbnail)).into(img_avatar)
+            .error(AppCompatResources.getDrawable(this, R.drawable.ic_user_thumbnail))
+            .into(img_avatar)
 
 
 
@@ -142,17 +140,15 @@ class CreatePostsActivity : AppCompatActivity() {
         iv_emoji.setOnClickListener {
 
             val intent = Intent(this, EmojiActionActivity::class.java)
-            if(emojiHome != null){
+            if (emojiHome != null) {
                 intent.putExtra(KEY_EMOJI_PUT, emojiHome)
             }
 
             startActivityPickEmoji.launch(intent)
         }
         ln_emoji.setOnClickListener {
-//            val intent = Intent(this, EmojiActionActivity::class.java)
-//            startActivity(intent)
             val intent = Intent(this, EmojiActionActivity::class.java)
-            if(emojiHome != null){
+            if (emojiHome != null) {
                 intent.putExtra(KEY_EMOJI_PUT, emojiHome)
             }
 
@@ -200,28 +196,22 @@ class CreatePostsActivity : AppCompatActivity() {
         })
 
         btn_post.setOnClickListener {
-            listLike.add(ListLike("", TypeLike.NO))
-            post.idPost = System.currentTimeMillis()
+            post.idPost = sharedPreferences.getString(USER_ID, "") + "${System.currentTimeMillis()}"
             post.idUser = sharedPreferences.getString(USER_ID, "").toString()
-            post.urlAvatar = urlAvartar
-            post.status = thinking
+            post.bodyStatus = thinking
             post.emojiStatus = status
             post.listFile = listDownloadUri
-            post.typeFile = typeFile
-            post.listLike = listLike
+            post.typePost = typeFile
             post.likeTotal = 0
             post.commentTotal = 0
             post.shareTotal = 0
             post.createAt = System.currentTimeMillis()
-            post.createBy = sharedPreferences.getString(USER_NAME, "").toString()
-            database.child("posts").child(post.idPost.toString()).setValue(post)
+            database.child("Posts").child(post.idPost).setValue(post)
                 .addOnSuccessListener {
                     finish()
-                    Log.d("hunghkp", "initView: success")
                 }.addOnFailureListener { e ->
-                Log.d("hunghkp", "initView: ${e.message}")
                     finish()
-            }
+                }
 
         }
 

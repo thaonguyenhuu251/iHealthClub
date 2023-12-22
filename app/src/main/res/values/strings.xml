@@ -512,4 +512,7 @@
     <string name="post_like">Like</string>
     <string name="post_comment">Comment</string>
     <string name="post_share">Share</string>
+    <string name="post_name_status">{0} <font color="#AAAAAA" size="14" fontStyle="normal">{1}</font></string>
+    <string name="post_comment_total">{0} Comments</string>
+    <string name="post_share_total">{0} Shares</string>
 </resources>

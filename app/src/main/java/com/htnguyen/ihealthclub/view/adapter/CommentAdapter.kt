@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.CommentModel
 import com.htnguyen.ihealthclub.view.reacbutton.FbReactions
-import com.htnguyen.ihealthclub.view.reacbutton.ReactButton
+import com.htnguyen.ihealthclub.view.reacbutton.ReactText
 
 class CommentAdapter (val context: Context, var listComment: MutableList<CommentModel>, val callback : (CommentModel) -> Unit)  :
     RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
@@ -34,17 +34,17 @@ class CommentAdapter (val context: Context, var listComment: MutableList<Comment
             itemView.setOnClickListener {
                 callback.invoke(commentModel)
             }
-            val reactButton: ReactButton = itemView.findViewById<ReactButton>(R.id.reactButton)
-            reactButton.setReactions(*FbReactions.reactions)
-            reactButton.defaultReaction = FbReactions.defaultReact
-            reactButton.setEnableReactionTooltip(true)
+            val reactText: ReactText = itemView.findViewById<ReactText>(R.id.reactText)
+            reactText.setReactions(*FbReactions.reactions)
+            reactText.defaultReaction = FbReactions.defaultReact
+            reactText.setEnableReactionTooltip(true)
 
-            reactButton.setOnReactionChangeListener { reaction ->
+            reactText.setOnReactionChangeListener { reaction ->
 
             }
 
-            reactButton.setOnReactionDialogStateListener(object :
-                ReactButton.OnReactionDialogStateListener {
+            reactText.setOnReactionDialogStateListener(object :
+                ReactText.OnReactionDialogStateListener {
                 override fun onDialogOpened() {
 
                 }

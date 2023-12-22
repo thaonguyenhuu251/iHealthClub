@@ -19,10 +19,7 @@ import com.htnguyen.ihealthclub.database.UserRoomDatabase
 import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.model.UserLogin
 import com.htnguyen.ihealthclub.model.UserSaved
-import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
-import com.htnguyen.ihealthclub.utils.URL_PHOTO
-import com.htnguyen.ihealthclub.utils.USER_ID
-import com.htnguyen.ihealthclub.utils.USER_NAME
+import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.login.LoginActivity
 import com.htnguyen.ihealthclub.view.login.LoginProfileActivity
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
@@ -33,12 +30,10 @@ import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
     private var userRepository: UserRepository? = null
-    private var db: FirebaseFirestore? = null
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        db = Firebase.firestore
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         userRepository = UserRepository(UserRoomDatabase.getDatabase(this).userDao())
 
@@ -49,20 +44,17 @@ class SplashScreenActivity : AppCompatActivity() {
             }, 2000)
         } else {
             val users = userRepository?.allUsers!![0]
-            db!!.collection("UserLogin").document(users.account).get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val user = document.toObject<UserLogin>()
-                        if (user?.password == users.password) {
-                            getProfileUser(user?.idUser, user?.account, user?.password)
-                        } else {
-                            showSnackBar("Phone or Password wrong, please check again !")
-                        }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    showSnackBar("Username and password don't match, please try again")
-                }
+            users.password?.let {
+                FirebaseUtils.isUserLogin(
+                    users.account,
+                    it,
+                    onSuccess = {userLogin ->
+                        getProfileUser(userLogin.idUser, userLogin.account, userLogin.password)
+                    },
+                    onFailure = {
+                        showSnackBar(it.message.toString())
+                    })
+            }
         }
     }
 
@@ -72,34 +64,25 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun getProfileUser(idUser: String?, account: String?, password: String?) {
         if (idUser != null) {
-            db!!.collection("User").document(idUser).get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val user = document.toObject(User::class.java)
-                        val userSaved = UserSaved(
-                            account = account!!,
-                            userName = user?.name,
-                            password = password,
-                            photoUrl = user?.photoUrl
-                        )
-                        CoroutineScope(Dispatchers.IO).launch {
-                            userRepository?.insert(userSaved)
-                        }
-                        val editor = sharedPreferences.edit()
-                        editor.putString(USER_ID, idUser)
-                        editor.putString(URL_PHOTO, user?.photoUrl)
-                        editor.putString(USER_NAME, user?.name)
-                        editor.apply()
-                        editor.commit()
-                        val login =
-                            Intent(this@SplashScreenActivity, MainScreenActivity::class.java)
-                        startActivity(login)
-                        finish()
-                    }
-                }
-                .addOnFailureListener { exception ->
+            FirebaseUtils.getUserById(
+                idUser,
+                onSuccess = { user ->
+                    val editor = sharedPreferences.edit()
+                    editor.putString(USER_ID, idUser)
+                    editor.putString(URL_PHOTO, user.photoUrl)
+                    editor.putString(USER_NAME, user.name)
+                    editor.apply()
+                    editor.commit()
+                    val login = Intent(this@SplashScreenActivity, MainScreenActivity::class.java)
+                    startActivity(login)
+                    finish()
+                },
+                onFailure = {exception ->
+
                     Toast.makeText(baseContext, exception.toString(), Toast.LENGTH_SHORT).show()
                 }
+            )
+
         }
     }
 }

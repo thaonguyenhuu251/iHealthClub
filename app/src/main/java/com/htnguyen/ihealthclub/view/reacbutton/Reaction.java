@@ -24,12 +24,16 @@
 
 package com.htnguyen.ihealthclub.view.reacbutton;
 
+import com.htnguyen.ihealthclub.model.TypeAction;
+
 import java.util.Arrays;
 
 /**
  * Reaction model class used to store information for each reaction
  */
 public class Reaction {
+
+    private TypeAction typeAction;
 
     private final String reactText;
 
@@ -43,7 +47,8 @@ public class Reaction {
      * This Constructor for default state because React type not equal react Text
      * for example in library default state text is 'like' but type is 'default'
      */
-    public Reaction(String reactText, String reactType, String reactTextColor, int reactIconId) {
+    public Reaction(TypeAction typeAction, String reactText, String reactType, String reactTextColor, int reactIconId) {
+        this.typeAction = typeAction;
         this.reactText = reactText;
         this.reactType = reactType;
         this.reactTextColor = reactTextColor;
@@ -73,6 +78,10 @@ public class Reaction {
     public int getReactIconId() {
         return reactIconId;
     }
+    public TypeAction getReactTypeAction() {
+        return typeAction;
+    }
+
 
     @Override
     public boolean equals(Object o) {

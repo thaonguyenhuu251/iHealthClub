@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.CommentModel
-import com.htnguyen.ihealthclub.model.ListLike
-import com.htnguyen.ihealthclub.model.TypeLike
+import com.htnguyen.ihealthclub.model.UserAction
+import com.htnguyen.ihealthclub.model.TypeAction
 import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
 import com.htnguyen.ihealthclub.utils.URL_PHOTO
 import com.htnguyen.ihealthclub.utils.USER_ID
@@ -31,17 +31,17 @@ import kotlinx.android.synthetic.main.layout_comment_input.*
 import kotlinx.android.synthetic.main.layout_comment_input.view.*
 
 
-class BottomSheetCommentFragment : BottomSheetDialogFragment{
+class BottomSheetCommentFragment : BottomSheetDialogFragment {
     // TODO: Rename and change types of parameters
     private var commentAdapter: CommentAdapter? = null
-    private val listLike = mutableListOf<ListLike>(ListLike("name", TypeLike.LIKE))
+    private val userActions = mutableListOf<UserAction>(UserAction("name", TypeAction.LIKE))
     private lateinit var commentModel: CommentModel
     private lateinit var sharedPreferences: SharedPreferences
     private var urlAvartar: String = ""
-    private var idPost:Long= 0
+    private var idPost: String = ""
     private lateinit var database: DatabaseReference
 
-    constructor(idPost: Long) : super() {
+    constructor(idPost: String) : super() {
         this.idPost = idPost
     }
 
@@ -50,7 +50,8 @@ class BottomSheetCommentFragment : BottomSheetDialogFragment{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //activity?.window?.setSoftInputMode(WindowManager.LayoutParams.RE)
-        sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+        sharedPreferences =
+            requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         setStyle(STYLE_NORMAL, R.style.AppBottomSheetDialogTheme)
         database = Firebase.database.reference
     }
@@ -128,31 +129,19 @@ class BottomSheetCommentFragment : BottomSheetDialogFragment{
     }
 
 
-
     private fun listComment(): MutableList<CommentModel> {
         val listComment = mutableListOf<CommentModel>()
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
-        listComment.add(CommentModel(12,12, "P12","iop",12,listLike,"tnt"))
+
         return listComment
     }
 
     private fun createComment() {
         commentModel.idComment = System.currentTimeMillis()
         commentModel.idPost = idPost
-        commentModel.idUser =  sharedPreferences.getString(USER_ID, "").toString()
-        commentModel.urlAvatar = sharedPreferences.getString(URL_PHOTO,"").toString()
+        commentModel.idUser = sharedPreferences.getString(USER_ID, "").toString()
+        commentModel.urlAvatar = sharedPreferences.getString(URL_PHOTO, "").toString()
         commentModel.createAt = System.currentTimeMillis()
-        commentModel.listLike = listLike
+        commentModel.userAction = userActions
         commentModel.contentComment = etComment.text.toString()
         database.child("comments")
         /*database.child("posts").child(post.idPost.toString()).setValue(post)
@@ -163,7 +152,7 @@ class BottomSheetCommentFragment : BottomSheetDialogFragment{
     }
 
     companion object {
-        fun newInstance(idPost: Long): BottomSheetCommentFragment {
+        fun newInstance(idPost: String): BottomSheetCommentFragment {
             return BottomSheetCommentFragment(idPost)
         }
     }

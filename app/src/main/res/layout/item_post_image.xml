@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_3sdp"
-    android:layout_marginBottom="@dimen/_2sdp"
-    android:background="@color/white">
+    android:layout_marginVertical="@dimen/_3sdp"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/ln_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
             android:id="@+id/img_avatar"
             android:layout_width="@dimen/_32sdp"
             android:layout_height="@dimen/_32sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_user_thumbnail"/>
-
+            app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
+            app:srcCompat="@drawable/ic_user_thumbnail" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/atv_post"
@@ -38,56 +37,43 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/img_avatar"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_16sdp"
             android:layout_toStartOf="@+id/iv_more"
             android:layout_toEndOf="@+id/img_avatar"
             android:gravity="center_vertical"
-            android:text="USER NAME"
             android:textColor="@color/black_mode"
-            android:textSize="@dimen/_11sdp"
+            android:textSize="@dimen/_14sdp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_emoji_status"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_weight="0.8"
-            android:padding="@dimen/_1sdp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_11sdp"
-            android:visibility="gone" />
-
 
         <ImageView
             android:id="@+id/iv_more"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:layout_alignTop="@id/img_avatar"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_16sdp"
             android:layout_toStartOf="@+id/iv_close"
             android:src="@drawable/ic_baseline_more_horiz_24"
             app:tint="@color/black" />
 
         <ImageView
             android:id="@+id/iv_close"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:layout_alignTop="@id/img_avatar"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_16sdp"
             android:padding="@dimen/_3sdp"
             android:src="@drawable/ic_homepost_close"
             app:tint="@color/black" />
 
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/img_avatar"
+            android:layout_below="@+id/atv_post"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_toStartOf="@+id/iv_more"
             android:layout_toEndOf="@+id/img_avatar"
             android:orientation="horizontal">
 
@@ -96,17 +82,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/_5sdp"
                 android:padding="@dimen/_1sdp"
                 android:text="11 Hours"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="@dimen/_12sdp" />
 
             <ImageView
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/_2sdp"
-                android:paddingTop="@dimen/_2sdp"
                 android:src="@drawable/ic_post_private" />
 
         </LinearLayout>
@@ -117,171 +101,145 @@
         android:id="@+id/et_thinking_pos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:maxLines="3"
-        android:text="Để áp dụng các các kiểu trang trí tùy chỉnh, cách tốt nhất là mở rộng lớp RecyclerView.ItemDecoration. Trong ứng dụng mẫu , tôi đã sử dụng một GridLayoutManager "
         android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ln_user" />
+        android:textSize="@dimen/_12sdp" />
 
     <ImageView
         android:id="@+id/img_pick"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_250sdp"
-        android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_thinking_pos" />
+        android:scaleType="centerCrop" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginVertical="@dimen/_6sdp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imgStatusThree"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_alignTop="@+id/tv_total_share"
+            android:layout_alignBottom="@+id/tv_total_share"
+            android:layout_marginStart="33dp"
+            android:src="@drawable/ic_happy" />
+
+        <ImageView
+            android:id="@+id/imgStatusTwo"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_alignTop="@+id/tv_total_share"
+            android:layout_alignBottom="@+id/tv_total_share"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_heart" />
+
+        <ImageView
+            android:id="@+id/imgStatusOne"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_alignTop="@+id/tv_total_share"
+            android:layout_alignBottom="@+id/tv_total_share"
+            android:src="@drawable/ic_like" />
+
+        <TextView
+            android:id="@+id/tv_total_like"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/_6sdp"
-            android:paddingHorizontal="@dimen/_10sdp">
+            android:layout_toStartOf="@+id/tv_total_comment"
+            android:layout_toEndOf="@+id/imgStatusThree"
+            android:text="1.841"
+            android:textSize="@dimen/_12sdp" />
 
-            <ImageView
-                android:id="@+id/imgStatusThree"
-                android:layout_width="@dimen/_14sdp"
-                android:layout_height="@dimen/_14sdp"
-                android:layout_alignTop="@+id/tv_total_share"
-                android:layout_alignBottom="@+id/tv_total_share"
-                android:layout_marginStart="33dp"
-                android:src="@drawable/ic_happy" />
-
-            <ImageView
-                android:id="@+id/imgStatusTwo"
-                android:layout_width="@dimen/_14sdp"
-                android:layout_height="@dimen/_14sdp"
-                android:layout_alignTop="@+id/tv_total_share"
-                android:layout_alignBottom="@+id/tv_total_share"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_heart" />
-
-            <ImageView
-                android:id="@+id/imgStatusOne"
-                android:layout_width="@dimen/_14sdp"
-                android:layout_height="@dimen/_14sdp"
-                android:layout_alignTop="@+id/tv_total_share"
-                android:layout_alignBottom="@+id/tv_total_share"
-                android:src="@drawable/ic_like" />
-
-            <TextView
-                android:id="@+id/tv_total_like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_toStartOf="@+id/tv_total_comment"
-                android:layout_toEndOf="@+id/imgStatusThree"
-                android:text="1.841"
-                android:textSize="@dimen/_12sdp" />
-
-            <TextView
-                android:id="@+id/tv_total_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/tv_total_share"
-                android:layout_alignBottom="@+id/tv_total_share"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_toStartOf="@+id/imgNot"
-                android:gravity="right"
-                android:paddingRight="@dimen/_2sdp"
-                android:text="1.841 Comments"
-                android:textSize="@dimen/_12sdp" />
-
-            <ImageView
-                android:id="@+id/imgNot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/tv_total_share"
-                android:layout_alignBottom="@+id/tv_total_share"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/_3sdp"
-                android:layout_toStartOf="@+id/tv_total_share"
-                android:src="@drawable/ic_dot" />
-
-            <TextView
-                android:id="@+id/tv_total_share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:gravity="right"
-                android:paddingLeft="@dimen/_2sdp"
-                android:text="1.841 Shares"
-                android:textSize="@dimen/_12sdp" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@color/general_grey" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_total_comment"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_alignTop="@+id/tv_total_share"
+            android:layout_alignBottom="@+id/tv_total_share"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_toStartOf="@+id/imgNot"
+            android:text="1.841 Comments"
+            android:textSize="@dimen/_12sdp" />
 
-            <com.htnguyen.ihealthclub.view.reacbutton.ReactButton
-                android:id="@+id/reactLike"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:paddingHorizontal="@dimen/_25sdp"
-                android:padding="@dimen/_8sdp"
-                android:drawablePadding="@dimen/_8sdp"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/_12sdp"/>
+        <ImageView
+            android:id="@+id/imgNot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_total_share"
+            android:layout_alignBottom="@+id/tv_total_share"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_toStartOf="@+id/tv_total_share"
+            android:src="@drawable/ic_dot" />
 
-            <TextView
-                android:id="@+id/reactComment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:drawablePadding="@dimen/_8sdp"
-                android:text="@string/post_comment"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/_12sdp"
-                app:drawableStartCompat="@drawable/ic_comment" />
+        <TextView
+            android:id="@+id/tv_total_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="1.841 Shares"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/reactShare"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:drawablePadding="@dimen/_8sdp"
-                android:text="@string/post_share"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/_12sdp"
-                app:drawableStartCompat="@drawable/ic_share" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:background="@color/general_grey" />
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:orientation="horizontal">
+
+        <com.htnguyen.ihealthclub.view.reacbutton.ReactButton
+            android:id="@+id/reactLike"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:drawablePadding="@dimen/_8sdp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/reactComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:drawablePadding="@dimen/_8sdp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_8sdp"
+            android:text="@string/post_comment"
+            android:textSize="@dimen/_12sdp"
+            app:drawableStartCompat="@drawable/ic_comment" />
+
+        <TextView
+            android:id="@+id/reactShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:drawablePadding="@dimen/_8sdp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_8sdp"
+            android:text="@string/post_share"
+            android:textSize="@dimen/_12sdp"
+            app:drawableStartCompat="@drawable/ic_share" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 

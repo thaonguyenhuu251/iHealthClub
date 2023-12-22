@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import htnguyen.socialmediaapp.models.User
+import com.htnguyen.ihealthclub.models.User
 
 class UserDAO {
 

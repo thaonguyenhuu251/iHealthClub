@@ -80,11 +80,13 @@
     </style>
 
     <style name="ShapeImageAvatar">
-        <item name="cornerSize">@dimen/_12sdp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 
     <style name="ShapeImageAvatarLarge">
-        <item name="cornerSize">@dimen/_50sdp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>
 

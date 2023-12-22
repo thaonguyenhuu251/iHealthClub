@@ -1,10 +1,8 @@
 package com.htnguyen.ihealthclub.view.mainscreen.personal
 
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.base.BaseViewModel
-import com.htnguyen.ihealthclub.model.User
+import com.htnguyen.ihealthclub.utils.FirebaseUtils
 
 
 class PersonalProfileViewModel : BaseViewModel() {
@@ -19,26 +17,21 @@ class PersonalProfileViewModel : BaseViewModel() {
     val userWeight: MutableLiveData<Float> = MutableLiveData(null)
 
     fun getDataProfileUser() {
-        val db = Firebase.firestore
         idUser.value?.let {
-            db.collection("User").document(it).get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val user = document.toObject(User::class.java)
-                        if (user != null) {
-                            userName.value = user.name.toString()
-                            userPhotoUrl.value = user.photoUrl.toString()
-                            userBirthDay.value = user.birthDay!!
-                            userGender.value = user.gender!!
-                            userHeight.value = user.height!!
-                            userWeight.value = user.weight!!
-                        }
-
-                    }
-                }
-                .addOnFailureListener { exception ->
+            FirebaseUtils.getUserById(it,
+                onSuccess = {user ->
+                    userName.value = user.name.toString()
+                    userPhotoUrl.value = user.photoUrl.toString()
+                    userBirthDay.value = user.birthDay!!
+                    userGender.value = user.gender!!
+                    userHeight.value = user.height!!
+                    userWeight.value = user.weight!!
+                },
+                onFailure = {
 
                 }
+            )
+
         }
     }
 

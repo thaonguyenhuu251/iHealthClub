@@ -1,36 +1,31 @@
 package com.htnguyen.ihealthclub.view.mainscreen.home
 
-import com.htnguyen.ihealthclub.R
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.htnguyen.ihealthclub.model.*
-import com.htnguyen.ihealthclub.utils.*
-import com.htnguyen.ihealthclub.view.adapter.OptionsHomeAdapter
-import com.htnguyen.ihealthclub.view.adapter.PostAdapter
-import com.htnguyen.ihealthclub.view.adapter.StoryViewAdapter
-import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
-import com.htnguyen.ihealthclub.view.mainscreen.storyviewext.OnStoryChangedCallback
-import com.htnguyen.ihealthclub.view.mainscreen.storyviewext.StoryClickListeners
-import com.htnguyen.ihealthclub.view.mainscreen.storyviewext.StoryView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.base.BaseFragment
 import com.htnguyen.ihealthclub.databinding.FragmentHomeBinding
+import com.htnguyen.ihealthclub.model.*
+import com.htnguyen.ihealthclub.utils.*
+import com.htnguyen.ihealthclub.view.adapter.PostAdapter
+import com.htnguyen.ihealthclub.view.adapter.StoryViewAdapter
 import com.htnguyen.ihealthclub.view.mainscreen.personal.PersonalProfileFragment
+import com.htnguyen.ihealthclub.view.mainscreen.storyviewext.OnStoryChangedCallback
+import com.htnguyen.ihealthclub.view.mainscreen.storyviewext.StoryClickListeners
+import com.htnguyen.ihealthclub.view.mainscreen.storyviewext.StoryView
 import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -49,12 +44,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
     private var userName: String = ""
     private var idUser: String = ""
     private val listStory = mutableListOf<Any>()
-    private val listPost = mutableListOf<Any>()
+    private val listPost = arrayListOf<Post>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         databasestory = Firebase.database.reference.child("story")
-        databasepost = Firebase.database.reference.child("posts")
+        databasepost = Firebase.database.reference.child("Posts")
         sharedPreferences =
             requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         urlAvatar = sharedPreferences.getString(URL_PHOTO, "").toString()
@@ -107,84 +102,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
         listStory.add(ObjectStory("0", "0"))
         getAllStory()
 
-
-
         postAdapter = PostAdapter(idUser, requireContext(), listPost, { post ->
 
         }, { reaction, postSelect ->
-            Log.d("nht", "onReactionChange: " + reaction.reactText)
-//            databasepost.child("idPost").equalTo(postSelect.idPost.toString()).get().addOnSuccessListener {
-//                Log.i("firebase", "Got value ${it.value}")
-//                if(post != null){
-//                    if(post.listLike !is List<ListLike>){
-//                        post.listLike.add(ListLike("",TypeLike.NO))
-//                    }
-//                    val idpost = post.idPost.toString()
-//                    val listLike: MutableList<ListLike> = post!!.listLike
-//                    if(reaction.reactText != null){
-//                        val checkUser: ListLike? = listLike.stream()
-//                            .filter { customer -> idUser == customer.idUser }
-//                            .findAny()
-//                            .orElse(null)
-//
-//                        if(checkUser == null){
-//                            val newUser = ListLike()
-//                            newUser.idUser = idUser
-//                            newUser.srcLike = typeReaction(reaction.reactText)
-//                            listLike.add(newUser)
-//                        }
-//                        databasepost.child(idpost).setValue(listLike)
-//                            .addOnSuccessListener {
-//                                Log.d("nht", "initView: success")
-//                                // Write was successful!
-//                                // ...
-//                            }
-//                            .addOnFailureListener {
-//                                // Write failed
-//                                // ...
-//                            }
-//
-//                    }
-//                }
-//            }.addOnFailureListener{
-//                Log.e("firebase", "Error getting data", it)
-//            }
-
-            databasepost?.child(postSelect.idPost.toString())
-                ?.addValueEventListener(object : ValueEventListener {
-                    override fun onCancelled(p0: DatabaseError) {
-                        // handle error
-                    }
-
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                        val listLike = dataSnapshot.getValue<Post>()?.listLike!!
-
-                        if (listLike.isEmpty()) {
-                            listLike.add(ListLike(idUser, TypeLike.LIKE))
-                        } else {
-                            val check = listLike.stream().filter { item -> idUser == item.idUser }
-                                .findAny()
-                                .orElse(null)
-                            if (check == null) {
-                                listLike.add(ListLike(idUser, TypeLike.LIKE))
-                            } else {
-                                listLike.remove(check)
-                            }
-                        }
-
-                        postSelect.listLike = listLike
-
-                        val mutableMap: MutableMap<String, Any> = mutableMapOf()
-                        mutableMap[postSelect.idPost.toString()] = postSelect
-                        databasepost.updateChildren(mutableMap)
-                    }
-                })
-
-        },{
-            linear,post ->
+            val userReactionLike = UserAction(
+                idUser = idUser,
+                typeAction = reaction.reactTypeAction,
+                timeAction = System.currentTimeMillis(),
+                contentAction = ""
+            )
+            databasepost.child(postSelect.idPost).child("listLike").child(idUser)
+                .setValue(userReactionLike)
+        }, { linear, post ->
             btsComment = BottomSheetCommentFragment.newInstance(post.idPost)
-            btsComment.show(childFragmentManager,"")
+            btsComment.show(childFragmentManager, "")
 
         })
         rv_post.layoutManager =
@@ -283,46 +214,47 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
         val postListener = object : ValueEventListener {
             @RequiresApi(Build.VERSION_CODES.N)
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                Log.d("hunghkp1", "onDataChange: ${dataSnapshot.toString()}")
                 for (postSnapshot in dataSnapshot.children) {
-
-//                    if (postSnapshot.value is Post){
-                    Log.d("hunghkp1", "onDataChange1: ${postSnapshot.toString()}")
-                    val post = postSnapshot.getValue<Post>()
-
-                    Log.d("hunghkp1", "onDataChange2: ${post.toString()}")
-                    if (post != null) {
-                        if (post.listLike !is List<ListLike>) {
-                            post.listLike.add(ListLike("", TypeLike.NO))
-
-                        }
-                        if (checkPost(post.idPost, listPost) == 1) {
-                            listPost.add(post)
-                        }
-//                        }
+                    val idPost = postSnapshot.child("idPost").getValue(String::class.java)!!
+                    val idUser = postSnapshot.child("idUser").getValue(String::class.java)!!
+                    val emojiStatus = postSnapshot.child("emojiStatus").getValue(String::class.java)!!
+                    val bodyStatus = postSnapshot.child("bodyStatus").getValue(String::class.java)!!
+                    val createAt = postSnapshot.child("createAt").getValue(Long::class.java)!!
+                    val typePost = postSnapshot.child("typePost").getValue(TypeFile::class.java)!!
+                    val likeTotal = postSnapshot.child("likeTotal").getValue(Int::class.java)!!
+                    val commentTotal = postSnapshot.child("commentTotal").getValue(Int::class.java)!!
+                    val shareTotal = postSnapshot.child("shareTotal").getValue(Int::class.java)!!
+                    val listFile = postSnapshot.child("listFile").getValue<List<String>>()!!
+                    val listLike = arrayListOf<UserAction>()
+                    val listLikeSnapshot = postSnapshot.child("listLike")
+                    for (actionLike in listLikeSnapshot.children) {
+                        val like = actionLike.getValue<UserAction>()!!
+                        listLike.add(like)
                     }
+                    listPost.add(
+                        Post(
+                            idPost,
+                            idUser,
+                            emojiStatus,
+                            bodyStatus,
+                            createAt,
+                            typePost,
+                            likeTotal,
+                            commentTotal,
+                            shareTotal,
+                            listFile,
+                            listLike,
+                        )
+                    )
                 }
-                Log.d("hunghkp", "${listPost.size} ")
+
                 postAdapter?.notifyDataSetChanged()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("nht", "loadPost:onCancelled", databaseError.toException())
             }
         }
         databasepost.addValueEventListener(postListener)
-
-    }
-
-    fun checkPost(a: Long, b: MutableList<Any>): Int {
-        val k = b as MutableList<Post>
-        for (i in k) {
-            if (a == i.idPost)
-                return 0
-        }
-        return 1
     }
 
 }
