@@ -12,8 +12,7 @@ data class Post(
     var likeTotal: Int = 0,
     var commentTotal: Int = 0,
     var shareTotal: Int = 0,
-    var listFile: List<String> = listOf(),
-    var listLike: List<UserAction> = listOf()
+    var listFile: List<String> = listOf()
 ) {
 
     @Exclude

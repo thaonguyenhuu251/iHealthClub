@@ -6,8 +6,8 @@
         <item name="colorPrimaryVariant">#11000000</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/general_blue</item>
+        <item name="colorSecondaryVariant">@color/general_blue</item>
         <item name="colorOnSecondary">@color/black</item>
 
         <item name="android:statusBarColor">@color/general_background</item>
@@ -18,7 +18,6 @@
     <style name="TextViewCustomMedium" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
         <item name="color">@color/black</item>
-        <!--        <item name="fontFamily"></item>-->
     </style>
 
     <style name="DialogWidth" parent="Theme.AppCompat.Dialog.Alert">

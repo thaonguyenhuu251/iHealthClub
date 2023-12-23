@@ -245,7 +245,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
             override fun onFailure(e: Exception?) {
                 loadingDialog?.dismissDialog()
-                Log.d("hunghkp", "onFailure: ")
 
             }
         })
@@ -325,7 +324,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private fun uploadFile(bitmap: Bitmap?) {
         //loading
         val ref = storageRef.child("story/${System.currentTimeMillis()}")
-
         val baos = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
@@ -350,22 +348,17 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 story = ObjectStory()
                 story.idStory = System.currentTimeMillis().toString()
                 story.idUser = sharedPreferences.getString(USER_ID, "").toString()
-                story.urlAvatar = sharedPreferences.getString(URL_PHOTO,"").toString()
                 story.createAt = System.currentTimeMillis()
-                story.createBy = sharedPreferences.getString(USER_NAME, "").toString()
                 story.listFile = listDownloadUri
-                database.child("story").child(story.idStory).setValue(story)
+                database.child("Stories").child(story.idStory).setValue(story)
                     .addOnSuccessListener {
                         loadingDialog?.dismissDialog()
-                        Log.d("hunghkp", "initView: success")
                         finish()
                     }.addOnFailureListener { e ->
                         loadingDialog?.dismissDialog()
-                        Log.d("hunghkp", "initView: ${e.message}")
                     }
 
             } else {
-
 
             }
         }
@@ -432,7 +425,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
     companion object {
         private val TAG = EditImageActivity::class.java.simpleName
-        const val FILE_PROVIDER_AUTHORITY = "com.example.storyview.fileprovider"
         private const val CAMERA_REQUEST = 52
         private const val PICK_REQUEST = 53
         const val ACTION_NEXTGEN_EDIT = "action_nextgen_edit"

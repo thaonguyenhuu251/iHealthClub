@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.CommentModel
-import com.htnguyen.ihealthclub.view.reacbutton.FbReactions
+import com.htnguyen.ihealthclub.view.reacbutton.ClubReactions
 import com.htnguyen.ihealthclub.view.reacbutton.ReactText
 
 class CommentAdapter (val context: Context, var listComment: MutableList<CommentModel>, val callback : (CommentModel) -> Unit)  :
@@ -35,8 +35,8 @@ class CommentAdapter (val context: Context, var listComment: MutableList<Comment
                 callback.invoke(commentModel)
             }
             val reactText: ReactText = itemView.findViewById<ReactText>(R.id.reactText)
-            reactText.setReactions(*FbReactions.reactions)
-            reactText.defaultReaction = FbReactions.defaultReact
+            reactText.setReactions(*ClubReactions.reactions)
+            reactText.defaultReaction = ClubReactions.defaultReact
             reactText.setEnableReactionTooltip(true)
 
             reactText.setOnReactionChangeListener { reaction ->

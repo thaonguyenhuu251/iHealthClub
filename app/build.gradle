@@ -104,6 +104,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.firebaseui:firebase-ui-firestore:6.4.0'
+    implementation 'com.firebaseui:firebase-ui-database:4.3.2'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
     implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.5'

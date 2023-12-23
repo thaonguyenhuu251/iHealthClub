@@ -15,6 +15,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.*
@@ -35,12 +36,9 @@ import java.io.IOException
 
 
 class CreatePostsActivity : AppCompatActivity() {
-    val storage = Firebase.storage
     private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
     private val storageRef = Firebase.storage.reference
     private val listDownloadUri = mutableListOf<String>()
-    private val userAction = mutableListOf<UserAction>()
-    private var loadingDialog: LoadingDialog? = null
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var post: Post
     private lateinit var database: DatabaseReference
@@ -74,7 +72,6 @@ class CreatePostsActivity : AppCompatActivity() {
             }
         }
 
-    @SuppressLint("ResourceAsColor")
     private val startActivityPickEmoji =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -85,7 +82,7 @@ class CreatePostsActivity : AppCompatActivity() {
                 atv_post.text = userName + status
                 btn_post.isEnabled = true
                 btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
-                btn_post.setTextColor(R.color.black_mode)
+                btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
             }
         }
 
@@ -101,8 +98,6 @@ class CreatePostsActivity : AppCompatActivity() {
         initView()
     }
 
-
-    @SuppressLint("ResourceAsColor")
     private fun initView() {
         userName = sharedPreferences.getString(USER_NAME, "USER FACEBOOK").toString()
         atv_post.text = userName
@@ -180,14 +175,14 @@ class CreatePostsActivity : AppCompatActivity() {
                 if (et_thinking_pos.text.toString().trim().isNotEmpty()) {
                     btn_post.isEnabled = true
                     btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
-                    btn_post.setTextColor(R.color.black_mode)
+                    btn_post.setTextColor(ContextCompat.getColor(this@CreatePostsActivity, R.color.black_mode))
                     thinking = et_thinking_pos.text.toString().trim()
 
                 } else {
                     if (btn_post.isEnabled) {
                         btn_post.isEnabled = false
                         btn_post.setBackgroundResource(R.drawable.rounded_home_post_file)
-                        btn_post.setTextColor(R.color.general_grey)
+                        btn_post.setTextColor(ContextCompat.getColor(this@CreatePostsActivity, R.color.general_grey))
                     }
 
                 }
@@ -250,7 +245,6 @@ class CreatePostsActivity : AppCompatActivity() {
     }
 
     private fun uploadFile(fileName: String) {
-        //loading
         pb_image.visibility = View.VISIBLE
         val file = Uri.fromFile(File(fileName))
 
