@@ -31,7 +31,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -43,14 +42,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
-import androidx.core.content.ContextCompat;
 
 import com.htnguyen.ihealthclub.R;
 
@@ -240,7 +237,7 @@ public class ReactButton
     private void showReactionsDialog() {
         final Context context = getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View dialogView = inflater.inflate(R.layout.react_dialog_layout, null);
+        View dialogView = inflater.inflate(R.layout.layout_react_dialog, null);
 
         GridView reactionsGrid = dialogView.findViewById(R.id.reactionsList);
         ReactionAdapter adapter = new ReactionAdapter(context, mReactions);
@@ -263,7 +260,7 @@ public class ReactButton
                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                     Reaction currentReaction = mReactions.get(position);
 
-                    View tooltipView = LayoutInflater.from(context).inflate(R.layout.react_tooltip_layout, null);
+                    View tooltipView = LayoutInflater.from(context).inflate(R.layout.layout_react_tooltip, null);
                     tooltipView.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     tooltipView.setBackgroundResource(mReactTooltipShape);
 

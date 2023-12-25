@@ -34,8 +34,6 @@ class PickImageStoryActivity : AppCompatActivity() {
         ArrayList<GalleryPicture>(galleryViewModel.getGallerySize(this))
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pick_image_story)

@@ -237,7 +237,7 @@ public class ReactText
     private void showReactionsDialog() {
         final Context context = getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View dialogView = inflater.inflate(R.layout.react_dialog_layout, null);
+        View dialogView = inflater.inflate(R.layout.layout_react_dialog, null);
 
         GridView reactionsGrid = dialogView.findViewById(R.id.reactionsList);
         ReactionAdapter adapter = new ReactionAdapter(context, mReactions);
@@ -260,7 +260,7 @@ public class ReactText
                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                     Reaction currentReaction = mReactions.get(position);
 
-                    View tooltipView = LayoutInflater.from(context).inflate(R.layout.react_tooltip_layout, null);
+                    View tooltipView = LayoutInflater.from(context).inflate(R.layout.layout_react_tooltip, null);
                     tooltipView.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     tooltipView.setBackgroundResource(mReactTooltipShape);
 

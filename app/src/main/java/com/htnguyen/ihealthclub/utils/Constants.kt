@@ -24,8 +24,8 @@ const val ICON_GET = "ICON_GET"
 const val ICON_NAME = "ICON_NAME"
 
 const val KEY_PATH_IMAGE_POST = "KEY_PATH_IMAGE_POST"
-
-const val KEY_PATH_IMAGE_STORY="KEY_PATH_IMAGE_STORY"
+const val KEY_PATH_IMAGE = "KEY_PATH_IMAGE"
+const val KEY_PATH_IMAGE_STORY = "KEY_PATH_IMAGE_STORY"
 const val COLLECTION_PATH_STORY = "story"
 const val TYPE_REGISTER = "TYPE_REGISTER"
 
@@ -42,7 +42,7 @@ val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
             ")+"
 )
 
- fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
+fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
     var cursor: Cursor? = null
     return try {
         val proj = arrayOf(MediaStore.Images.Media.DATA)
@@ -55,14 +55,14 @@ val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
     }
 }
 
-fun typeReaction(reaction: String) : TypeAction {
-    when(reaction){
+fun typeReaction(reaction: String): TypeAction {
+    when (reaction) {
         "Like" -> return TypeAction.LIKE
         "Love" -> return TypeAction.LOVE
-        "Smile"->return TypeAction.SMILE
+        "Smile" -> return TypeAction.SMILE
         "Wow" -> return TypeAction.WOW
-        "Sad"-> return TypeAction.SAD
-        "Angry"-> return TypeAction.ANGRY
+        "Sad" -> return TypeAction.SAD
+        "Angry" -> return TypeAction.ANGRY
     }
     return TypeAction.NO
 }

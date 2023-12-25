@@ -1,5 +1,10 @@
 package com.htnguyen.ihealthclub.utils
 
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
+
 class Utils {
     companion object {
         private const val SECOND_MILLIS = 1000
@@ -29,6 +34,12 @@ class Utils {
             } else {
                 (diff / DAY_MILLIS).toString() + " days ago"
             }
+        }
+
+
+        fun convertDateToString(date: Date) : String {
+            val format = SimpleDateFormat("dd/MM/yyy")
+            return format.format(date)
         }
 
     }

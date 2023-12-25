@@ -143,7 +143,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/row_editing_tools" />
+        tools:listitem="@layout/item_row_editing_tools" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFilterView"
@@ -157,7 +157,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        tools:listitem="@layout/row_filter_view" />
+        tools:listitem="@layout/item_row_filter_view" />
 
 
     <androidx.appcompat.widget.AppCompatButton

@@ -1,10 +1,14 @@
 package com.htnguyen.ihealthclub.view.mainscreen.personal
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,15 +19,16 @@ import com.htnguyen.ihealthclub.model.Post
 import com.htnguyen.ihealthclub.view.adapter.PostAdapter
 import com.htnguyen.ihealthclub.view.mainscreen.home.CreatePostsActivity
 import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageStoryActivity
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.base.BaseFragment
 import com.htnguyen.ihealthclub.databinding.FragmentPersonalProfileBinding
 import com.htnguyen.ihealthclub.model.TypeAction
 import com.htnguyen.ihealthclub.model.UserAction
 import com.htnguyen.ihealthclub.utils.*
+import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageResultActivity
 import kotlinx.android.synthetic.main.fragment_personal_profile.*
+import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
+import java.io.File
+import java.io.IOException
 
 class PersonalProfileFragment :
     BaseFragment<FragmentPersonalProfileBinding, PersonalProfileViewModel>() {
@@ -34,6 +39,19 @@ class PersonalProfileFragment :
     override val layout: Int
         get() = R.layout.fragment_personal_profile
 
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                val data = intent?.getStringExtra(KEY_PATH_IMAGE_POST)
+
+                Glide.with(this).load(data).into(img_avatar)
+
+                val filePath =
+                    this@PersonalProfileFragment.context?.let { getRealPathFromUri(it, Uri.parse(data)) }
+                uploadFile(filePath!!)
+            }
+        }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences =
@@ -89,16 +107,24 @@ class PersonalProfileFragment :
         rv_post_person.setBackgroundResource(R.color.background_grey_little)
         rv_post_person.isNestedScrollingEnabled = false
 
-        Glide.with(this).load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
+        Glide.with(this)
+            .load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
             .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
             .into(img_avatar)
-        Glide.with(this).load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
+        Glide.with(this)
+            .load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
             .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
             .into(img_avatar_little)
 
         btn_add_story.setOnClickListener {
             val intent =
                 Intent(this@PersonalProfileFragment.context, PickImageStoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_edit_profile.setOnClickListener {
+            val intent =
+                Intent(this@PersonalProfileFragment.context, EditProfileActivity::class.java)
             startActivity(intent)
         }
 
@@ -112,11 +138,50 @@ class PersonalProfileFragment :
             activity?.onBackPressed()
         }
 
+        imgChangeAvatar.setOnClickListener {
+            startForResult.launch(
+                Intent(
+                    this@PersonalProfileFragment.context,
+                    PickImageResultActivity::class.java
+                )
+            )
+        }
+
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            PersonalProfileFragment()
+    private fun uploadFile(fileName: String) {
+        val file = Uri.fromFile(File(fileName))
+
+        val ref = FirebaseUtils.storageRef.child("image_user/${System.currentTimeMillis()}")
+
+        val uploadTask = ref.putFile(file)
+
+        uploadTask.continueWithTask { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    showSnackBar(it.message!!)
+                }
+            }
+            ref.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                FirebaseUtils.db.collection("User").document(viewModel.idUser.value!!).update(
+                    mapOf(
+                        "photoUrl" to downloadUri
+                    )
+                )
+            } else {
+
+            }
+        }
+
+        try {
+            // function throw ra exception
+        } catch (e: IOException) {
+
+        }
     }
+
+
 }

@@ -8,4 +8,4 @@
     android:background="@android:color/transparent"
     android:gravity="center"
     android:numColumns="6"
-    tools:listitem="@layout/react_dialog_item" />
+    tools:listitem="@layout/item_react_dialog" />

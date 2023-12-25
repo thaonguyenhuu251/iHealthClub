@@ -25,14 +25,13 @@
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
+            android:name="com.htnguyen.ihealthclub.view.mainscreen.home.PickImageResultActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
             android:name="com.htnguyen.ihealthclub.view.mainscreen.home.EmojiActionActivity"
             android:exported="false" />
-        <activity
-            android:name="com.htnguyen.ihealthclub.view.mainscreen.home.PickImagePostActivity"
-            android:exported="false"
-            android:windowSoftInputMode="stateAlwaysHidden">
 
-        </activity>
         <activity
             android:name="com.htnguyen.ihealthclub.view.mainscreen.home.ObjectPostHomeActivity"
             android:exported="false" />
@@ -46,7 +45,8 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-        </activity>y>
+        </activity>
+
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.CreateNewPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -66,7 +66,12 @@
         </activity>
         <activity android:name="com.htnguyen.ihealthclub.view.login.LoginActivity" />
         <activity android:name="com.htnguyen.ihealthclub.view.login.LoginProfileActivity" />
-        <activity android:name="com.htnguyen.ihealthclub.view.forgotpassword.ForgotPasswordEmailActivity" />
+        <activity android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.EditProfileActivity"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity android:name="com.htnguyen.ihealthclub.view.forgotpassword.ForgotPasswordMobileActivity" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.WhatYourGenderActivity"
