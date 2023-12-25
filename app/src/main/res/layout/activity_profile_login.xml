@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline30"
         app:layout_constraintStart_toStartOf="@+id/guideline31"
         app:layout_constraintTop_toTopOf="@+id/guideline40"
-        app:srcCompat="@drawable/splash_logo" />
+        app:srcCompat="@drawable/general_logo_app" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_profile_login"

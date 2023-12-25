@@ -25,6 +25,7 @@ object FirebaseUtils {
     val db: FirebaseFirestore = Firebase.firestore
     val database = Firebase.database
     val databaseUser = database.getReference("User")
+    val databaseUserLogin = database.getReference("UserLogin")
 
     private val dataBaseReference: DatabaseReference = Firebase.database.reference
     val databasePost = dataBaseReference.child("Posts")
