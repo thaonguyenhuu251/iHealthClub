@@ -346,7 +346,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 listDownloadUri.add(files)
 
                 story = ObjectStory()
-                story.idStory = System.currentTimeMillis().toString()
+                story.idStory = sharedPreferences.getString(USER_ID, "").toString() + System.currentTimeMillis().toString()
                 story.idUser = sharedPreferences.getString(USER_ID, "").toString()
                 story.createAt = System.currentTimeMillis()
                 story.listFile = listDownloadUri

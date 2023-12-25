@@ -4,14 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.chivorn.datetimeoptionspicker.DateTimePickerView
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.utils.KEY_USER
 import kotlinx.android.synthetic.main.activity_register_birthday.*
-import java.text.SimpleDateFormat
+import kotlinx.android.synthetic.main.activity_register_birthday.timepicker
 import java.util.*
 
 class BirthdayActivity : AppCompatActivity() {
@@ -22,8 +21,6 @@ class BirthdayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_birthday)
-
-        Log.d("atvname", "onCreate: + ${intent.extras?.get(KEY_USER)}")
 
         user = intent.extras?.get(KEY_USER) as User
 
@@ -54,21 +51,21 @@ class BirthdayActivity : AppCompatActivity() {
             user?.birthDay = date.time
         }
             .setLayoutRes(
-                R.layout.datetimeoptionspicker_custom_time
+                R.layout.dialog_custom_time
             ) { v ->
 
             }
             .setType(booleanArrayOf(true, true, true, false, false, false))
-            .setLabel("", "", "", "", "", "") //设置空字符串以隐藏单位提示   hide label
+            .setLabel("", "", "", "", "", "")
             .setDividerColor(Color.DKGRAY)
             .setContentSize(20)
             .setDate(selectedDate)
             .setRangDate(startDate, selectedDate)
-            .setDecorView(frame_picker_view) //非dialog模式下,设置ViewGroup, pickerView将会添加到这个ViewGroup中
+            .setDecorView(timepicker)
             .setBackgroundId(0x00000000)
             .setOutSideCancelable(false)
             .build()
-        pvTime?.setKeyBackCancelable(false) //系统返回键监听屏蔽掉
+        pvTime?.setKeyBackCancelable(false)
         pvTime?.show()
     }
 }

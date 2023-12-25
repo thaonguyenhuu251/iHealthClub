@@ -15,11 +15,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.htnguyen.ihealthclub.model.*
 
 object FirebaseUtils {
     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     val firebaseUser: FirebaseUser? = Firebase.auth.currentUser
+    val storageRef = Firebase.storage.reference
 
     @SuppressLint("StaticFieldLeak")
     val db: FirebaseFirestore = Firebase.firestore

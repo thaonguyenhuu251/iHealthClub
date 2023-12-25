@@ -61,7 +61,7 @@ class StickerBSFragment : BottomSheetDialogFragment() {
 
     inner class StickerAdapter : RecyclerView.Adapter<StickerAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.row_sticker, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_sticker, parent, false)
             return ViewHolder(view)
         }
 

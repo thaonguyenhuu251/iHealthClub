@@ -14,7 +14,6 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.ObjectStory
-import com.htnguyen.ihealthclub.model.Post
 import com.htnguyen.ihealthclub.utils.FirebaseUtils
 
 import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageStoryActivity
@@ -42,13 +41,13 @@ class StoryViewAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, story: ObjectStory) {
-        if (position != 0) {
-            (holder as ItemViewHolder).bindItem(getItem(position))
-        }
+
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position == 0) {
             (holder as CreateNewViewHolder).bindItem()
+        } else {
+            (holder as ItemViewHolder).bindItem(getItem(position - 1))
         }
     }
 
@@ -89,11 +88,11 @@ class StoryViewAdapter(
                     .into(iv_avartar_story)
                 tv_name_story.text = user.name
             })
-            Glide.with(context).load(story.listFile.get(0).url)
+            Glide.with(context).load(story.listFile[0].url)
                 .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
                 .into(iv_content_story)
             itemView.setOnClickListener {
-                callback.invoke(story, tv_name_story.text.toString())
+                callback(story, tv_name_story.text.toString())
             }
         }
     }

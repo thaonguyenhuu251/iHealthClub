@@ -43,7 +43,7 @@ public final class PausableProgressBar extends FrameLayout {
 
     public PausableProgressBar(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        LayoutInflater.from(context).inflate(R.layout.pausable_progress, this);
+        LayoutInflater.from(context).inflate(R.layout.layout_pausable_progress, this);
         frontProgressView = findViewById(R.id.front_progress);
         maxProgressView = findViewById(R.id.max_progress); // work around
     }

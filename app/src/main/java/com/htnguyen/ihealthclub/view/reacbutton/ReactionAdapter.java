@@ -43,7 +43,7 @@ import java.util.List;
 public class ReactionAdapter extends ArrayAdapter<Reaction> {
 
     public ReactionAdapter(@NonNull Context context, @NonNull List<Reaction> reactions) {
-        super(context, R.layout.react_dialog_item, reactions);
+        super(context, R.layout.item_react_dialog, reactions);
     }
 
     @NonNull
@@ -52,7 +52,7 @@ public class ReactionAdapter extends ArrayAdapter<Reaction> {
         View view = convertView;
         if(view == null) {
             LayoutInflater vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.react_dialog_item, parent, false);
+            view = vi.inflate(R.layout.item_react_dialog, parent, false);
         }
 
         Reaction reaction = getItem(position);

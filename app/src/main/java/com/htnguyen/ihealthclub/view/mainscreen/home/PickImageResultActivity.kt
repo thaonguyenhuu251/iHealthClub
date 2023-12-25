@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,10 +15,10 @@ import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.GalleryPicture
 import com.htnguyen.ihealthclub.utils.KEY_PATH_IMAGE_POST
 import com.htnguyen.ihealthclub.view.adapter.GalleryPicturesAdapter
-import kotlinx.android.synthetic.main.activity_pick_image_post.*
+import kotlinx.android.synthetic.main.activity_pick_image_result.*
 
 
-class PickImagePostActivity : AppCompatActivity() {
+class PickImageResultActivity : AppCompatActivity() {
 
     private val adapter by lazy {
         GalleryPicturesAdapter(pictures, 10, this)
@@ -33,7 +32,7 @@ class PickImagePostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pick_image_post)
+        setContentView(R.layout.activity_pick_image_result)
 
         requestReadStoragePermission()
     }
@@ -58,9 +57,6 @@ class PickImagePostActivity : AppCompatActivity() {
         rv_images.adapter = adapter
 
         adapter.setOnClickListener { galleryPicture ->
-            // click image
-            Log.d("hunghkp", "init: " + galleryPicture.path)
-
             val resultIntent = Intent()
 
             resultIntent.putExtra(KEY_PATH_IMAGE_POST, galleryPicture.path)
@@ -104,7 +100,6 @@ class PickImagePostActivity : AppCompatActivity() {
                 pictures.addAll(it)
                 adapter.notifyItemRangeInserted(pictures.size, it.size)
             }
-            Log.i("GalleryListSize", "${pictures.size}")
         }
     }
 
@@ -125,6 +120,4 @@ class PickImagePostActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
-
 }

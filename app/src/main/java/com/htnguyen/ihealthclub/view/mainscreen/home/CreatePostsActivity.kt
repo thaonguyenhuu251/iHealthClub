@@ -20,7 +20,6 @@ import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.*
 import com.htnguyen.ihealthclub.utils.*
-import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DatabaseReference
@@ -125,11 +124,11 @@ class CreatePostsActivity : AppCompatActivity() {
         }
 
         iv_images.setOnClickListener {
-            startForResult.launch(Intent(this, PickImagePostActivity::class.java))
+            startForResult.launch(Intent(this, PickImageResultActivity::class.java))
         }
 
         ln_images.setOnClickListener {
-            startForResult.launch(Intent(this, PickImagePostActivity::class.java))
+            startForResult.launch(Intent(this, PickImageResultActivity::class.java))
         }
 
         iv_emoji.setOnClickListener {

@@ -50,14 +50,15 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <FrameLayout
-        android:id="@+id/frame_picker_view"
+        android:id="@+id/timepicker"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/general_background"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
