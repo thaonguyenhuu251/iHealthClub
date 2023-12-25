@@ -9,8 +9,8 @@ import htnguyen.socialmediaapp.dao.UserDAO
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import htnguyen.socialmediaapp.models.Post
-import htnguyen.socialmediaapp.models.User
+import com.htnguyen.ihealthclub.models.Post
+import com.htnguyen.ihealthclub.models.User
 
 class PostDAO {
     val db = FirebaseFirestore.getInstance()

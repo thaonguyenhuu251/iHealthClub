@@ -6,6 +6,8 @@ data class UserLogin(
     var idUser: String? = null,
     var account: String? = "",
     var password: String? = "",
+    var iHealthSport: Boolean = false,
+    var iHealthClub: Boolean = false
 ) :  Serializable {
 
 }

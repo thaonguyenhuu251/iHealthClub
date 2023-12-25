@@ -3,19 +3,16 @@ package com.htnguyen.ihealthclub.model
 import com.google.firebase.database.Exclude
 
 data class Post(
-    var idPost: Long = 0L,
+    var idPost: String = "",
     var idUser: String = "",
-    var urlAvatar: String = "",
-    var status: String = "",
     var emojiStatus: String = "",
-    var listFile: MutableList<String> = mutableListOf(),
-    var listLike: MutableList<ListLike> = mutableListOf(),
-    var typeFile: TypeFile = TypeFile.IMAGE,
+    var bodyStatus: String = "",
+    var createAt: Long = 0L,
+    var typePost: TypeFile = TypeFile.IMAGE,
     var likeTotal: Int = 0,
     var commentTotal: Int = 0,
     var shareTotal: Int = 0,
-    var createAt: Long = 0L,
-    var createBy: String = ""
+    var listFile: List<String> = listOf()
 ) {
 
     @Exclude
@@ -23,17 +20,14 @@ data class Post(
         return mapOf(
             "idPost" to idPost,
             "idUser" to idUser,
-            "urlAvatar" to urlAvatar,
-            "status" to status,
+            "bodyStatus" to bodyStatus,
             "emojiStatus" to emojiStatus,
             "listFile" to listFile,
-
-            "typeFile" to typeFile,
+            "typeFile" to typePost,
             "likeTotal" to likeTotal,
             "commentTotal" to commentTotal,
             "shareTotal" to shareTotal,
             "createAt" to createAt,
-            "createBy" to createBy
         )
     }
 }

@@ -31,7 +31,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -43,14 +42,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
-import androidx.core.content.ContextCompat;
 
 import com.htnguyen.ihealthclub.R;
 
@@ -65,14 +62,14 @@ import java.util.List;
  * and reactions dialog feature when user provide long click event
  */
 @SuppressLint("AppCompatCustomView")
-public class ReactButton
+public class ReactText
         extends TextView
         implements View.OnClickListener, View.OnLongClickListener {
 
     /**
      * ReactButton custom view object to make easy to change attribute
      */
-    private final ReactButton mReactButton = this;
+    private final ReactText mReactButton = this;
 
     /**
      * Reaction Alert Dialog to show Reaction layout with 6 Reactions
@@ -188,23 +185,23 @@ public class ReactButton
 
     private OnReactionChangeListener mOnReactionChangeListener;
 
-    public ReactButton(Context context) {
+    public ReactText(Context context) {
         super(context);
         setupReactButtonDefaultSettings();
     }
 
-    public ReactButton(Context context, AttributeSet attrs) {
+    public ReactText(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupReactButtonDefaultSettings();
     }
 
-    public ReactButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ReactText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setupReactButtonDefaultSettings();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ReactButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ReactText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         setupReactButtonDefaultSettings();
     }
@@ -349,7 +346,6 @@ public class ReactButton
         mCurrentReaction = react;
         mReactButton.setText(react.getReactText());
         mReactButton.setTextColor(Color.parseColor(react.getReactTextColor()));
-        mReactButton.setCompoundDrawablesWithIntrinsicBounds(react.getReactIconId(), 0, 0, 0);
         isReactButtonUpdated = !react.equals(mDefaultReaction);
         if (mOnReactionChangeListener != null) mOnReactionChangeListener.onReactionChange(react);
     }

@@ -1,4 +1,4 @@
-package htnguyen.socialmediaapp.models
+package com.htnguyen.ihealthclub.models
 
 data class Post (
     val text: String = "",

@@ -14,7 +14,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.utils.Utils
-import htnguyen.socialmediaapp.models.Post
+import com.htnguyen.ihealthclub.models.Post
 
 class PostAdapter(options: FirestoreRecyclerOptions<Post>, private val listener: IPostAdapter) :
     FirestoreRecyclerAdapter<Post, PostAdapter.PostViewHolder>(options) {

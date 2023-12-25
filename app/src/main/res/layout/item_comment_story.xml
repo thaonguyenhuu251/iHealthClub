@@ -20,7 +20,7 @@
             android:id="@+id/iv_comment_story"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/icons8_facebook_messenger_50"
+            android:src="@drawable/ic_messenger"
             android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_4sdp"
             android:layout_marginRight="@dimen/_15sdp"
