@@ -23,7 +23,7 @@ class ColorPickerAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = inflater.inflate(R.layout.color_picker_item_list, parent, false)
+        val view = inflater.inflate(R.layout.item_color_picker_list, parent, false)
         return ViewHolder(view)
     }
 

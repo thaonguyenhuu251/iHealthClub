@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="@dimen/_164sdp"
         android:layout_height="@dimen/_200sdp"
-        android:src="@drawable/splash_logo"
+        android:src="@drawable/general_logo_app"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

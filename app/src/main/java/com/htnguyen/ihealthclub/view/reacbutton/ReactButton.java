@@ -42,7 +42,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -64,7 +63,7 @@ import java.util.List;
  */
 @SuppressLint("AppCompatCustomView")
 public class ReactButton
-        extends Button
+        extends TextView
         implements View.OnClickListener, View.OnLongClickListener {
 
     /**
@@ -238,7 +237,7 @@ public class ReactButton
     private void showReactionsDialog() {
         final Context context = getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View dialogView = inflater.inflate(R.layout.react_dialog_layout, null);
+        View dialogView = inflater.inflate(R.layout.layout_react_dialog, null);
 
         GridView reactionsGrid = dialogView.findViewById(R.id.reactionsList);
         ReactionAdapter adapter = new ReactionAdapter(context, mReactions);
@@ -261,7 +260,7 @@ public class ReactButton
                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                     Reaction currentReaction = mReactions.get(position);
 
-                    View tooltipView = LayoutInflater.from(context).inflate(R.layout.react_tooltip_layout, null);
+                    View tooltipView = LayoutInflater.from(context).inflate(R.layout.layout_react_tooltip, null);
                     tooltipView.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     tooltipView.setBackgroundResource(mReactTooltipShape);
 
@@ -346,9 +345,8 @@ public class ReactButton
     private void updateReactButtonByReaction(Reaction react) {
         mCurrentReaction = react;
         mReactButton.setText(react.getReactText());
-        mReactButton.setTextSize(13);
         mReactButton.setTextColor(Color.parseColor(react.getReactTextColor()));
-        //mReactButton.setCompoundDrawablesWithIntrinsicBounds(react.getReactIconId(), 0, 0, 0);
+        mReactButton.setCompoundDrawablesWithIntrinsicBounds(react.getReactIconId(), 0, 0, 0);
         isReactButtonUpdated = !react.equals(mDefaultReaction);
         if (mOnReactionChangeListener != null) mOnReactionChangeListener.onReactionChange(react);
     }

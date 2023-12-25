@@ -1,152 +1,187 @@
 package com.htnguyen.ihealthclub.view.mainscreen.personal
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.RequiresApi
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.Post
-import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
-import com.htnguyen.ihealthclub.utils.URL_PHOTO
-import com.htnguyen.ihealthclub.utils.USER_ID
-import com.htnguyen.ihealthclub.utils.USER_NAME
 import com.htnguyen.ihealthclub.view.adapter.PostAdapter
-import com.htnguyen.ihealthclub.view.mainscreen.home.BottomSheetCommentFragment
 import com.htnguyen.ihealthclub.view.mainscreen.home.CreatePostsActivity
 import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageStoryActivity
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.base.BaseFragment
 import com.htnguyen.ihealthclub.databinding.FragmentPersonalProfileBinding
-import com.htnguyen.ihealthclub.view.register.RegisterViewModel
+import com.htnguyen.ihealthclub.model.TypeAction
+import com.htnguyen.ihealthclub.model.UserAction
+import com.htnguyen.ihealthclub.utils.*
+import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageResultActivity
 import kotlinx.android.synthetic.main.fragment_personal_profile.*
 import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
+import java.io.File
+import java.io.IOException
 
-class PersonalProfileFragment : BaseFragment<FragmentPersonalProfileBinding, RegisterViewModel>() {
-    private var param1: String? = null
-    private var param2: String? = null
-    private lateinit var databasepost: DatabaseReference
+class PersonalProfileFragment :
+    BaseFragment<FragmentPersonalProfileBinding, PersonalProfileViewModel>() {
     private lateinit var sharedPreferences: SharedPreferences
-    private var urlAvatar: String = ""
-    private var userName: String = ""
-    private var idUser: String = ""
     private var postAdapter: PostAdapter? = null
-    private val listPost = mutableListOf<Any>()
-    private lateinit var btsComment: BottomSheetCommentFragment
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        databasepost = Firebase.database.reference.child("posts")
-        sharedPreferences = requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
-        urlAvatar = sharedPreferences.getString(URL_PHOTO,"").toString()
-        userName = sharedPreferences.getString(USER_NAME, "USER FACEBOOK").toString()
-        idUser = sharedPreferences.getString(USER_ID,"USER ID").toString()
-    }
+    private val viewModel by viewModels<PersonalProfileViewModel>()
 
     override val layout: Int
         get() = R.layout.fragment_personal_profile
 
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val intent = result.data
+                val data = intent?.getStringExtra(KEY_PATH_IMAGE_POST)
+
+                Glide.with(this).load(data).into(img_avatar)
+
+                val filePath =
+                    this@PersonalProfileFragment.context?.let { getRealPathFromUri(it, Uri.parse(data)) }
+                uploadFile(filePath!!)
+            }
+        }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPreferences =
+            requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+        initData()
         initView()
-
     }
 
-    private fun initView(){
-        tv_user_name.text = userName
+    override fun onStart() {
+        super.onStart()
+        val optionsPost: FirebaseRecyclerOptions<Post> =
+            FirebaseRecyclerOptions.Builder<Post>()
+                .setLifecycleOwner(this)
+                .setQuery(FirebaseUtils.databasePost, Post::class.java)
+                .build()
+        postAdapter = viewModel.idUser.value?.let {
+            PostAdapter(it, requireContext(), callback = {
 
-        Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar)
-        Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail)).into(img_avatar_little)
+            }, onActionLike = { reaction, postSelect ->
+                val userReactionLike = UserAction(
+                    idUser = viewModel.idUser.value,
+                    typeAction = reaction.reactTypeAction,
+                    timeAction = System.currentTimeMillis(),
+                    contentAction = ""
+                )
+                if (userReactionLike.typeAction != TypeAction.NO)
+                    FirebaseUtils.databasePostLike.child(postSelect.idPost)
+                        .child(userReactionLike.idUser.toString())
+                        .setValue(userReactionLike)
+                else
+                    FirebaseUtils.databasePostLike.child(postSelect.idPost)
+                        .child(userReactionLike.idUser.toString())
+                        .setValue(null)
+            }, callback3 = { _, _ ->
 
-        btn_add_story.setOnClickListener{
-            val intent = Intent(this@PersonalProfileFragment.context,PickImageStoryActivity::class.java)
-            startActivity(intent)
+            }, optionsPost)
         }
-
-        ln_thinking_post.setOnClickListener{
-            val intent = Intent(this@PersonalProfileFragment.context,CreatePostsActivity::class.java)
-            startActivity(intent)
-        }
-        initRecycleView()
-
+        postAdapter?.startListening()
+        rv_post_person.adapter = postAdapter
     }
 
-    private fun initRecycleView(){
-        postAdapter = PostAdapter(urlAvatar, requireContext(), listPost,{post->
+    private fun initData() {
+        binding.viewModel = viewModel
+        viewModel.idUser.value =
+            sharedPreferences.getString(USER_ID, "").toString()
 
-        },{reaction, post ->
+        viewModel.getDataProfileUser()
+    }
 
-        },{
-            linear, post ->
-            btsComment = BottomSheetCommentFragment.newInstance(post.idPost)
-            btsComment.show(childFragmentManager,"")
-        })
+    private fun initView() {
         rv_post_person.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        rv_post_person.setHasFixedSize(true)
         rv_post_person.setBackgroundResource(R.color.background_grey_little)
         rv_post_person.isNestedScrollingEnabled = false
-        rv_post_person.adapter = postAdapter
-        getAllPosts()
+
+        Glide.with(this)
+            .load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
+            .into(img_avatar)
+        Glide.with(this)
+            .load(viewModel.userPhotoUrl.value ?: sharedPreferences.getString(URL_PHOTO, ""))
+            .error(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_user_thumbnail))
+            .into(img_avatar_little)
+
+        btn_add_story.setOnClickListener {
+            val intent =
+                Intent(this@PersonalProfileFragment.context, PickImageStoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_edit_profile.setOnClickListener {
+            val intent =
+                Intent(this@PersonalProfileFragment.context, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        ln_thinking_post.setOnClickListener {
+            val intent =
+                Intent(this@PersonalProfileFragment.context, CreatePostsActivity::class.java)
+            startActivity(intent)
+        }
+
+        im_back.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
+        imgChangeAvatar.setOnClickListener {
+            startForResult.launch(
+                Intent(
+                    this@PersonalProfileFragment.context,
+                    PickImageResultActivity::class.java
+                )
+            )
+        }
+
     }
 
-    private fun getAllPosts() {
-        val postListener = object : ValueEventListener {
-            @RequiresApi(Build.VERSION_CODES.N)
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                for (postSnapshot in dataSnapshot.children) {
-                    val post = postSnapshot.getValue<Post>()
-                    if (post != null) {
-                        if (post.idUser == idUser && checkPost(post.idPost,listPost)==1){
-                            listPost.add(post)
-                        }
-                    }
+    private fun uploadFile(fileName: String) {
+        val file = Uri.fromFile(File(fileName))
 
+        val ref = FirebaseUtils.storageRef.child("image_user/${System.currentTimeMillis()}")
+
+        val uploadTask = ref.putFile(file)
+
+        uploadTask.continueWithTask { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    showSnackBar(it.message!!)
                 }
-                Log.d("hunghkp", "${listPost.size} ")
-                postAdapter?.notifyDataSetChanged()
             }
+            ref.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                FirebaseUtils.db.collection("User").document(viewModel.idUser.value!!).update(
+                    mapOf(
+                        "photoUrl" to downloadUri
+                    )
+                )
+            } else {
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("nht", "loadPost:onCancelled", databaseError.toException())
             }
         }
-        databasepost.addValueEventListener(postListener)
 
-    }
+        try {
+            // function throw ra exception
+        } catch (e: IOException) {
 
-    fun checkPost(a: Long, b: MutableList<Any>): Int {
-        val  k = b as MutableList<Post>
-        for(i in k){
-            if (a == i.idPost)
-                return 0
         }
-        return 1
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            PersonalProfileFragment()
-    }
+
 }

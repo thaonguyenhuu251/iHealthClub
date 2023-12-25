@@ -11,6 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ProgressBar
+            android:id="@+id/pb_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/_120sdp"
+            android:progressTint="@color/general_blue"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -52,7 +65,7 @@
                             android:layout_height="@dimen/_24sdp"
                             android:layout_gravity="center_vertical"
                             android:padding="@dimen/_6sdp"
-                            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/black_mode" />
 
                         <TextView
@@ -85,6 +98,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:isScrollContainer="true"
@@ -118,8 +132,8 @@
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center_vertical"
                             android:scaleType="centerCrop"
-                            app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
-                            android:src="@drawable/ic_user_thumbnail" />
+                            android:src="@drawable/ic_user_thumbnail"
+                            app:shapeAppearanceOverlay="@style/ShapeImageAvatar" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -272,7 +286,6 @@
                     android:hint="@string/et_hint_thinking"
                     android:imeOptions="actionNone"
                     android:inputType="textMultiLine"
-                    android:textCursorDrawable="@drawable/cursor_mouse"
                     android:textSize="@dimen/_14sdp"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp" />
@@ -291,12 +304,6 @@
                         app:layout_anchorGravity="center"
                         tools:srcCompat="@tools:sample/avatars" />
 
-                    <ProgressBar
-                        android:id="@+id/pb_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:visibility="gone" />
                 </RelativeLayout>
 
 

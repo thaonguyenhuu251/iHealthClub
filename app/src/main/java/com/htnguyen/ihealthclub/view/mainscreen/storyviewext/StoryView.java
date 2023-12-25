@@ -390,9 +390,9 @@ public class StoryView extends DialogFragment implements StoriesProgressView.Sto
         if (isDownClick && elapsedTime < 500) {
             stopTimer();
             if (((int) (height - yValue) <= 0.8 * height)) {
-                if ((!TextUtils.isEmpty(storiesList.get(counter).getCreateBy())
+                if ((!TextUtils.isEmpty(storiesList.get(counter).getIdUser())
                         && ((int) (height - yValue) >= 0.2 * height)
-                        || TextUtils.isEmpty(storiesList.get(counter).getCreateBy()))) {
+                        || TextUtils.isEmpty(storiesList.get(counter).getIdUser()))) {
                     if ((int) xValue <= (width / 2)) {
                         //Left
                         if (isRtl) {

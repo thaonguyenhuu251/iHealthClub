@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
-import com.htnguyen.ihealthclub.model.TypeLike
+import com.htnguyen.ihealthclub.model.TypeAction
 import java.util.regex.Pattern
 
 const val KEY_USER = "KEY_USER"
@@ -24,8 +24,8 @@ const val ICON_GET = "ICON_GET"
 const val ICON_NAME = "ICON_NAME"
 
 const val KEY_PATH_IMAGE_POST = "KEY_PATH_IMAGE_POST"
-
-const val KEY_PATH_IMAGE_STORY="KEY_PATH_IMAGE_STORY"
+const val KEY_PATH_IMAGE = "KEY_PATH_IMAGE"
+const val KEY_PATH_IMAGE_STORY = "KEY_PATH_IMAGE_STORY"
 const val COLLECTION_PATH_STORY = "story"
 const val TYPE_REGISTER = "TYPE_REGISTER"
 
@@ -42,7 +42,7 @@ val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
             ")+"
 )
 
- fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
+fun getRealPathFromUri(context: Context, contentUri: Uri?): String? {
     var cursor: Cursor? = null
     return try {
         val proj = arrayOf(MediaStore.Images.Media.DATA)
@@ -55,16 +55,16 @@ val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
     }
 }
 
-fun typeReaction(reaction: String) : TypeLike {
-    when(reaction){
-        "Like" -> return TypeLike.LIKE
-        "Love" -> return TypeLike.LOVE
-        "Smile"->return TypeLike.SMILE
-        "Wow" -> return TypeLike.WOW
-        "Sad"-> return TypeLike.SAD
-        "Angry"-> return TypeLike.ANGRY
+fun typeReaction(reaction: String): TypeAction {
+    when (reaction) {
+        "Like" -> return TypeAction.LIKE
+        "Love" -> return TypeAction.LOVE
+        "Smile" -> return TypeAction.SMILE
+        "Wow" -> return TypeAction.WOW
+        "Sad" -> return TypeAction.SAD
+        "Angry" -> return TypeAction.ANGRY
     }
-    return TypeLike.NO
+    return TypeAction.NO
 }
 
 fun checkEmail(email: String): Boolean {

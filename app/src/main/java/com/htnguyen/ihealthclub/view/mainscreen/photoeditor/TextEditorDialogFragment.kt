@@ -48,7 +48,7 @@ class TextEditorDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.add_text_dialog, container, false)
+        return inflater.inflate(R.layout.dialog_add_text, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -9,18 +9,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.*
 import com.htnguyen.ihealthclub.utils.*
-import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DatabaseReference
@@ -36,21 +35,18 @@ import java.io.IOException
 
 
 class CreatePostsActivity : AppCompatActivity() {
-    val storage = Firebase.storage
     private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
     private val storageRef = Firebase.storage.reference
     private val listDownloadUri = mutableListOf<String>()
-    private val listLike = mutableListOf<ListLike>()
-    private var loadingDialog: LoadingDialog? = null
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var post: Post
     private lateinit var database: DatabaseReference
-    private  var userName: String = ""
-    private  var status: String = ""
+    private var userName: String = ""
+    private var status: String = ""
     private var urlAvartar: String = ""
-    private  var thinking: String = ""
+    private var thinking: String = ""
     private lateinit var typeFile: TypeFile
-    private  var emojiHome: EmojiHome?= null
+    private var emojiHome: EmojiHome? = null
 
     @SuppressLint("ResourceAsColor")
     private val startForResult =
@@ -75,20 +71,17 @@ class CreatePostsActivity : AppCompatActivity() {
             }
         }
 
-    @SuppressLint("ResourceAsColor")
     private val startActivityPickEmoji =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val intent = result.data
                 val data = intent?.getSerializableExtra(KEY_EMOJI_PUT) as EmojiHome
                 emojiHome = data
-                Log.d("hunghkp", ": ${data.emojiName}")
                 status = " ${data.srcImage} felling ${data.emojiName}"
-//                val st =  data.srcImage + "felling ${data.emojiName}"
                 atv_post.text = userName + status
                 btn_post.isEnabled = true
                 btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
-                btn_post.setTextColor(R.color.black_mode)
+                btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
             }
         }
 
@@ -98,20 +91,19 @@ class CreatePostsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_post)
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         database = Firebase.database.reference
-        urlAvartar = sharedPreferences.getString(URL_PHOTO,"").toString()
+        urlAvartar = sharedPreferences.getString(URL_PHOTO, "").toString()
         typeFile = TypeFile.OTHER
         post = Post()
         initView()
     }
 
-
-    @SuppressLint("ResourceAsColor")
     private fun initView() {
         userName = sharedPreferences.getString(USER_NAME, "USER FACEBOOK").toString()
         atv_post.text = userName
 
         Glide.with(this).load(sharedPreferences.getString(URL_PHOTO, ""))
-            .error(AppCompatResources.getDrawable(this, R.drawable.ic_user_thumbnail)).into(img_avatar)
+            .error(AppCompatResources.getDrawable(this, R.drawable.ic_user_thumbnail))
+            .into(img_avatar)
 
 
 
@@ -132,27 +124,25 @@ class CreatePostsActivity : AppCompatActivity() {
         }
 
         iv_images.setOnClickListener {
-            startForResult.launch(Intent(this, PickImagePostActivity::class.java))
+            startForResult.launch(Intent(this, PickImageResultActivity::class.java))
         }
 
         ln_images.setOnClickListener {
-            startForResult.launch(Intent(this, PickImagePostActivity::class.java))
+            startForResult.launch(Intent(this, PickImageResultActivity::class.java))
         }
 
         iv_emoji.setOnClickListener {
 
             val intent = Intent(this, EmojiActionActivity::class.java)
-            if(emojiHome != null){
+            if (emojiHome != null) {
                 intent.putExtra(KEY_EMOJI_PUT, emojiHome)
             }
 
             startActivityPickEmoji.launch(intent)
         }
         ln_emoji.setOnClickListener {
-//            val intent = Intent(this, EmojiActionActivity::class.java)
-//            startActivity(intent)
             val intent = Intent(this, EmojiActionActivity::class.java)
-            if(emojiHome != null){
+            if (emojiHome != null) {
                 intent.putExtra(KEY_EMOJI_PUT, emojiHome)
             }
 
@@ -184,14 +174,14 @@ class CreatePostsActivity : AppCompatActivity() {
                 if (et_thinking_pos.text.toString().trim().isNotEmpty()) {
                     btn_post.isEnabled = true
                     btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
-                    btn_post.setTextColor(R.color.black_mode)
+                    btn_post.setTextColor(ContextCompat.getColor(this@CreatePostsActivity, R.color.black_mode))
                     thinking = et_thinking_pos.text.toString().trim()
 
                 } else {
                     if (btn_post.isEnabled) {
                         btn_post.isEnabled = false
                         btn_post.setBackgroundResource(R.drawable.rounded_home_post_file)
-                        btn_post.setTextColor(R.color.general_grey)
+                        btn_post.setTextColor(ContextCompat.getColor(this@CreatePostsActivity, R.color.general_grey))
                     }
 
                 }
@@ -200,28 +190,22 @@ class CreatePostsActivity : AppCompatActivity() {
         })
 
         btn_post.setOnClickListener {
-            listLike.add(ListLike("", TypeLike.NO))
-            post.idPost = System.currentTimeMillis()
+            post.idPost = sharedPreferences.getString(USER_ID, "") + "${System.currentTimeMillis()}"
             post.idUser = sharedPreferences.getString(USER_ID, "").toString()
-            post.urlAvatar = urlAvartar
-            post.status = thinking
+            post.bodyStatus = thinking
             post.emojiStatus = status
             post.listFile = listDownloadUri
-            post.typeFile = typeFile
-            post.listLike = listLike
+            post.typePost = typeFile
             post.likeTotal = 0
             post.commentTotal = 0
             post.shareTotal = 0
             post.createAt = System.currentTimeMillis()
-            post.createBy = sharedPreferences.getString(USER_NAME, "").toString()
-            database.child("posts").child(post.idPost.toString()).setValue(post)
+            database.child("Posts").child(post.idPost).setValue(post)
                 .addOnSuccessListener {
                     finish()
-                    Log.d("hunghkp", "initView: success")
                 }.addOnFailureListener { e ->
-                Log.d("hunghkp", "initView: ${e.message}")
                     finish()
-            }
+                }
 
         }
 
@@ -260,7 +244,6 @@ class CreatePostsActivity : AppCompatActivity() {
     }
 
     private fun uploadFile(fileName: String) {
-        //loading
         pb_image.visibility = View.VISIBLE
         val file = Uri.fromFile(File(fileName))
 

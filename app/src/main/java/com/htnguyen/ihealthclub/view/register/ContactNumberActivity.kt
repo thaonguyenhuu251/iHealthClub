@@ -35,7 +35,7 @@ class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, Registe
     private var user: User? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
-    private var loadingDialog: LoadingDialog? = null
+
     var popupWindow: PopupWindow? = null
     override val layout: Int
         get() = R.layout.activity_contact_number

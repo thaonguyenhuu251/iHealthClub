@@ -38,7 +38,7 @@
                     android:layout_height="16dp"
                     android:layout_gravity="center_vertical"
                     android:backgroundTint="@color/black_mode"
-                    android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+                    android:src="@drawable/ic_back" />
 
                 <TextView
                     android:id="@+id/tv_back"
@@ -113,7 +113,7 @@
                     android:layout_height="@dimen/_28sdp"
                     android:padding="@dimen/_8sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:src="@drawable/ic_search_black" />
+                    android:src="@drawable/ic_search" />
 
                 <EditText
                     android:id="@+id/et_emoji_action"

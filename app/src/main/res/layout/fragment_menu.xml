@@ -67,7 +67,7 @@
                             android:layout_margin="@dimen/_10sdp"
                             android:background="@drawable/rounded_button_circle_grey"
                             android:padding="@dimen/_5sdp"
-                            android:src="@drawable/ic_search_black" />
+                            android:src="@drawable/ic_search" />
                     </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.AppBarLayout>
@@ -96,6 +96,7 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.imageview.ShapeableImageView
+                            app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
                             android:id="@+id/img_avatar"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
@@ -220,7 +221,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/_5sdp"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/icons8_natural_resources_64" />
+                                android:src="@drawable/action_playing" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -264,7 +265,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/_5sdp"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/icons8_support_64" />
+                                android:src="@drawable/action_supporting" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -307,7 +308,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginRight="@dimen/_5sdp"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/icons8_human_resources_64" />
+                                android:src="@drawable/action_searching" />
 
                             <TextView
                                 android:layout_width="0dp"

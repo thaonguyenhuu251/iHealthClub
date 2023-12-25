@@ -19,7 +19,7 @@ class EmojiGeneralAdapter(val context: Context, var list: ArrayList<EmojiHome>, 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == StoryViewAdapter.VIEW_TYPE_ONE) {
+        if (viewType == VIEW_TYPE_ONE) {
             return CreateNewViewHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_comment_story, parent, false)
             )

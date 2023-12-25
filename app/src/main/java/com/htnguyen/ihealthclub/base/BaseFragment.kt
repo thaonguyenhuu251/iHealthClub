@@ -11,7 +11,9 @@ import androidx.annotation.IdRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.snackbar.Snackbar
 import com.htnguyen.ihealthclub.R
+import kotlinx.android.synthetic.main.activity_create_post.*
 
 abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment() {
 
@@ -159,6 +161,10 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
     override fun onDestroy() {
         super.onDestroy()
         (context as? Activity)?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    fun showSnackBar(message: String) {
+        Snackbar.make(container, message, Snackbar.LENGTH_LONG).show()
     }
 
 }
