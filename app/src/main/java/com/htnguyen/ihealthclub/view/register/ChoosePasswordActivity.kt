@@ -31,7 +31,6 @@ import kotlin.random.Random
 class ChoosePasswordActivity : AppCompatActivity() {
 
     private var user: User? = null
-    private val db = Firebase.firestore
     private var loadingDialog: LoadingDialog? = null
     private var userRepository: UserRepository? = null
     private lateinit var sharedPreferences: SharedPreferences
@@ -121,10 +120,10 @@ class ChoosePasswordActivity : AppCompatActivity() {
     }
 
     private fun createAccount(userLogin: UserLogin) {
-        db.collection("UserLogin").document(userLogin.account!!).set(userLogin)
+        FirebaseUtils.db.collection("UserLogin").document(userLogin.account!!).set(userLogin)
             .addOnSuccessListener {
                 val editor = sharedPreferences.edit()
-                editor.putString(USER_ID, user?.idUser)
+                editor.putString(USER_ID, userLogin.idUser)
                 editor.putString(URL_PHOTO, user?.photoUrl)
                 editor.putString(USER_NAME, user?.name)
                 editor.apply()
@@ -139,7 +138,7 @@ class ChoosePasswordActivity : AppCompatActivity() {
                     userRepository?.insert(userSaved)
                 }
 
-                db.collection("User").document(user?.idUser!!).set(user!!)
+                FirebaseUtils.db.collection("User").document(userLogin.idUser!!).set(user!!)
                     .addOnSuccessListener {
                         loadingDialog?.dismissDialog()
                         val i = Intent(this@ChoosePasswordActivity, MainScreenActivity::class.java)
