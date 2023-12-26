@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -18,14 +17,11 @@ import com.htnguyen.ihealthclub.model.UserSaved
 import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.model.UserLogin
-import kotlinx.android.synthetic.main.activity_choose_password.*
+import kotlinx.android.synthetic.main.activity_register_password.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 
 class ChoosePasswordActivity : AppCompatActivity() {
@@ -36,7 +32,7 @@ class ChoosePasswordActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_password)
+        setContentView(R.layout.activity_register_password)
         userRepository = UserRepository(UserRoomDatabase.getDatabase(this).userDao())
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         loadingDialog = LoadingDialog(this)

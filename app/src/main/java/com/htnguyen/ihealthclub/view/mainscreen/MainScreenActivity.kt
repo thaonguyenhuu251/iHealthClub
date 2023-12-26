@@ -15,13 +15,13 @@ import kotlinx.android.synthetic.main.activity_main_screen.*
 
 class MainScreenActivity : AppCompatActivity() {
 
-    private val titles = arrayOf("Home", "Friend", "Watch", "Notification", "Menu")
+    private val titles = arrayOf("Home", "Friend", "Watch", "Notification", "Person")
     private val listIcon = arrayOf(
         R.drawable.ic_home,
         R.drawable.ic_friend,
         R.drawable.ic_watch,
         R.drawable.ic_notify,
-        R.drawable.ic_menu
+        R.drawable.ic_user
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

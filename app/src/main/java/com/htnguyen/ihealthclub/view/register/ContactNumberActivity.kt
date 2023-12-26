@@ -23,14 +23,14 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.BR
 import com.htnguyen.ihealthclub.base.BaseActivity
-import com.htnguyen.ihealthclub.databinding.ActivityContactNumberBinding
+import com.htnguyen.ihealthclub.databinding.ActivityRegisterContactBinding
 import com.htnguyen.ihealthclub.model.AreaCode
 import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.adapter.CountryAdapter
 import java.util.concurrent.TimeUnit
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, RegisterViewModel>() {
+class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, RegisterViewModel>() {
 
     private var user: User? = null
     private lateinit var auth: FirebaseAuth
@@ -38,7 +38,7 @@ class ContactNumberActivity : BaseActivity<ActivityContactNumberBinding, Registe
 
     var popupWindow: PopupWindow? = null
     override val layout: Int
-        get() = R.layout.activity_contact_number
+        get() = R.layout.activity_register_contact
     override val viewModel: RegisterViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {

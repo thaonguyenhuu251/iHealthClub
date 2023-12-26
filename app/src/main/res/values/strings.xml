@@ -521,4 +521,7 @@
     <string name="save">Save</string>
     <string name="your_height">What\'s your height? (cm)</string>
     <string name="your_weight">What\'s your weight? (Kg)</string>
+    <string name="setting">Setting</string>
+    <string name="change_password">Change Password</string>
+    <string name="logout">Logout</string>
 </resources>

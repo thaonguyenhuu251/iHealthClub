@@ -3,12 +3,12 @@ package com.htnguyen.ihealthclub.view.mainscreen.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.htnguyen.ihealthclub.R
-import kotlinx.android.synthetic.main.activity_object_post_home.*
+import kotlinx.android.synthetic.main.activity_create_post_object.*
 
 class ObjectPostHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_object_post_home)
+        setContentView(R.layout.activity_create_post_object)
         initView()
     }
     private fun initView(){

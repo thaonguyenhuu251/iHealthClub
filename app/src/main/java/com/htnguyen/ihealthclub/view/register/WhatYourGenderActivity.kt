@@ -2,12 +2,11 @@ package com.htnguyen.ihealthclub.view.register
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.utils.KEY_USER
-import kotlinx.android.synthetic.main.activity_what_your_gender.*
+import kotlinx.android.synthetic.main.activity_register_your_gender.*
 
 class WhatYourGenderActivity : AppCompatActivity() {
 
@@ -15,7 +14,7 @@ class WhatYourGenderActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_what_your_gender)
+        setContentView(R.layout.activity_register_your_gender)
 
         user = intent.extras?.get(KEY_USER) as User
 

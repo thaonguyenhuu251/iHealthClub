@@ -4,7 +4,6 @@ import com.htnguyen.ihealthclub.R
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.htnguyen.ihealthclub.model.User
@@ -17,8 +16,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.htnguyen.ihealthclub.model.UserLogin
-import kotlinx.android.synthetic.main.activity_otp_verification.*
+import kotlinx.android.synthetic.main.activity_register_otp_verification.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -34,7 +32,7 @@ class OtpVerificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_otp_verification)
+        setContentView(R.layout.activity_register_otp_verification)
         verifiedID = intent.getStringExtra(KEY_VERIFIED_ID)
         user = intent.extras?.get(KEY_USER) as User
         initFirebase()

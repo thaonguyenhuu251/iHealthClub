@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.utils.KEY_USER
-import kotlinx.android.synthetic.main.activity_what_your_name.*
+import kotlinx.android.synthetic.main.activity_register_your_name.*
 
 
 class WhatYourNameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_what_your_name)
+        setContentView(R.layout.activity_register_your_name)
 
         btn_next.setOnClickListener {
             val firstName = ed_first_name.text.toString().trim()
