@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_28sdp"
         android:layout_margin="@dimen/_15sdp"
-        android:background="@drawable/rounded_button_general_blue"
+        android:background="@drawable/rounded_background_blue_linear"
         android:text="Share"
         android:textAllCaps="false"
         android:textColor="@color/white"

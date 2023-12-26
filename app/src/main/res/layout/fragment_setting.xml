@@ -232,7 +232,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/rounded_button_little_grey"
+                    android:background="@drawable/rounded_background_grey"
                     android:backgroundTint="@color/general_blue"
                     android:text="@string/change_password"
                     android:textColor="@color/white"
@@ -245,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginHorizontal="@dimen/_16sdp"
-                    android:background="@drawable/rounded_button_little_grey"
+                    android:background="@drawable/rounded_background_grey"
                     android:text="@string/logout"
                     android:textAllCaps="false"
                     android:textSize="@dimen/_12sdp" />

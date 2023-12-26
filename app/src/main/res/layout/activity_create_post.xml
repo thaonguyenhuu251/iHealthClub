@@ -84,7 +84,7 @@
                         android:id="@+id/btn_post"
                         android:layout_width="@dimen/_63sdp"
                         android:layout_height="@dimen/_29sdp"
-                        android:background="@drawable/rounded_home_post_file"
+                        android:background="@drawable/rounded_background_grey"
                         android:enabled="false"
                         android:text="Post"
                         android:textAllCaps="false"
@@ -177,7 +177,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/_5sdp"
-                                android:background="@drawable/rounded_view_post"
+                                android:background="@drawable/rounded_outline_black"
                                 android:orientation="horizontal">
 
                                 <ImageView
@@ -209,7 +209,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/_5sdp"
-                                android:background="@drawable/rounded_view_post"
+                                android:background="@drawable/rounded_outline_black"
                                 android:orientation="horizontal">
 
                                 <ImageView
@@ -241,7 +241,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/_5sdp"
-                                android:background="@drawable/rounded_view_post"
+                                android:background="@drawable/rounded_outline_black"
                                 android:orientation="horizontal">
 
                                 <ImageView
@@ -322,7 +322,7 @@
                         android:layout_height="@dimen/_32sdp"
                         android:layout_gravity="center_vertical|center_horizontal"
                         android:padding="@dimen/_6sdp"
-                        android:src="@drawable/img_homepost_image"
+                        android:src="@drawable/ic_image"
                         app:tint="@color/black_mode" />
 
                     <TextView

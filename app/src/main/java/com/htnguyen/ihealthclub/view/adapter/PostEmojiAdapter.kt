@@ -39,8 +39,15 @@ class PostEmojiAdapter(val context: Context, var listEmojis: MutableList<EmojiSp
         }
     }
 
-    fun filterList(listEmoji: MutableList<EmojiSportHome>) {
-        listEmojis = listEmoji
+    fun filterList(text: String, listSport: MutableList<EmojiSportHome>, ) {
+        listEmojis = if (text.isNotEmpty()) {
+            listSport.filter {
+                it.emojiName?.lowercase()!!.contains(text.lowercase())
+            }.toMutableList()
+        } else {
+            listSport
+        }
+
         notifyDataSetChanged()
     }
 

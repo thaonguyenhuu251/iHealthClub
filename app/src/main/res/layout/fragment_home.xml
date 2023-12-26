@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:background="@drawable/rounded_status_home"
+                    android:background="@drawable/rounded_background_grey"
                     android:drawablePadding="@dimen/_5sdp"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingVertical="@dimen/_5sdp"
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_10sdp"
-                    android:background="@drawable/rounded_search_home"
+                    android:background="@drawable/rounded_background_grey"
                     android:padding="@dimen/_5sdp"
                     android:src="@drawable/ic_search" />
             </LinearLayout>

@@ -114,7 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/rounded_button_circle_grey"
+                            android:background="@drawable/rounded_background_grey"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_16sdp"
                             android:src="@drawable/ic_baseline_settings_24" />
@@ -155,7 +155,7 @@
                             android:layout_height="@dimen/_100sdp"
                             android:layout_gravity="center_vertical"
                             android:layout_margin="@dimen/_16sdp"
-                            android:background="@drawable/rounded_avatar_menu"
+                            android:background="@drawable/rounded_background_grey"
                             android:scaleType="fitXY"
                             app:layout_constraintBottom_toBottomOf="@+id/roundedImageView"
                             app:layout_constraintStart_toStartOf="parent"
@@ -166,9 +166,9 @@
                             android:layout_width="@dimen/_28sdp"
                             android:layout_height="@dimen/_28sdp"
                             android:layout_gravity="center"
-                            android:background="@drawable/rounded_button_circle_grey"
+                            android:background="@drawable/rounded_background_grey"
                             android:padding="@dimen/_5sdp"
-                            android:src="@drawable/img_homepost_camera"
+                            android:src="@drawable/ic_camera"
                             app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
                             app:layout_constraintEnd_toEndOf="@+id/img_avatar" />
 
@@ -326,7 +326,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:background="@drawable/rounded_button_little_blue"
+                            android:background="@drawable/rounded_background_blue_linear"
                             android:text="@string/add_to_story"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -339,7 +339,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:layout_marginStart="@dimen/_8sdp"
-                            android:background="@drawable/rounded_button_little_grey"
+                            android:background="@drawable/rounded_background_grey"
                             android:text="@string/edit_profile"
                             android:textAllCaps="false"
                             android:textSize="@dimen/_12sdp" />
@@ -351,7 +351,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:background="@drawable/rounded_button_little_grey"
+                        android:background="@drawable/rounded_background_grey"
                         android:text="@string/edit_public_detail"
                         android:textAllCaps="false"
                         android:textSize="@dimen/_12sdp" />
@@ -402,7 +402,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="@dimen/_16sdp"
-                        android:background="@drawable/rounded_button_little_grey"
+                        android:background="@drawable/rounded_background_grey"
                         android:text="@string/all_your_friends"
                         android:textAllCaps="false"
                         android:textSize="@dimen/_12sdp" />
@@ -435,7 +435,7 @@
                             android:layout_height="@dimen/_28sdp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="@dimen/_10sdp"
-                            android:background="@drawable/rounded_image_personal"
+                            android:background="@drawable/rounded_background_grey"
                             android:padding="@dimen/_4sdp"
                             android:src="@drawable/ic_search" />
 
@@ -444,7 +444,7 @@
                             android:layout_height="@dimen/_28sdp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="@dimen/_5sdp"
-                            android:background="@drawable/rounded_image_personal"
+                            android:background="@drawable/rounded_background_grey"
                             android:padding="@dimen/_4sdp"
                             android:src="@drawable/ic_baseline_settings_24" />
 
@@ -470,7 +470,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="@dimen/_10sdp"
-                            android:background="@drawable/rounded_status_home"
+                            android:background="@drawable/rounded_background_grey"
                             android:orientation="horizontal">
 
                             <TextView
@@ -512,7 +512,7 @@
                             android:gravity="center"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
-                            app:drawableStartCompat="@drawable/img_homepost_image" />
+                            app:drawableStartCompat="@drawable/ic_image" />
 
                         <View
                             android:layout_width="1dp"
@@ -530,7 +530,7 @@
                             android:text="Image"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
-                            app:drawableStartCompat="@drawable/img_homepost_image"/>
+                            app:drawableStartCompat="@drawable/ic_image"/>
 
                         <View
                             android:layout_width="1dp"
@@ -548,7 +548,7 @@
                             android:text="Live"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
-                            app:drawableStartCompat="@drawable/img_homepost_image" />
+                            app:drawableStartCompat="@drawable/ic_image" />
 
                     </LinearLayout>
 

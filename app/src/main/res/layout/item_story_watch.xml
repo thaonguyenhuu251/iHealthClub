@@ -30,7 +30,7 @@
             android:id="@+id/iv_avatar_story"
             android:layout_width="@dimen/_28sdp"
             android:layout_height="@dimen/_28sdp"
-            android:background="@drawable/rounded_story_watch"
+            android:background="@drawable/rounded_outline_black"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/ShapeImageAvatar"
             app:layout_constraintStart_toStartOf="@+id/guideline58"

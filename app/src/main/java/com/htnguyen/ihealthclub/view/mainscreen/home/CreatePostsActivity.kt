@@ -63,7 +63,7 @@ class CreatePostsActivity : AppCompatActivity() {
                 ln_options_post_home.visibility = View.VISIBLE
 
                 btn_post.isEnabled = true
-                btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                btn_post.setBackgroundResource(R.drawable.rounded_background_blue_linear)
                 btn_post.setTextColor(R.color.black_mode)
 
                 val filePath = getRealPathFromUri(this, Uri.parse(data))
@@ -81,7 +81,7 @@ class CreatePostsActivity : AppCompatActivity() {
                     status = " ${dataEmoji.srcImage} felling ${dataEmoji.emojiName}"
                     atv_post.text = userName + status
                     btn_post.isEnabled = true
-                    btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                    btn_post.setBackgroundResource(R.drawable.rounded_background_blue_linear)
                     btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
                 }
 
@@ -91,7 +91,7 @@ class CreatePostsActivity : AppCompatActivity() {
                     status = " ${dataSport.srcImage} playing ${dataSport.emojiName}"
                     atv_post.text = userName + status
                     btn_post.isEnabled = true
-                    btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                    btn_post.setBackgroundResource(R.drawable.rounded_background_blue_linear)
                     btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
                 }
 
@@ -186,14 +186,14 @@ class CreatePostsActivity : AppCompatActivity() {
             override fun afterTextChanged(editable: Editable) {
                 if (et_thinking_pos.text.toString().trim().isNotEmpty()) {
                     btn_post.isEnabled = true
-                    btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                    btn_post.setBackgroundResource(R.drawable.rounded_background_blue_linear)
                     btn_post.setTextColor(ContextCompat.getColor(this@CreatePostsActivity, R.color.black_mode))
                     thinking = et_thinking_pos.text.toString().trim()
 
                 } else {
                     if (btn_post.isEnabled) {
                         btn_post.isEnabled = false
-                        btn_post.setBackgroundResource(R.drawable.rounded_home_post_file)
+                        btn_post.setBackgroundResource(R.drawable.rounded_background_grey)
                         btn_post.setTextColor(ContextCompat.getColor(this@CreatePostsActivity, R.color.general_grey))
                     }
 

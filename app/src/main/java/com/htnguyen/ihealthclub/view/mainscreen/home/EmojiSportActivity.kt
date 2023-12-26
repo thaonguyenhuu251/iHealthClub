@@ -74,9 +74,9 @@ class EmojiSportActivity : AppCompatActivity() {
 
         et_emoji_sport.doOnTextChanged { _, _, _, _ ->
             if (radioEmoji.isChecked) {
-                filterEmoji(et_emoji_sport.text.toString())
+                emojisAdapter.filterList(et_emoji_sport.text.toString(), listEmoji)
             } else {
-                filterSport(et_emoji_sport.text.toString())
+                sportsAdapter.filterList(et_emoji_sport.text.toString(), listSport)
             }
         }
 
@@ -114,16 +114,6 @@ class EmojiSportActivity : AppCompatActivity() {
         listEmoji.add(EmojiSportHome(emojiName = "Very Sad", srcImage = "\uD83D\uDE32"))
         listEmoji.add(EmojiSportHome(emojiName = "Zipper Mouth", srcImage = "\uD83E\uDD2F"))
         return listEmoji
-    }
-
-    private fun filterEmoji(text: String) {
-        val filteredList: MutableList<EmojiSportHome> = mutableListOf<EmojiSportHome>()
-        for (item in listEmojis()) {
-            if (item.emojiName?.lowercase()!!.contains(text.lowercase())) {
-                filteredList.add(item)
-            }
-        }
-        emojisAdapter.filterList(filteredList)
     }
 
     private fun listSport(): MutableList<EmojiSportHome> {
@@ -176,16 +166,6 @@ class EmojiSportActivity : AppCompatActivity() {
         listSport.add(EmojiSportHome(emojiName = "Direct Hit", srcImage = "\uD83C\uDFAF"))
         listSport.add(EmojiSportHome(emojiName = "Military Helmet ", srcImage = "\uD83E\uDE96 "))
         return listSport
-    }
-
-    private fun filterSport(text: String) {
-        val filteredList: MutableList<EmojiSportHome> = mutableListOf()
-        for (item in listSport) {
-            if (item.emojiName?.lowercase()!!.contains(text.lowercase())) {
-                filteredList.add(item)
-            }
-        }
-        sportsAdapter.filterList(filteredList)
     }
 
 }
