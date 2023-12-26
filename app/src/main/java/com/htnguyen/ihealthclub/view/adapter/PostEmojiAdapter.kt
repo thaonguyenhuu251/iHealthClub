@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.htnguyen.ihealthclub.R
-import com.htnguyen.ihealthclub.model.EmojiHome
+import com.htnguyen.ihealthclub.model.EmojiSportHome
 
-class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHome>, val callback : (EmojiHome) -> Unit):
-    RecyclerView.Adapter<EmojiHomeAdapter.ItemViewHolder>() {
+class PostEmojiAdapter(val context: Context, var listEmojis: MutableList<EmojiSportHome>, val callback : (EmojiSportHome) -> Unit):
+    RecyclerView.Adapter<PostEmojiAdapter.ItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): EmojiHomeAdapter.ItemViewHolder {
+    ): PostEmojiAdapter.ItemViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_emoji_home, parent, false)
         return ItemViewHolder(view)
     }
@@ -29,7 +29,7 @@ class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHo
         private val tv_emojis_home: TextView = itemView.findViewById(R.id.tv_emojis_home)
         private val tv_emojis: TextView = itemView.findViewById(R.id.emoji_custom_text_view)
 
-        fun bindItem(emoji: EmojiHome) {
+        fun bindItem(emoji: EmojiSportHome) {
             tv_emojis_home.text = emoji.emojiName
             tv_emojis.text = emoji.srcImage
 
@@ -39,7 +39,7 @@ class EmojiHomeAdapter(val context: Context, var listEmojis: MutableList<EmojiHo
         }
     }
 
-    fun filterList(listEmoji: MutableList<EmojiHome>) {
+    fun filterList(listEmoji: MutableList<EmojiSportHome>) {
         listEmojis = listEmoji
         notifyDataSetChanged()
     }

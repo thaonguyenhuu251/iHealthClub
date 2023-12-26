@@ -32,6 +32,11 @@ const val TYPE_REGISTER = "TYPE_REGISTER"
 const val KEY_ID = "KEY_ID"
 const val KEY_SEARCH_EMOJI = "KEY_SEARCH_EMOJI"
 
+const val PERSON_TYPE = "PERSON_TYPE"
+
+const val KEY_EMOJI_PUT = "KEY_EMOJI_PUT"
+const val KEY_SPORT_PUT = "KEY_SPORT_PUT"
+
 val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
     "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
             "\\@" +

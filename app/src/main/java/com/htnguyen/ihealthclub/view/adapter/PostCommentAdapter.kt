@@ -11,8 +11,8 @@ import com.htnguyen.ihealthclub.model.CommentModel
 import com.htnguyen.ihealthclub.view.reacbutton.ClubReactions
 import com.htnguyen.ihealthclub.view.reacbutton.ReactText
 
-class CommentAdapter (val context: Context, var listComment: MutableList<CommentModel>, val callback : (CommentModel) -> Unit)  :
-    RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
+class PostCommentAdapter (val context: Context, var listComment: MutableList<CommentModel>, val callback : (CommentModel) -> Unit)  :
+    RecyclerView.Adapter<PostCommentAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_comment,parent,false)

@@ -1,4 +1,4 @@
-package com.htnguyen.ihealthclub.view.mainscreen.personal
+package com.htnguyen.ihealthclub.view.mainscreen.setting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

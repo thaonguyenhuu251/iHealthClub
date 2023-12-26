@@ -29,7 +29,7 @@
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.htnguyen.ihealthclub.view.mainscreen.home.EmojiActionActivity"
+            android:name="com.htnguyen.ihealthclub.view.mainscreen.home.EmojiSportActivity"
             android:exported="false" />
 
         <activity
@@ -48,7 +48,7 @@
         </activity>
 
         <activity
-            android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.EditPasswordActivity"
+            android:name="com.htnguyen.ihealthclub.view.mainscreen.setting.EditPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.RegisterOtpVerificationActivity"
@@ -87,7 +87,7 @@
         <activity
             android:name="com.htnguyen.ihealthclub.view.register.RegisterPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.TermAndPrivacyActivity" />
+        <activity android:name="com.htnguyen.ihealthclub.view.mainscreen.setting.WebViewActivity" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.SplashScreenActivity"
             android:exported="true">

@@ -46,7 +46,7 @@ class CreatePostsActivity : AppCompatActivity() {
     private var urlAvartar: String = ""
     private var thinking: String = ""
     private lateinit var typeFile: TypeFile
-    private var emojiHome: EmojiHome? = null
+    private var emojiHome: EmojiSportHome? = null
 
     @SuppressLint("ResourceAsColor")
     private val startForResult =
@@ -75,13 +75,26 @@ class CreatePostsActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val intent = result.data
-                val data = intent?.getSerializableExtra(KEY_EMOJI_PUT) as EmojiHome
-                emojiHome = data
-                status = " ${data.srcImage} felling ${data.emojiName}"
-                atv_post.text = userName + status
-                btn_post.isEnabled = true
-                btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
-                btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
+                val dataEmoji = intent?.getSerializableExtra(KEY_EMOJI_PUT) as EmojiSportHome?
+                if (dataEmoji != null) {
+                    emojiHome = dataEmoji
+                    status = " ${dataEmoji.srcImage} felling ${dataEmoji.emojiName}"
+                    atv_post.text = userName + status
+                    btn_post.isEnabled = true
+                    btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                    btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
+                }
+
+                val dataSport = intent?.getSerializableExtra(KEY_SPORT_PUT) as EmojiSportHome?
+                if (dataSport != null) {
+                    emojiHome = dataEmoji
+                    status = " ${dataSport.srcImage} playing ${dataSport.emojiName}"
+                    atv_post.text = userName + status
+                    btn_post.isEnabled = true
+                    btn_post.setBackgroundResource(R.drawable.rounded_button_little_blue)
+                    btn_post.setTextColor(ContextCompat.getColor(this, R.color.black_mode))
+                }
+
             }
         }
 
@@ -133,7 +146,7 @@ class CreatePostsActivity : AppCompatActivity() {
 
         iv_emoji.setOnClickListener {
 
-            val intent = Intent(this, EmojiActionActivity::class.java)
+            val intent = Intent(this, EmojiSportActivity::class.java)
             if (emojiHome != null) {
                 intent.putExtra(KEY_EMOJI_PUT, emojiHome)
             }
@@ -141,7 +154,7 @@ class CreatePostsActivity : AppCompatActivity() {
             startActivityPickEmoji.launch(intent)
         }
         ln_emoji.setOnClickListener {
-            val intent = Intent(this, EmojiActionActivity::class.java)
+            val intent = Intent(this, EmojiSportActivity::class.java)
             if (emojiHome != null) {
                 intent.putExtra(KEY_EMOJI_PUT, emojiHome)
             }

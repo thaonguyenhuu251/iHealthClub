@@ -100,6 +100,15 @@ class PersonalProfileFragment :
     }
 
     private fun initView() {
+        if (arguments?.getInt(PERSON_TYPE) == 0) {
+            appBarLayout1.visibility = View.VISIBLE
+            appBarLayout2.visibility = View.GONE
+        } else {
+            appBarLayout1.visibility = View.GONE
+            appBarLayout2.visibility = View.VISIBLE
+        }
+
+
         rv_post_person.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rv_post_person.setBackgroundResource(R.color.background_grey_little)

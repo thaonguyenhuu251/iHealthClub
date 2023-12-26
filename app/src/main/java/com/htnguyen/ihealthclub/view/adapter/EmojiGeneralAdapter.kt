@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.htnguyen.ihealthclub.R
-import com.htnguyen.ihealthclub.model.EmojiHome
+import com.htnguyen.ihealthclub.model.EmojiSportHome
 import java.util.ArrayList
 
-class EmojiGeneralAdapter(val context: Context, var list: ArrayList<EmojiHome>, val callback: (EmojiHome) -> Unit):
+class EmojiGeneralAdapter(
+    val context: Context,
+    var list: ArrayList<EmojiSportHome>,
+    val callback: (EmojiSportHome) -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -21,7 +25,8 @@ class EmojiGeneralAdapter(val context: Context, var list: ArrayList<EmojiHome>, 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == VIEW_TYPE_ONE) {
             return CreateNewViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.item_comment_story, parent, false)
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_comment_story, parent, false)
             )
         }
         return ItemViewHolder(
@@ -32,25 +37,24 @@ class EmojiGeneralAdapter(val context: Context, var list: ArrayList<EmojiHome>, 
     override fun getItemCount(): Int = list.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == 0){
+        return if (position == 0) {
             VIEW_TYPE_ONE
-        }else{
+        } else {
             VIEW_TYPE_TWO
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-        if (position == 0){
+        if (position == 0) {
             (holder as EmojiGeneralAdapter.CreateNewViewHolder).bindItem()
 
-        }else{
-            (holder as EmojiGeneralAdapter.ItemViewHolder).bindItem(list[position] as EmojiHome)
+        } else {
+            (holder as EmojiGeneralAdapter.ItemViewHolder).bindItem(list[position])
         }
     }
 
 
-    inner class CreateNewViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    inner class CreateNewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItem() {
             itemView.setOnClickListener {
@@ -59,9 +63,9 @@ class EmojiGeneralAdapter(val context: Context, var list: ArrayList<EmojiHome>, 
         }
     }
 
-    inner class ItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tv_emojis: TextView = itemView.findViewById(R.id.emoji_general)
-        fun bindItem(emoji: EmojiHome) {
+        fun bindItem(emoji: EmojiSportHome) {
             tv_emojis.text = emoji.srcImage
             itemView.setOnClickListener {
 

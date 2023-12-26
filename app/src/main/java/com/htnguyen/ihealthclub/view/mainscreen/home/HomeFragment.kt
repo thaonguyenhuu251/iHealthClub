@@ -72,7 +72,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
         }
 
         img_avatar.setOnClickListener {
-            transitFragment(PersonalProfileFragment(), R.id.frameContainer)
+            val args = Bundle()
+            args.putInt(PERSON_TYPE, 0)
+            transitFragment(PersonalProfileFragment(), R.id.frameContainer, args)
         }
     }
 
