@@ -24,7 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class ChoosePasswordActivity : AppCompatActivity() {
+class RegisterPasswordActivity : AppCompatActivity() {
 
     private var user: User? = null
     private var loadingDialog: LoadingDialog? = null
@@ -137,7 +137,7 @@ class ChoosePasswordActivity : AppCompatActivity() {
                 FirebaseUtils.db.collection("User").document(userLogin.idUser!!).set(user!!)
                     .addOnSuccessListener {
                         loadingDialog?.dismissDialog()
-                        val i = Intent(this@ChoosePasswordActivity, MainScreenActivity::class.java)
+                        val i = Intent(this@RegisterPasswordActivity, MainScreenActivity::class.java)
                         i.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         loadingDialog?.dismissDialog()
                         startActivity(i)

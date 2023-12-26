@@ -10,7 +10,7 @@ import com.htnguyen.ihealthclub.utils.KEY_USER
 import kotlinx.android.synthetic.main.activity_register_your_name.*
 
 
-class WhatYourNameActivity : AppCompatActivity() {
+class RegisterNameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_your_name)
@@ -35,7 +35,7 @@ class WhatYourNameActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putSerializable(KEY_USER, user)
 
-                val i = Intent(this, BirthdayActivity::class.java)
+                val i = Intent(this, RegisterBirthdayActivity::class.java)
                 i.putExtras(bundle)
                 startActivity(i)
             } else {

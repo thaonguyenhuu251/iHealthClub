@@ -48,24 +48,24 @@
         </activity>
 
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.CreateNewPasswordActivity"
+            android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.EditPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.OtpVerificationActivity"
+            android:name="com.htnguyen.ihealthclub.view.register.RegisterOtpVerificationActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.htnguyen.ihealthclub.view.register.BirthdayActivity" />
+        <activity android:name="com.htnguyen.ihealthclub.view.register.RegisterBirthdayActivity" />
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.WhatYourNameActivity"
+            android:name="com.htnguyen.ihealthclub.view.register.RegisterNameActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.JoinClubActivity"
+            android:name="com.htnguyen.ihealthclub.view.register.RegisterClubActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity android:name="com.htnguyen.ihealthclub.view.login.LoginActivity" />
-        <activity android:name="com.htnguyen.ihealthclub.view.login.LoginProfileActivity" />
+        <activity android:name="com.htnguyen.ihealthclub.view.mainscreen.friend.FriendProfileActivity" />
         <activity android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.EditProfileActivity"
             android:windowSoftInputMode="stateHidden">
             <meta-data
@@ -74,10 +74,10 @@
         </activity>
         <activity android:name="com.htnguyen.ihealthclub.view.forgotpassword.ForgotPasswordMobileActivity" />
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.WhatYourGenderActivity"
+            android:name="com.htnguyen.ihealthclub.view.register.RegisterGenderActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.ContactNumberActivity"
+            android:name="com.htnguyen.ihealthclub.view.register.RegisterContactActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize">
             <meta-data
@@ -85,9 +85,9 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.htnguyen.ihealthclub.view.register.ChoosePasswordActivity"
+            android:name="com.htnguyen.ihealthclub.view.register.RegisterPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.htnguyen.ihealthclub.view.register.TermAndPrivacyActivity" />
+        <activity android:name="com.htnguyen.ihealthclub.view.mainscreen.personal.TermAndPrivacyActivity" />
         <activity
             android:name="com.htnguyen.ihealthclub.view.SplashScreenActivity"
             android:exported="true">

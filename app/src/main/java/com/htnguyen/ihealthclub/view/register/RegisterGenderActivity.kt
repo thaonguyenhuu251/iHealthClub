@@ -8,7 +8,7 @@ import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.utils.KEY_USER
 import kotlinx.android.synthetic.main.activity_register_your_gender.*
 
-class WhatYourGenderActivity : AppCompatActivity() {
+class RegisterGenderActivity : AppCompatActivity() {
 
     private var user: User? = null
 
@@ -21,7 +21,7 @@ class WhatYourGenderActivity : AppCompatActivity() {
         btn_next.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable(KEY_USER, user)
-            val i = Intent(this@WhatYourGenderActivity, ContactNumberActivity::class.java)
+            val i = Intent(this@RegisterGenderActivity, RegisterContactActivity::class.java)
             i.putExtras(bundle)
             startActivity(i)
         }

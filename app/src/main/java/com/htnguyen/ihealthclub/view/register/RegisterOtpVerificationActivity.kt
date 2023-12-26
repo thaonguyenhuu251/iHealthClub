@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_register_otp_verification.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
-class OtpVerificationActivity : AppCompatActivity() {
+class RegisterOtpVerificationActivity : AppCompatActivity() {
 
     private var user: User? = null
     private lateinit var auth: FirebaseAuth
@@ -77,7 +77,7 @@ class OtpVerificationActivity : AppCompatActivity() {
 
                             val bundle = Bundle()
                             bundle.putSerializable(KEY_USER, user)
-                            val i = Intent(this, ChoosePasswordActivity::class.java)
+                            val i = Intent(this, RegisterPasswordActivity::class.java)
                             i.putExtras(bundle)
                             loadingDialog?.dismissDialog()
                             startActivity(i)
@@ -114,7 +114,7 @@ class OtpVerificationActivity : AppCompatActivity() {
 
             override fun onVerificationFailed(p0: FirebaseException) {
                 loadingDialog?.dismissDialog()
-                Toast.makeText(this@OtpVerificationActivity, p0.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RegisterOtpVerificationActivity, p0.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {

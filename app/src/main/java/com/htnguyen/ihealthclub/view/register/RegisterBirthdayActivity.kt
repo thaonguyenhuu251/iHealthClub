@@ -3,7 +3,6 @@ package com.htnguyen.ihealthclub.view.register
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.chivorn.datetimeoptionspicker.DateTimePickerView
 import com.htnguyen.ihealthclub.R
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_register_birthday.*
 import kotlinx.android.synthetic.main.activity_register_birthday.timepicker
 import java.util.*
 
-class BirthdayActivity : AppCompatActivity() {
+class RegisterBirthdayActivity : AppCompatActivity() {
 
     private var pvTime: DateTimePickerView? = null
     private var user: User? = null
@@ -29,7 +28,7 @@ class BirthdayActivity : AppCompatActivity() {
         btn_next.setOnClickListener {
             val bundle = Bundle()
             bundle.putSerializable(KEY_USER, user)
-            val i = Intent(this@BirthdayActivity, WhatYourGenderActivity::class.java)
+            val i = Intent(this@RegisterBirthdayActivity, RegisterGenderActivity::class.java)
             i.putExtras(bundle)
             startActivity(i)
         }

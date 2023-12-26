@@ -8,7 +8,7 @@ import com.htnguyen.ihealthclub.base.BaseActivity
 import com.htnguyen.ihealthclub.databinding.ActivityRegisterClubBinding
 import kotlinx.android.synthetic.main.activity_register_club.*
 
-class JoinClubActivity: BaseActivity<ActivityRegisterClubBinding, RegisterViewModel>() {
+class RegisterClubActivity: BaseActivity<ActivityRegisterClubBinding, RegisterViewModel>() {
     override val layout: Int
         get() = R.layout.activity_register_club
     override val viewModel: RegisterViewModel
@@ -18,7 +18,7 @@ class JoinClubActivity: BaseActivity<ActivityRegisterClubBinding, RegisterViewMo
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_club)
         btn_next.setOnClickListener {
-            val i = Intent(this@JoinClubActivity, WhatYourNameActivity::class.java)
+            val i = Intent(this@RegisterClubActivity, RegisterNameActivity::class.java)
             startActivity(i)
         }
 

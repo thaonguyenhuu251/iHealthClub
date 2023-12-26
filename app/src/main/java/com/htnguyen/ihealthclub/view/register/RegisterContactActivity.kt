@@ -30,7 +30,7 @@ import com.htnguyen.ihealthclub.view.adapter.CountryAdapter
 import java.util.concurrent.TimeUnit
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, RegisterViewModel>() {
+class RegisterContactActivity : BaseActivity<ActivityRegisterContactBinding, RegisterViewModel>() {
 
     private var user: User? = null
     private lateinit var auth: FirebaseAuth
@@ -67,7 +67,7 @@ class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, Regis
                     val bundle = Bundle()
                     bundle.putSerializable(KEY_USER, user)
                     bundle.putString(TYPE_REGISTER, USER_EMAIL)
-                    val i = Intent(this@ContactNumberActivity, ChoosePasswordActivity::class.java)
+                    val i = Intent(this@RegisterContactActivity, RegisterPasswordActivity::class.java)
                     i.putExtras(bundle)
                     loadingDialog?.dismissDialog()
                     startActivity(i)
@@ -142,7 +142,7 @@ class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, Regis
 
             override fun onVerificationFailed(p0: FirebaseException) {
                 loadingDialog?.dismissDialog()
-                Toast.makeText(this@ContactNumberActivity, p0.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RegisterContactActivity, p0.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
@@ -154,7 +154,7 @@ class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, Regis
                 bundle.putString(KEY_VERIFIED_ID, p0)
                 bundle.putString(TYPE_REGISTER, USER_PHONE)
 
-                val i = Intent(this@ContactNumberActivity, OtpVerificationActivity::class.java)
+                val i = Intent(this@RegisterContactActivity, RegisterOtpVerificationActivity::class.java)
                 i.putExtras(bundle)
                 loadingDialog?.dismissDialog()
                 startActivity(i)
@@ -178,7 +178,7 @@ class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, Regis
     }
 
     private fun provideCountryPopupWindow(it: View) {
-        val json = readJSONFromAsset(this@ContactNumberActivity, "area_code.json")
+        val json = readJSONFromAsset(this@RegisterContactActivity, "area_code.json")
         val list = parseJsonToListAreaCode(json)
         val listAreaCode = ArrayList<AreaCode>()
         for (areaCode in list) {
@@ -209,11 +209,11 @@ class ContactNumberActivity : BaseActivity<ActivityRegisterContactBinding, Regis
             }
 
         }
-        val countryAdapter = CountryAdapter(this@ContactNumberActivity, list.toList())
+        val countryAdapter = CountryAdapter(this@RegisterContactActivity, list.toList())
         popupWindow = PopupWindow()
             .apply {
                 val backgroundDrawable = ContextCompat.getDrawable(
-                    this@ContactNumberActivity,
+                    this@RegisterContactActivity,
                     R.drawable.rounded_blue_outline_background_white
                 )
                 setBackgroundDrawable(backgroundDrawable)

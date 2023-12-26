@@ -1,4 +1,4 @@
-package com.htnguyen.ihealthclub.view.register
+package com.htnguyen.ihealthclub.view.mainscreen.personal
 
 import android.os.Bundle
 import android.util.Log

@@ -1,13 +1,13 @@
-package com.htnguyen.ihealthclub.view.register
+package com.htnguyen.ihealthclub.view.mainscreen.personal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.htnguyen.ihealthclub.R
 
-class CreateNewPasswordActivity : AppCompatActivity() {
+class EditPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_new_password)
+        setContentView(R.layout.activity_edit_password)
 
     }
 }
