@@ -316,7 +316,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_8sdp"
                         android:paddingHorizontal="@dimen/_16sdp"
                         android:orientation="horizontal">
 
@@ -350,6 +349,7 @@
                         android:id="@+id/btn_edit_public_detail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginHorizontal="@dimen/_16sdp"
                         android:background="@drawable/rounded_background_grey"
                         android:text="@string/edit_public_detail"
