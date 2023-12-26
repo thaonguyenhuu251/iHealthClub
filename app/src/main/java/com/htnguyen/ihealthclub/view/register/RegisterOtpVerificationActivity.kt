@@ -1,0 +1,150 @@
+package com.htnguyen.ihealthclub.view.register
+
+import com.htnguyen.ihealthclub.R
+import android.content.Intent
+import android.os.Bundle
+import android.os.CountDownTimer
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.htnguyen.ihealthclub.model.User
+import com.htnguyen.ihealthclub.utils.KEY_USER
+import com.htnguyen.ihealthclub.utils.KEY_VERIFIED_ID
+import com.htnguyen.ihealthclub.utils.OTP_TIME_OUT
+import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.*
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_register_otp_verification.*
+import java.util.concurrent.TimeUnit
+import kotlin.random.Random
+
+class RegisterOtpVerificationActivity : AppCompatActivity() {
+
+    private var user: User? = null
+    private lateinit var auth: FirebaseAuth
+    private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+    private var verifiedID: String? = null
+    private var loadingDialog: LoadingDialog? = null
+    private var timer : CountDownTimer ?= null
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_register_otp_verification)
+        verifiedID = intent.getStringExtra(KEY_VERIFIED_ID)
+        user = intent.extras?.get(KEY_USER) as User
+        initFirebase()
+        initView()
+    }
+
+    private fun initView() {
+        tv_sendphone.text = user?.phoneNumber
+
+        timer = object : CountDownTimer(120000, 1000) {
+            override fun onTick(p0: Long) {
+                tv_count_down.text = "OTP is invalid after ${p0 / 1000} seconds"
+            }
+
+            override fun onFinish() {
+                tv_count_down.text = "OTP is invalid"
+                btn_next.isEnabled = false
+            }
+
+        }
+        timer?.start()
+
+        loadingDialog = LoadingDialog(this)
+        btn_next.setOnClickListener {
+            loadingDialog?.showDialog()
+            if (ed_otp.text.toString()
+                    .isNotEmpty() && ed_otp.text.toString().length == 6 && verifiedID != null
+            ) {
+                auth.signInWithCredential(
+                    PhoneAuthProvider.getCredential(
+                        verifiedID!!,
+                        ed_otp.text.toString()
+                    )
+                )
+                    .addOnCompleteListener(
+                        this
+                    ) {
+                        if (it.isSuccessful) {
+                            val idUser = it.result.user?.uid ?: ("user" + System.currentTimeMillis()
+                                .toString() + Random.nextInt(0, 999).toString())
+                            user?.idUser = idUser
+
+                            val bundle = Bundle()
+                            bundle.putSerializable(KEY_USER, user)
+                            val i = Intent(this, RegisterPasswordActivity::class.java)
+                            i.putExtras(bundle)
+                            loadingDialog?.dismissDialog()
+                            startActivity(i)
+                        } else {
+                            loadingDialog?.dismissDialog()
+                            if (it.exception is FirebaseAuthInvalidCredentialsException) {
+                                showSnackBar(it.exception?.message ?: "Verification Failed")
+                            } else {
+                                showSnackBar("Verification Failed")
+                            }
+                        }
+                    }
+            } else {
+                showSnackBar("Please enter OTP to continue")
+            }
+        }
+        ln_send_code_again.setOnClickListener {
+            loadingDialog?.showDialog()
+            startPhoneNumberVerification(user?.phoneNumber!!)
+        }
+
+        im_back.setOnClickListener {
+            finish()
+        }
+    }
+
+
+    private fun initFirebase() {
+        auth = Firebase.auth
+        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+
+            }
+
+            override fun onVerificationFailed(p0: FirebaseException) {
+                loadingDialog?.dismissDialog()
+                Toast.makeText(this@RegisterOtpVerificationActivity, p0.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                super.onCodeSent(p0, p1)
+                btn_next.isEnabled = true
+                timer?.start()
+                loadingDialog?.dismissDialog()
+                verifiedID = p0
+            }
+
+            override fun onCodeAutoRetrievalTimeOut(p0: String) {
+                super.onCodeAutoRetrievalTimeOut(p0)
+            }
+
+        }
+    }
+
+    private fun startPhoneNumberVerification(phoneNumber: String) {
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(OTP_TIME_OUT, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(callbacks)
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(container, message, Snackbar.LENGTH_LONG).show()
+    }
+
+}

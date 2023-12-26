@@ -112,7 +112,7 @@ public class ReactText
      * Integer variable to change react dialog shape
      * Default value is react_dialog_shape
      */
-    private int mReactDialogShape = R.drawable.react_dialog_shape;
+    private int mReactDialogShape = R.drawable.rounded_background_white;
 
     /**
      * The current gravity for the reactions dialog
@@ -142,7 +142,7 @@ public class ReactText
     /**
      * The default drawable shape for tooltip text
      */
-    @DrawableRes private int mReactTooltipShape = R.drawable.react_tooltip_shape;
+    @DrawableRes private int mReactTooltipShape = R.drawable.rounded_react_tooltip_shape;
 
     /**
      * The min height of tooltip

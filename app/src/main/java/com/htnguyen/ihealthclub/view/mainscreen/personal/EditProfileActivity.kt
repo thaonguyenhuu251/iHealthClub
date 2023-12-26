@@ -32,11 +32,9 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding, PersonalPro
     var dtpvOptions: OptionsPickerView<String>? = null
     private val gender: ArrayList<String> = arrayListOf("Male", "Female", "Other")
 
-    private lateinit var sharedPreferences: SharedPreferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences = this.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+
         edtBirthday.showSoftInputOnFocus = false
         edtBirthday.setOnTouchListener { v, event ->
             v.onTouchEvent(event)

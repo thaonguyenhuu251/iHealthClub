@@ -19,7 +19,7 @@ import com.htnguyen.ihealthclub.model.TypeAction
 import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
 import com.htnguyen.ihealthclub.utils.URL_PHOTO
 import com.htnguyen.ihealthclub.utils.USER_ID
-import com.htnguyen.ihealthclub.view.adapter.CommentAdapter
+import com.htnguyen.ihealthclub.view.adapter.PostCommentAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -33,7 +33,7 @@ import kotlinx.android.synthetic.main.layout_comment_input.view.*
 
 class BottomSheetCommentFragment : BottomSheetDialogFragment {
     // TODO: Rename and change types of parameters
-    private var commentAdapter: CommentAdapter? = null
+    private var commentAdapter: PostCommentAdapter? = null
     private val userActions = mutableListOf<UserAction>(UserAction("name", TypeAction.LIKE))
     private lateinit var commentModel: CommentModel
     private lateinit var sharedPreferences: SharedPreferences
@@ -75,7 +75,7 @@ class BottomSheetCommentFragment : BottomSheetDialogFragment {
         }
 
         val view = inflater.inflate(R.layout.fragment_bottom_sheet_comment, container, false)
-        view.setBackgroundResource(R.drawable.rounded_bottom_comment)
+        view.setBackgroundResource(R.drawable.rounded_top_background_white)
         //view.findViewById<ConstraintLayout> (R.id.cstBottomComment).maxHeight = (resources.displayMetrics.heightPixels * 0.55).toInt()
         return view
     }
@@ -88,7 +88,7 @@ class BottomSheetCommentFragment : BottomSheetDialogFragment {
 
     private fun initView(view: View) {
         commentAdapter =
-            CommentAdapter(context = requireContext(), listComment = listComment()) { comment ->
+            PostCommentAdapter(context = requireContext(), listComment = listComment()) { comment ->
 
             }
         val rcvComment = view.findViewById<RecyclerView>(R.id.rvComment)

@@ -2,7 +2,9 @@ package com.htnguyen.ihealthclub.base
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.ContextWrapper
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -15,7 +17,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.htnguyen.ihealthclub.database.UserRepository
+import com.htnguyen.ihealthclub.database.UserRoomDatabase
 import com.htnguyen.ihealthclub.utils.PermissionHelper
+import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import io.reactivex.rxjava3.disposables.Disposable
 import java.util.*
@@ -27,6 +32,8 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
     lateinit var binding: T
     abstract val viewModel: R
     var loadingDialog: LoadingDialog? = null
+    var userRepository: UserRepository? = null
+    lateinit var sharedPreferences: SharedPreferences
 
     companion object {
         var dLocale: Locale? = null
@@ -58,6 +65,8 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         binding.lifecycleOwner = this@BaseActivity
         binding.setVariable(getBindingVariable(), viewModel)
         loadingDialog = LoadingDialog(this)
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+        userRepository = UserRepository(UserRoomDatabase.getDatabase(this).userDao())
     }
 
 

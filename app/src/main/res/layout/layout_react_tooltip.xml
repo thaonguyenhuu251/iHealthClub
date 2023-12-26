@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/react_tooltip_shape"
+    android:background="@drawable/rounded_react_tooltip_shape"
     android:minWidth="50dp">
 
     <TextView

@@ -9,24 +9,13 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.database.UserRepository
 import com.htnguyen.ihealthclub.database.UserRoomDatabase
-import com.htnguyen.ihealthclub.model.User
-import com.htnguyen.ihealthclub.model.UserLogin
-import com.htnguyen.ihealthclub.model.UserSaved
 import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.login.LoginActivity
-import com.htnguyen.ihealthclub.view.login.LoginProfileActivity
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
     private var userRepository: UserRepository? = null

@@ -507,8 +507,8 @@
     <string name="gender_male">Gender: Male</string>
     <string name="gender_female">Gender: Female</string>
     <string name="birthday_profile">Birthday: %s</string>
-    <string name="height">Height: %s</string>
-    <string name="weight">Weight: %s</string>
+    <string name="height">Height: %s (cm)</string>
+    <string name="weight">Weight: %s (kg)</string>
     <string name="post_like">Like</string>
     <string name="post_comment">Comment</string>
     <string name="post_share">Share</string>
@@ -521,4 +521,11 @@
     <string name="save">Save</string>
     <string name="your_height">What\'s your height? (cm)</string>
     <string name="your_weight">What\'s your weight? (Kg)</string>
+    <string name="setting">Setting</string>
+    <string name="change_password">Change Password</string>
+    <string name="logout">Logout</string>
+    <string name="search">Search</string>
+    <string name="emoji">Emoji</string>
+    <string name="activity">Activity</string>
+    <string name="sport">Sport</string>
 </resources>

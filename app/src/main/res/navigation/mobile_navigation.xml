@@ -41,9 +41,9 @@
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.htnguyen.ihealthclub.view.mainscreen.menu.MenuFragment"
+        android:name="com.htnguyen.ihealthclub.view.mainscreen.setting.SettingFragment"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/messengerFragment"
         android:name="com.htnguyen.ihealthclub.view.MessengerFragment"

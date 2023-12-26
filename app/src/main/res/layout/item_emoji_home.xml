@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <LinearLayout
         android:id="@+id/ln_item_emojis"
         android:layout_width="match_parent"
@@ -20,16 +19,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:textSize="24sp"/>
+            android:textSize="@dimen/_18ssp"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_emojis_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:paddingRight="@dimen/_10sdp"
-            android:text="Sanjay Shendy"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />
 

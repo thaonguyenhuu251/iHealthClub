@@ -25,6 +25,7 @@ import com.htnguyen.ihealthclub.model.TypeAction
 import com.htnguyen.ihealthclub.model.UserAction
 import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageResultActivity
+import com.htnguyen.ihealthclub.view.mainscreen.setting.SettingFragment
 import kotlinx.android.synthetic.main.fragment_personal_profile.*
 import kotlinx.android.synthetic.main.fragment_personal_profile.img_avatar
 import java.io.File
@@ -32,7 +33,6 @@ import java.io.IOException
 
 class PersonalProfileFragment :
     BaseFragment<FragmentPersonalProfileBinding, PersonalProfileViewModel>() {
-    private lateinit var sharedPreferences: SharedPreferences
     private var postAdapter: PostAdapter? = null
     private val viewModel by viewModels<PersonalProfileViewModel>()
 
@@ -54,8 +54,6 @@ class PersonalProfileFragment :
         }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferences =
-            requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         initData()
         initView()
     }
@@ -102,6 +100,15 @@ class PersonalProfileFragment :
     }
 
     private fun initView() {
+        if (arguments?.getInt(PERSON_TYPE) == 0) {
+            appBarLayout1.visibility = View.VISIBLE
+            appBarLayout2.visibility = View.GONE
+        } else {
+            appBarLayout1.visibility = View.GONE
+            appBarLayout2.visibility = View.VISIBLE
+        }
+
+
         rv_post_person.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         rv_post_person.setBackgroundResource(R.color.background_grey_little)
@@ -145,6 +152,10 @@ class PersonalProfileFragment :
                     PickImageResultActivity::class.java
                 )
             )
+        }
+
+        imgSetting.setOnClickListener {
+            transitFragment(SettingFragment(), R.id.container)
         }
 
     }

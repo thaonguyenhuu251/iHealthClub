@@ -1,6 +1,8 @@
 package com.htnguyen.ihealthclub.base
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,9 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
 import com.htnguyen.ihealthclub.R
+import com.htnguyen.ihealthclub.database.UserRepository
+import com.htnguyen.ihealthclub.database.UserRoomDatabase
+import com.htnguyen.ihealthclub.utils.SHARED_PREFERENCES_KEY
 import kotlinx.android.synthetic.main.activity_create_post.*
 
 abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment() {
@@ -22,6 +27,16 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
     lateinit var binding: B
 
     protected abstract val layout: Int
+
+    lateinit var sharedPreferences: SharedPreferences
+    var userRepository: UserRepository? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedPreferences =
+            requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
+        userRepository = UserRepository(UserRoomDatabase.getDatabase(requireContext()).userDao())
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val root by lazy { binding.root }
@@ -33,6 +48,7 @@ abstract class BaseFragment<B : ViewDataBinding, T : BaseViewModel> : Fragment()
             // prevent crash when transition animation is not over
             (root.parent as ViewGroup?)?.endViewTransition(root)
         }
+
         return root
     }
 

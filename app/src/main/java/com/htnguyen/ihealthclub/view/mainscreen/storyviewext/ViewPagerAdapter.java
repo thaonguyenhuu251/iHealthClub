@@ -21,7 +21,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.htnguyen.ihealthclub.R;
-import com.htnguyen.ihealthclub.model.EmojiHome;
+import com.htnguyen.ihealthclub.model.EmojiSportHome;
 import com.htnguyen.ihealthclub.model.ObjectStory;
 import com.htnguyen.ihealthclub.view.adapter.EmojiGeneralAdapter;
 
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class ViewPagerAdapter extends PagerAdapter{
 
     private ArrayList<ObjectStory> images;
-    private ArrayList<EmojiHome> listEmoji ;
+    private ArrayList<EmojiSportHome> listEmoji ;
     private RecyclerView rvEmoji;
     private EmojiGeneralAdapter rvEmojiAdapter ;
     private Context context;
@@ -122,14 +122,14 @@ public class ViewPagerAdapter extends PagerAdapter{
     }
 
     private void listEmoji(){
-        listEmoji.add(new EmojiHome("1","1"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDC4D"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDC95"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDE02"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDE0A"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDE2E"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDE25"));
-        listEmoji.add(new EmojiHome("","\uD83D\uDE21"));
+        listEmoji.add(new EmojiSportHome("1","1"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDC4D"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDC95"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDE02"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDE0A"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDE2E"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDE25"));
+        listEmoji.add(new EmojiSportHome("","\uD83D\uDE21"));
     }
 
     @Override

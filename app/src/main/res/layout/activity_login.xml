@@ -106,7 +106,7 @@
             android:id="@+id/btn_create_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button_create"
+            android:background="@drawable/rounded_blue_outline_background_white"
             android:text="@string/create_new_account"
             android:textAllCaps="false"
             android:layout_marginTop="@dimen/_16sdp" />

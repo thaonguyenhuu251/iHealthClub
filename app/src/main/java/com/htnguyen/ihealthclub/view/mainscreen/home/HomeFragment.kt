@@ -2,7 +2,6 @@ package com.htnguyen.ihealthclub.view.mainscreen.home
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
@@ -26,7 +25,6 @@ import com.htnguyen.ihealthclub.view.register.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
-    private lateinit var sharedPreferences: SharedPreferences
     private var urlAvatar: String = ""
     private var userName: String = ""
     private var idUser: String = ""
@@ -40,8 +38,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferences =
-            requireContext().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         urlAvatar = sharedPreferences.getString(URL_PHOTO, "").toString()
         userName = sharedPreferences.getString(USER_NAME, "USER FACEBOOK").toString()
         idUser = sharedPreferences.getString(USER_ID, "USER_ID").toString()
@@ -76,7 +72,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
         }
 
         img_avatar.setOnClickListener {
-            transitFragment(PersonalProfileFragment(), R.id.frameContainer)
+            val args = Bundle()
+            args.putInt(PERSON_TYPE, 0)
+            transitFragment(PersonalProfileFragment(), R.id.frameContainer, args)
         }
     }
 

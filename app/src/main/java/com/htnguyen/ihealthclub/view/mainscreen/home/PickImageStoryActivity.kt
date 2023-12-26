@@ -78,12 +78,10 @@ class PickImageStoryActivity : AppCompatActivity() {
 
         ln_photo_library.setOnClickListener {
             if(onClick == 0){
-                ln_photo_library.setBackgroundResource(R.drawable.rounded_home_post_file)
                 im_post_more.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24)
                 onClick = 1
             }
             else{
-                ln_photo_library.setBackgroundResource(R.drawable.rounded_not_background)
                 im_post_more.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
                 onClick = 0
             }

@@ -14,7 +14,7 @@ import com.htnguyen.ihealthclub.utils.*
 import com.htnguyen.ihealthclub.view.dialog.LoadingDialog
 import com.htnguyen.ihealthclub.view.forgotpassword.ForgotPasswordMobileActivity
 import com.htnguyen.ihealthclub.view.mainscreen.MainScreenActivity
-import com.htnguyen.ihealthclub.view.register.JoinClubActivity
+import com.htnguyen.ihealthclub.view.register.RegisterClubActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.container
@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initview() {
         btn_create_account.setOnClickListener {
-            val i = Intent(this, JoinClubActivity::class.java)
+            val i = Intent(this, RegisterClubActivity::class.java)
             startActivity(i)
         }
 

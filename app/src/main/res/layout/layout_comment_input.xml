@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
         android:layout_toEndOf="@+id/imgCamera"
-        android:background="@drawable/rounded_status_home"
+        android:background="@drawable/rounded_background_grey"
         android:gravity="center">
 
         <EditText
@@ -55,8 +55,7 @@
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_toStartOf="@+id/imgEmoji"
             android:paddingTop="@dimen/_1sdp"
-            android:paddingBottom="@dimen/_1sdp"
-            android:src="@drawable/sticker" />
+            android:paddingBottom="@dimen/_1sdp"/>
 
         <ImageView
             android:id="@+id/imgGif"
@@ -66,8 +65,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_toStartOf="@+id/imgSticker"
-            android:src="@drawable/image_gif" />
+            android:layout_toStartOf="@+id/imgSticker"/>
 
         <ImageView
             android:id="@+id/imgSend"
