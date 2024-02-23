@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.htnguyen.ihealthclub.R
 import com.htnguyen.ihealthclub.model.ObjectStory
+import com.htnguyen.ihealthclub.model.User
 import com.htnguyen.ihealthclub.utils.FirebaseUtils
 
 import com.htnguyen.ihealthclub.view.mainscreen.home.PickImageStoryActivity
@@ -22,7 +23,7 @@ class StoryViewAdapter(
     val url: String,
     val context: Context,
     val options: FirebaseRecyclerOptions<ObjectStory>,
-    val callback: (ObjectStory, String) -> Unit
+    val callback: (ObjectStory, User) -> Unit
 ) : FirebaseRecyclerAdapter<ObjectStory, RecyclerView.ViewHolder>(options) {
     companion object {
         const val VIEW_TYPE_ONE = 1
@@ -80,19 +81,19 @@ class StoryViewAdapter(
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val iv_avartar_story: ImageView = itemView.findViewById(R.id.iv_avatar_story)
         private val tv_name_story: TextView = itemView.findViewById((R.id.tv_name_story))
-        private val iv_content_story: ImageView = itemView.findViewById(R.id.iv_content_story)
+
         fun bindItem(story: ObjectStory) {
+            var userStory = User()
             FirebaseUtils.getUserById(story.idUser, onSuccess = {user ->
                 Glide.with(context).load(user.photoUrl)
                     .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
                     .into(iv_avartar_story)
                 tv_name_story.text = user.name
+                userStory = user
             })
-            Glide.with(context).load(story.listFile[0].url)
-                .error(AppCompatResources.getDrawable(context, R.drawable.ic_user_thumbnail))
-                .into(iv_content_story)
+
             itemView.setOnClickListener {
-                callback(story, tv_name_story.text.toString())
+                callback(story, userStory)
             }
         }
     }

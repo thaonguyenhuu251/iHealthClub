@@ -101,7 +101,7 @@
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:isScrollContainer="true"
+
             app:layout_constraintBottom_toTopOf="@+id/ln_options_post_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

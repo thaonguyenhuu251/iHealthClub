@@ -1,24 +1,21 @@
 package com.htnguyen.ihealthclub.view.mainscreen.home
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.htnguyen.ihealthclub.BR
 import com.htnguyen.ihealthclub.R
+import com.htnguyen.ihealthclub.base.BaseActivity
+import com.htnguyen.ihealthclub.databinding.ActivityPickImageResultBinding
 import com.htnguyen.ihealthclub.model.GalleryPicture
 import com.htnguyen.ihealthclub.utils.KEY_PATH_IMAGE_POST
 import com.htnguyen.ihealthclub.view.adapter.GalleryPicturesAdapter
 import kotlinx.android.synthetic.main.activity_pick_image_result.*
 
-
-class PickImageResultActivity : AppCompatActivity() {
+class PickImageResultActivity : BaseActivity<ActivityPickImageResultBinding, GalleryViewModel>() {
 
     private val adapter by lazy {
         GalleryPicturesAdapter(pictures, 10, this)
@@ -29,26 +26,23 @@ class PickImageResultActivity : AppCompatActivity() {
     private val pictures by lazy {
         ArrayList<GalleryPicture>(galleryViewModel.getGallerySize(this))
     }
+    override val layout: Int = R.layout.activity_pick_image_result
+    override val viewModel: GalleryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pick_image_result)
 
-        requestReadStoragePermission()
+        if (checkPermissionImage()) {
+            initImage()
+        } else {
+            requestReadExternalStoragePermission()
+        }
     }
 
-    private fun requestReadStoragePermission() {
-        val readStorage = Manifest.permission.READ_EXTERNAL_STORAGE
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
-                this,
-                readStorage
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(arrayOf(readStorage), 3)
-        } else init()
-    }
+    override fun getBindingVariable(): Int = BR.viewModel
 
-    private fun init() {
+    private fun initImage() {
         val layoutManager = GridLayoutManager(this, 3)
         val pageSize = 20
         var onClick = 0
@@ -100,10 +94,6 @@ class PickImageResultActivity : AppCompatActivity() {
         }
     }
 
-
-
-    private fun showToast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -111,10 +101,10 @@ class PickImageResultActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            init()
+            initImage()
         else {
             showToast("Permission Required to Fetch Gallery.")
-            super.onBackPressed()
+            requestReadExternalStoragePermission()
         }
     }
 }

@@ -4,17 +4,28 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.text.InputType
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.htnguyen.ihealthclub.database.UserRepository
@@ -37,7 +48,7 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
 
     companion object {
         var dLocale: Locale? = null
-
+        const val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 123
     }
 
     var localeUpdatedContext: ContextWrapper? = null
@@ -106,5 +117,80 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
             editText.isFocusable = true
         }
     }
+
+    fun checkPermissionImage(): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                return false
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                return false
+            }
+        }
+        return true
+    }
+
+    fun showPermissionSettingsDialog() {
+        /*val builder = AlertDialog.Builder(this, )
+
+        val mLayoutInflater = LayoutInflater.from(this)
+        val mView: View = mLayoutInflater.inflate(R.layout.dialog_alert, null)
+        val message: TextView = mView.findViewById(com.htnguyen.noteplus.R.id.message)
+        val description: TextView = mView.findViewById(com.htnguyen.noteplus.R.id.description)
+        val positiveButton = mView.findViewById<Button>(com.htnguyen.noteplus.R.id.btn_positive)
+        val negativeButton = mView.findViewById<Button>(com.htnguyen.noteplus.R.id.btn_negative)
+
+        message.text = "Permission needed."
+        description.text = "This permission is needed to read images. Please grant the permission in Settings. Go to Settings"
+        builder.setCustomTitle(mView)
+
+        val dialog = builder.show()
+        positiveButton.setOnClickListener {
+            goToSettingDevice()
+            dialog.dismiss()
+        }
+
+        negativeButton.setOnClickListener {
+            dialog.dismiss()
+        }*/
+    }
+
+    fun requestReadExternalStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.READ_MEDIA_IMAGES,
+                    Manifest.permission.READ_MEDIA_VIDEO
+                ),
+                REQUEST_PERMISSION_READ_EXTERNAL_STORAGE
+            )
+        } else {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ),
+                REQUEST_PERMISSION_READ_EXTERNAL_STORAGE
+            )
+        }
+
+    }
+
+    private fun goToSettingDevice(){
+        val i = Intent()
+        i.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+        i.addCategory(Intent.CATEGORY_DEFAULT)
+        i.data = Uri.parse("package:" + this.packageName)
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+        this.startActivity(i)
+    }
+
+    fun showToast(s: String) = Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
 
 }

@@ -29,8 +29,8 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="Write comment ..."
-            android:inputType="textNoSuggestions"
-            android:paddingLeft="@dimen/_12sdp"
+            android:inputType="textMultiLine"
+            android:paddingHorizontal="@dimen/_12sdp"
             android:textSize="@dimen/_12sdp" />
 
         <ImageView

@@ -7,14 +7,14 @@ import android.provider.MediaStore
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.htnguyen.ihealthclub.base.BaseViewModel
 import com.htnguyen.ihealthclub.model.GalleryPicture
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-
-class GalleryViewModel : ViewModel() {
+class GalleryViewModel : BaseViewModel() {
     private var startingRow = 0
     private var rowsToLoad = 0
     private var allLoaded = false
