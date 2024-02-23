@@ -5,13 +5,14 @@ import java.io.Serializable
 
 @Entity(tableName = "comment_table")
 data class CommentModel(
-    var idComment: Long = 0L,
-    var idPost: String ="",
+    var idComment: String? = "",
     var idUser: String = "",
-    var urlAvatar: String="",
-    var createAt: Long = 0L,
+    var timeAction: Long? = 0,
+    var typeAction: TypeAction = TypeAction.NO,
+    var contentAction: String = "",
+    var feedbackTo: String = "",
     var userAction: MutableList<UserAction> = mutableListOf(),
-    var contentComment: String=""
+    var listComment: MutableList<CommentModel> = mutableListOf()
 ): Serializable {
 
 }

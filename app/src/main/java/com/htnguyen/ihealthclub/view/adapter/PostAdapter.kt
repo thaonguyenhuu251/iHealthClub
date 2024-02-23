@@ -27,7 +27,8 @@ class PostAdapter(
     val context: Context,
     val callback: (Post) -> Unit,
     val onActionLike: (reaction: Reaction, post: Post) -> Unit = { reation, post -> },
-    val callback3: (TextView, Post) -> Unit,
+    val onActionComment: (TextView, Post) -> Unit,
+    val onActionListLike: (TextView, Post) -> Unit,
     val options: FirebaseRecyclerOptions<Post>
 ) : FirebaseRecyclerAdapter<Post, RecyclerView.ViewHolder>(options) {
     companion object {
@@ -95,7 +96,15 @@ class PostAdapter(
 
             val txtComment: TextView = itemView.findViewById(R.id.reactComment)
             txtComment.setOnClickListener {
-                callback3.invoke(txtComment, post)
+                onActionComment.invoke(txtComment, post)
+            }
+            tv_total_comment.setOnClickListener {
+                onActionComment.invoke(txtComment, post)
+            }
+
+
+            tv_total_like.setOnClickListener {
+                onActionListLike.invoke(txtComment, post)
             }
 
             FirebaseUtils.getUserById(
@@ -202,7 +211,7 @@ class PostAdapter(
 
             val txtComment: TextView = itemView.findViewById(R.id.reactComment)
             txtComment.setOnClickListener {
-                callback3.invoke(txtComment, post)
+                onActionComment.invoke(txtComment, post)
             }
 
             FirebaseUtils.getUserById(

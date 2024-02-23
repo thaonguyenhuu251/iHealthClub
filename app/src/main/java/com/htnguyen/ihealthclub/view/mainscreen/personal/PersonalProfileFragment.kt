@@ -83,7 +83,9 @@ class PersonalProfileFragment :
                     FirebaseUtils.databasePostLike.child(postSelect.idPost)
                         .child(userReactionLike.idUser.toString())
                         .setValue(null)
-            }, callback3 = { _, _ ->
+            }, onActionComment = { _, _ ->
+
+            }, onActionListLike = { _, _ ->
 
             }, optionsPost)
         }

@@ -3,6 +3,7 @@ package com.htnguyen.ihealthclub.view.mainscreen.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -102,7 +103,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
                 FirebaseUtils.databasePostLike.child(postSelect.idPost)
                     .child(userReactionLike.idUser.toString())
                     .setValue(null)
-        }, callback3 = { _, _ -> }, optionsPost)
+        }, onActionComment = { _, post ->
+            BottomSheetCommentFragment.newInstance(post.idPost).show(requireActivity().supportFragmentManager, "")
+        }, onActionListLike = { _, post ->
+            FirebaseUtils.getReactionLikeList(
+                idPost = post.idPost,
+                idUser = idUser,
+                onSuccessListLike = {
+                    BottomSheetActionFragment.newInstance(it).show(requireActivity().supportFragmentManager, "")
+                }
+            )
+
+        }, optionsPost)
         postAdapter?.startListening()
         rv_post.adapter = postAdapter
 
@@ -112,8 +124,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
                 .setQuery(FirebaseUtils.databaseStory, ObjectStory::class.java)
                 .build()
         storyAdapter =
-            StoryViewAdapter(urlAvatar, requireContext(), optionsStory, callback = { objectStory, userName ->
-                showStories(objectStory.idUser, userName)
+            StoryViewAdapter(urlAvatar, requireContext(), optionsStory, callback = { objectStory, user ->
+                showStories(objectStory.idUser, user)
             })
         storyAdapter?.startListening()
         rv_story.adapter = storyAdapter
@@ -125,7 +137,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
         storyAdapter?.stopListening()
     }
 
-    private fun showStories(idCreate: String, userName: String) {
+    private fun showStories(idCreate: String, user: User) {
         val myStories = ArrayList<ObjectStory>()
         FirebaseUtils.databaseStory.orderByChild("idUser").equalTo(idCreate)
             .addValueEventListener(object : ValueEventListener {
@@ -139,9 +151,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, RegisterViewModel>() {
 
                     StoryView.Builder(childFragmentManager)
                         .setStoriesList(myStories)
-                        .setStoryDuration(5000)
-                        .setTitleText(userName)
-                        .setSubtitleText("Damascus")
+                        .setStoryDuration(10000)
+                        .setTitleText(user.name)
+                        .setTitleLogoUrl(user.photoUrl)
                         .setStoryClickListeners(object : StoryClickListeners {
                             override fun onDescriptionClickListener(position: Int) {
 

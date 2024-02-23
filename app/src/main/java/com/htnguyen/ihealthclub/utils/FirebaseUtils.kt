@@ -33,6 +33,9 @@ object FirebaseUtils {
     val databasePost = dataBaseReference.child("Posts")
     val databaseStory= dataBaseReference.child("Stories")
     val databasePostLike = dataBaseReference.child("PostLike")
+    val databasePostComment = dataBaseReference.child("PostComment")
+
+    val databaseCommentLike = dataBaseReference.child("PostCommentLike")
 
     fun isUserLogin(
         account: String,
@@ -98,6 +101,85 @@ object FirebaseUtils {
             }
         })
         databasePostLike.child(idPost).child(idUser)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val userAction = dataSnapshot.getValue<UserAction>()
+                    if (userAction != null)
+                        onSuccess(userAction)
+                    else
+                        onFailure(java.lang.Exception("Can not load data"))
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+
+                }
+            })
+    }
+
+    fun getReactionLikeList(
+        idPost: String,
+        idUser: String,
+        onSuccessListLike: (totalLike: List<UserAction>) -> Unit = {},
+        onFailure: (exception: Exception) -> Unit = {}
+    ) {
+        databasePostLike.child(idPost).addValueEventListener(object : ValueEventListener {
+            var listUserAction = mutableListOf<UserAction>()
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postSnapshot in dataSnapshot.children) {
+                    val userAction = postSnapshot.getValue<UserAction>()
+                    userAction?.let { listUserAction.add(it) }
+                }
+                listUserAction.let { onSuccessListLike(it) }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
+
+    }
+
+    fun getCommentLikeList(
+        idComment: String,
+        idUser: String,
+        onSuccessListLike: (totalLike: List<UserAction>) -> Unit = {},
+        onFailure: (exception: Exception) -> Unit = {}
+    ) {
+        databaseCommentLike.child(idComment).addValueEventListener(object : ValueEventListener {
+            var listUserAction = mutableListOf<UserAction>()
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postSnapshot in dataSnapshot.children) {
+                    val userAction = postSnapshot.getValue<UserAction>()
+                    userAction?.let { listUserAction.add(it) }
+                }
+                listUserAction.let { onSuccessListLike(it) }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
+
+    }
+
+    fun getReactionComment(
+        idComment: String,
+        idUser: String,
+        onSuccess: (userAction: UserAction) -> Unit = {},
+        onSuccessTotalLike: (totalLike: Long) -> Unit = {},
+        onFailure: (exception: Exception) -> Unit = {}
+    ) {
+        databaseCommentLike.child(idComment).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val listUserAction = dataSnapshot.childrenCount
+                onSuccessTotalLike(listUserAction)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
+        databaseCommentLike.child(idComment).child(idUser)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val userAction = dataSnapshot.getValue<UserAction>()

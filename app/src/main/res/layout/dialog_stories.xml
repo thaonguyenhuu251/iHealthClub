@@ -15,7 +15,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/storiesViewPager"
             android:layout_width="0dp"
-            android:background="#707070"
+            android:background="@color/white"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,38 +27,31 @@
         <com.htnguyen.ihealthclub.view.mainscreen.storyviewext.StoriesProgressView
             android:id="@+id/storiesProgressView"
             android:layout_width="0dp"
-            android:layout_height="3dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_margin="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:background="@null"
             android:src="@drawable/ic_close"
+            android:layout_margin="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storiesProgressView" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/title_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="35dp"
+            android:layout_margin="@dimen/_8sdp"
             android:textColor="@color/white"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/subtitle_textView"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@+id/titleCardView"
-            app:layout_constraintTop_toBottomOf="@+id/storiesProgressView"
+            app:layout_constraintBottom_toTopOf="@+id/storiesProgressView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Hamza Al-Omari 2h" />
 
@@ -67,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/titleCardView"
@@ -79,15 +72,13 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/titleCardView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:visibility="gone"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:cardCornerRadius="25dp"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_margin="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_48sdp"
             app:cardPreventCornerOverlap="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storiesProgressView">
+            app:layout_constraintBottom_toTopOf="@+id/title_textView"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:id="@+id/title_imageView"
@@ -95,7 +86,6 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside" />
-
 
         </androidx.cardview.widget.CardView>
 
